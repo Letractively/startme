@@ -1,4 +1,4 @@
-package com.taobao.yourproject.web.module.screen;
+package com.taobao.webx3multi.web.module.screen;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

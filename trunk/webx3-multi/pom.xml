@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.taobao.webx3</groupId>
-	<artifactId>webx3-multi</artifactId>
+	<artifactId>webx3multi</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>project name</name>
@@ -142,16 +142,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<url>http://localhost:8080/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<url>http://localhost:8080/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 	
 </project>
