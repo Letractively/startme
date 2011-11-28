@@ -1,0 +1,8 @@
+#* @vtlvariable name="name" type="java.lang.String" desc="user name"*#
+#set($pageTitle='Welcome')
+
+#### content start #####
+
+<div>
+    <h1>Hello from $name</h1>
+</div>

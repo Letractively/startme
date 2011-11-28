@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- Appender -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.out" />
+		<param name="encoding" value="${loggingCharset}" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p - %X{method} %X{requestURIWithQueryString} [ip=%X{remoteAddr}, ref=%X{referrer}, ua=%X{userAgent}, sid=%X{cookie.JSESSIONID}] %c{2} - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="WARN" />
+		</filter>
+	</appender>
+	<appender name="PROJECT" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/yourproject.log" />
+		<param name="encoding" value="${loggingCharset}" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p - %X{method} %X{requestURIWithQueryString} [ip=%X{remoteAddr}, ref=%X{referrer}, ua=%X{userAgent}, sid=%X{cookie.JSESSIONID}] %c{2} - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="INFO" />
+		</filter>
+	</appender>
+	<appender name="PROJECT-DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${loggingRoot}/yourproject-debug.log" />
+		<param name="encoding" value="${loggingCharset}" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p - %X{method} %X{requestURIWithQueryString} [ip=%X{remoteAddr}, ref=%X{referrer}, ua=%X{userAgent}, sid=%X{cookie.JSESSIONID}] %c{2} - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMax" value="DEBUG" />
+		</filter>
+	</appender>
+    <!-- Root Logger -->
+	<root>
+		<level value="${loggingLevel}" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="STDERR" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="PROJECT-DEBUG" />
+	</root>
+</log4j:configuration>
