@@ -1,4 +1,3 @@
-#* @vtlvariable name="name" type="java.lang.String" desc="user name"*#
 #set($pageTitle='Welcome')
 
 #### content start #####
