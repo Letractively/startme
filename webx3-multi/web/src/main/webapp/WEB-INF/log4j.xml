@@ -13,7 +13,7 @@
 		</filter>
 	</appender>
 	<appender name="PROJECT" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="${loggingRoot}/webx3multi.log" />
+		<param name="file" value="${loggingRoot}/webxmulti.log" />
 		<param name="encoding" value="${loggingCharset}" />
 		<param name="append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -24,7 +24,7 @@
 		</filter>
 	</appender>
 	<appender name="PROJECT-DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="${loggingRoot}/webx3multi-debug.log" />
+		<param name="file" value="${loggingRoot}/webxmulti-debug.log" />
 		<param name="encoding" value="${loggingCharset}" />
 		<param name="append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
