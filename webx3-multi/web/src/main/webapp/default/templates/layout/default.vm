@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=GB18030"/>
+		<title>$!pageTitle</title>
+		$control.setTemplate("header.vm")
+		<meta name="description" content="请输入描述"/>
+		<meta name="keywords" content="请输入关键字"/>
+	</head>
+<body>
+	<div id="page">
+		$screen_placeholder
+	</div>
+	$control.setTemplate("footer.vm")
+</body>
+</html>
