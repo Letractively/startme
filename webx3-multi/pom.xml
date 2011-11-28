@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.taobao.webx3</groupId>
-	<artifactId>webx3multi</artifactId>
+	<artifactId>webxmulti</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>project name</name>
@@ -16,7 +16,7 @@
 	</modules>
 
 	<properties>
-		<!-- ${basedir}${user.home}д╛хосп -->
+		<!-- ${basedir}${user.home}default -->
 		<java.version>1.6</java.version>
 		<java.encoding>GBK</java.encoding>
 		<webx-version>3.0.3</webx-version>
