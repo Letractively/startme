@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.taobao.webx3</groupId>
-        <artifactId>webx3multi</artifactId>
+        <artifactId>webxmulti</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>webx3multi-biz</artifactId>
+    <artifactId>webxmulti-biz</artifactId>
     
     <name>Business Module</name>
     <url>http://www.taobao.com</url>
