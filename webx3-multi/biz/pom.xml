@@ -9,8 +9,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>webx3-multi-biz</artifactId>
+    
     <name>Business Module</name>
     <url>http://www.taobao.com</url>
+    
     <dependencies>
     
     </dependencies>
