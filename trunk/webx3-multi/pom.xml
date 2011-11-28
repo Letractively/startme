@@ -20,8 +20,6 @@
 		<java.version>1.6</java.version>
 		<java.encoding>GBK</java.encoding>
 		<webx-version>3.0.3</webx-version>
-		<autoconfig-plugin-version>1.0.6</autoconfig-plugin-version>
-		<springext-plugin-version>1.0</springext-plugin-version>
 		<warExplodedDirectory>target/exploded/${artifactId}.war</warExplodedDirectory>
 	</properties>
 	<dependencyManagement>
@@ -137,11 +135,23 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>GBK</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${java.encoding}</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://localhost:8080/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://localhost:8080/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
 </project>
