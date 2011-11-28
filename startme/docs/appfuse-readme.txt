@@ -3,3 +3,8 @@ mvn archetype:create -DarchetypeGroupId=org.appfuse.archetypes -DarchetypeArtifa
 
 2、下载代码
 mvn appfuse:full-source
+
+
+
+
+ps:创建AppFuse工程http://www.appfuse.org/display/APF/AppFuse+QuickStart
