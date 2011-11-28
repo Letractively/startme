@@ -38,13 +38,13 @@
     <beans:import resource="classpath:common/pipeline-exception.xml" />
 	<!-- "services:webx-configuration" must be in parent module,also must be in child module -->
 	<services:webx-configuration>
-		<services:productionMode>${webx3-multi.productionMode}</services:productionMode>
+		<services:productionMode>${webx3multi.productionMode}</services:productionMode>
 		<services:components defaultComponent="${component}" />
 	</services:webx-configuration>
 	<!-- "services:module-loader" must be in parent module,also must be in child module -->
 	<services:module-loader>
 		<ml-factories:class-modules>
-			<ml-factories:search-packages type="$1" packages="com.taobao.yourproject.web.module.*" />
+			<ml-factories:search-packages type="$1" packages="com.taobao.webx3multi.web.module.*" />
 		</ml-factories:class-modules>
 	</services:module-loader>
 	<!-- "services:request-contexts" must be in parent module -->

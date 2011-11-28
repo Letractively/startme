@@ -4,15 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.taobao.webx3</groupId>
-		<artifactId>webx3-multi</artifactId>
+		<artifactId>webx3multi</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>webx3-multi-deploy</artifactId>
+	<artifactId>webx3multi-deploy</artifactId>
 	<packaging>pom</packaging>
 	<name>Project Deploy</name>
 
 	<build>
-		<finalName>webx3-multi</finalName>
+		<finalName>webx3multi</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>

@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.taobao.webx3</groupId>
-		<artifactId>webx3-multi</artifactId>
+		<artifactId>webx3multi</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>webx3-multi-web</artifactId>
+	<artifactId>webx3multi-web</artifactId>
 	<packaging>war</packaging>
 	<name>Webx3 Quick Start Web Application</name>
 	<url>http://www.taobao.com</url>
@@ -15,7 +15,7 @@
 		<!--module dependency -->
 		<dependency>
 			<groupId>com.taobao.webx3</groupId>
-			<artifactId>webx3-multi-biz</artifactId>
+			<artifactId>webx3multi-biz</artifactId>
 			<version>${version}</version>
 		</dependency>
         <!--webx related -->

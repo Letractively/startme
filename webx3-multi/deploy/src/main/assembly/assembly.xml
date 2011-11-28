@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="GBK"?>
 <assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.1">
     <id></id>
-    <baseDirectory>webx3-multi.war</baseDirectory>
+    <baseDirectory>webx3multi.war</baseDirectory>
     <formats>
         <format>tar.gz</format>
     </formats>
    
     <fileSets>
         <fileSet>
-            <directory>../web/target/exploded/webx3-multi-web.war</directory>
+            <directory>../web/target/exploded/webx3multi-web.war</directory>
             <outputDirectory></outputDirectory>
 			<includes>
                 <include>**/**</include>

@@ -5,15 +5,15 @@
 
 	<context-param>
 		<param-name>loggingRoot</param-name>
-		<param-value>${webx3-multi.loggingRoot}</param-value>
+		<param-value>${webx3multi.loggingRoot}</param-value>
 	</context-param>
 	<context-param>
 		<param-name>loggingLevel</param-name>
-		<param-value>${webx3-multi.loggingLevel}</param-value>
+		<param-value>${webx3multi.loggingLevel}</param-value>
 	</context-param>
 	<context-param>
 		<param-name>loggingCharset</param-name>
-		<param-value>${webx3-multi.loggingCharset}</param-value>
+		<param-value>${webx3multi.loggingCharset}</param-value>
 	</context-param>
 
 	<!-- 日志记录 -->
