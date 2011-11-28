@@ -12,13 +12,15 @@ import com.alibaba.citrus.turbine.Context;
  */
 public class Welcome {
 	
-	@Resource HttpServletRequest request;
+	@Resource 
+	HttpServletRequest request;
+	
     /**
      * display welcome screen
      * @param context
      */
 	public void execute(Context context)  {
 		
-        context.put("name", "yingyang");
+        context.put("name", "webx3");
     }
 }

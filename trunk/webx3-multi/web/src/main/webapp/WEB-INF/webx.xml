@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- Webx Root Context Configuration. -->
 <beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:services="http://www.alibaba.com/schema/services"
 	xmlns:request-contexts="http://www.alibaba.com/schema/services/request-contexts"
@@ -33,18 +32,19 @@
         http://www.alibaba.com/schema/services/pull/factories http://localhost:8080/schema/services-pull-factories.xsd
         http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
     ">
+	<!-- Webx Root Context Configuration. -->
 
 	<!-- "services:pipeline-exception" must be in module, also can be in the child module -->
     <beans:import resource="classpath:common/pipeline-exception.xml" />
 	<!-- "services:webx-configuration" must be in parent module,also must be in child module -->
 	<services:webx-configuration>
-		<services:productionMode>${yourproject.productionMode}</services:productionMode>
+		<services:productionMode>${webx3-multi.productionMode}</services:productionMode>
 		<services:components defaultComponent="${component}" />
 	</services:webx-configuration>
 	<!-- "services:module-loader" must be in parent module,also must be in child module -->
 	<services:module-loader>
 		<ml-factories:class-modules>
-			<ml-factories:search-packages type="$1" packages="com.taobao.trip.agentx.web.module.*" />
+			<ml-factories:search-packages type="$1" packages="com.taobao.yourproject.web.module.*" />
 		</ml-factories:class-modules>
 	</services:module-loader>
 	<!-- "services:request-contexts" must be in parent module -->

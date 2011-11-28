@@ -20,6 +20,10 @@
 		</dependency>
         <!--webx related -->
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.citrus</groupId>
             <artifactId>citrus-webx-all-in-one</artifactId>
         </dependency>
@@ -39,10 +43,6 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
         </dependency>
 		<!-- Unit test related -->
 		<dependency>
