@@ -48,10 +48,11 @@ exec-maven-plugin
 5、Maven常用命令、生命周期命令及插件命令：
 mvn -v 显示版本 
 mvn -e 显示详细错误 信息. 
-mvn package -Dmaven.test.skip=true 【给任何目标添加maven.test.skip 属性就能跳过测试 】
--DdownloadSources=true  【给任何目标添加downloadSources 属性就能下载Sources？ 】
--DdownloadJavadocs=true 【给任何目标添加downloadSources 属性就能下载Javadocs？ 】
--DfailIfNoTests=false 【给任何目标添加downloadSources 属性就能在没有测试用例是不提示失败 】
+mvn package -Dmaven.test.skip=true 【给生命周期的目标添加maven.test.skip 属性就能跳过测试 】
+-DdownloadSources=true  【给生命周期的目标添加downloadSources 属性就能下载Sources？ 】
+-DdownloadJavadocs=true 【给生命周期的目标添加downloadSources 属性就能下载Javadocs？ 】
+-DfailIfNoTests=false 【给生命周期的目标添加downloadSources 属性就能在没有测试用例是不提示失败 】
+-Dautoconfig.userProperties=./antxme.properties【给指定的插件指定参数】
 mvn test -skipping compile -skipping test-compile 【只测试而不编译，也不测试编译：-skipping 的灵活运用，当然也可以用于其他组合命令】
 mvn install -X 【想要查看完整的依赖踪迹，包含那些因为冲突或者其它原因而被拒绝引入的构件，打开 Maven 的调试标记运行】
 mvn clean install 【删除再编译  ，组合命令】
