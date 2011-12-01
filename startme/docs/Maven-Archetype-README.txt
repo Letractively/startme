@@ -39,6 +39,6 @@ Maven --如何生成工程原型 Archetype，并上传到仓库，根据原型创建工程。
 
 6. 根据上传的原型创建工程：
 运行命令：
-mvn archetype:generate -DarchetypeGroupId=com.taobao.webx3 -DarchetypeArtifactId=webx3-multi-archetype -DarchetypeVersion=1.0.0-SNAPSHOT -DgroupId=com.taobao.myproject -DartifactId=myproject
+mvn archetype:generate -DarchetypeGroupId=com.taobao.webx3 -DarchetypeArtifactId=webxmulti-archetype -DarchetypeVersion=1.0.0-SNAPSHOT -DgroupId=com.taobao.myproject -DartifactId=myproject
 即可按所指定的原型及目标生成工程目录。也可手动指定原型库如下：
 mvn archetype:generate -DarchetypeGroupId=com.taobao.webx3 -DarchetypeArtifactId=webxmulti-archetype -DarchetypeVersion=1.0.0-SNAPSHOT -DgroupId=com.taobao.myproject -DartifactId=myproject -DarchetypeRepository=http://10.32.100.10:8080/nexus/content/groups/public

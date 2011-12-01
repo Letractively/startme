@@ -1,7 +1,9 @@
-Maven核心：pom.xml文档结构说明和settings.xml环境配置说明。
+﻿Maven核心：pom.xml文档结构说明和settings.xml环境配置说明。
 1、Maven生命周期-Phase:命令eg:[mvn clean]不带:号。Phase也是由内部Plugins完成的（Yes）。
  生命周期lifecycle，一个项目在maven中有三个生命周期，分别为default,clean,site。default主要是编译和部署生命周期，clean是清理生命周期，site是生成报表、工程文档等生命周期。
  生命周期中阶段phase。如default的生命周期中拥有validate、initialize、compile、test-compile、prepare-package、package、install、deploy等等的阶段。阶段是顺序执行的。
+Available lifecycle phases are: validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, site-deploy.
+
 以下未整理：
 mvn compile 【编译工程 ，生命周期默认绑定了插件命令，相当于执行插件compile:compile，并会执行之前的生命周期插件目标】
 mvn clean 清理生成的文件， 一般与package install 等命令一起使用 
