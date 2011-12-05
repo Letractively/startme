@@ -1,0 +1,56 @@
+body {
+	margin:0;
+	background-color: #efefef;
+	background:url('../images/first/leftbg.gif');
+	background-repeat:repeat;
+	scrollbar-face-color: #eeeeee;
+	scrollbar-highlight-color: #a9a9a9;
+	scrollbar-shadow-color: #a9a9a9;
+	scrollbar-3dlight-color: #eeeded;
+	scrollbar-darkshadow-color: #eeeded;
+	scrollbar-track-color: #eeeded;
+	scrollbar-arrow-color: #646464;
+	scrollbar-base-color: #eeeded;
+	overflow:auto;
+}
+td,body{color:#474747;font-size:12px;line-height:160%}
+a:link {color:#5E5E5E;text-decoration:underline}
+a:visited {color:#5E5E5E;text-decoration:underline}
+a:hover {color:red;text-decoration:none}
+a:active {color:#5E5E5E;text-decoration:underline}
+
+.first{
+	 width:100%;
+	 height:23;
+	 padding-left:15px;
+	 color:#000000;
+	 background:#228845;
+	 background:url('../images/first/levelone.gif');
+}
+.second{
+	 width:100%;
+	 height:23;
+	 padding-left:30px;
+	 color:#000000;
+	 background:#788889;
+	 background:url('../images/first/leveltwo.gif');
+}
+.third{
+	 width:100%;
+	 height:23;
+	 padding-left:45px;
+	 color:#000000;
+	 background:#9aaadd;
+	 background:url('../images/first/levelthree.gif');
+}
+.tab{
+	border-bottom:1px solid #aaaaaa;
+	border-left:1px solid #aaaaaa;
+	border-right:1px solid #aaaaaa;
+}
+.tab2{
+	border-top:1px solid #bbbbbb;
+	border-left:0px solid #bbbbbb;
+	border-right:0px solid #bbbbbb;
+}
+

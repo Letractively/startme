@@ -1,0 +1,46 @@
+<div style="text-align:center;">
+	<div style="text-align:center;width:800px;">
+		<div style="float:left;text-align:center;width:210px;">
+			#CatList()
+		</div>
+		<div style="float:left;text-align:center;">
+			#SearchForm()
+			<form name="fm" action="$link.setPage('shop,list.html')" method="post" style="border:#000 0px solid;padding:10px;margin:0px;">
+			<div style="text-align:left;padding:10px;">
+			<a href="$link.setPage('shop,start.html')">首页</a>
+			&gt;
+			$!cat.get($!catid) (共 $!pageBean.count 本书)
+			<input type="hidden" name="catid" value="$catid"/>
+			<input type="hidden" name="actionType" value="0">
+		 	<input type="hidden" name="page" value="$!pageBean.page">
+			<input type="hidden" name="pageSize" value="$!pageBean.getPageSize()">
+			</div>
+			<div style="text-align:left;border-top:gray 2px dotted;width:100%;">
+				#foreach($book in $result)
+				<div style="width:100%;border-bottom:gray 2px dotted;">
+					<div style="border:#000 0px solid;float:left;width:90px;height:120px;margin:5px;cursor:hand;">
+					<img id="pic" src="$!book.picname" onClick="openDetail($!book.id);" width="90" height="120" onerror="javascript:this.src='$content.getURI('images/main/wutu.jpg')';">
+					</div>
+					<div style="float:left;padding:8px;">
+						<div style="height:30px;overflow:auto;border:#000 0px solid;margin-bottom:10px;">
+						<b><a href="$link.setPage('shop,detail.html')?id=$!book.id" target="_blank">$!book.bookname</a></b>
+						</div>
+						<div style="height:30px;overflow:auto;">
+						<a href="$link.setPage('shop,detail.html')?id=$!book.id" target="_blank">$!book.introduce</a>
+						</div>
+						<div style="color:#FF6600;padding:5px;padding-left:0px;">售价:$!book.price 元</div> 
+						<div style="text-align:right;">
+						<input type="button" value="购买" onClick="buythis($!book.id);"/> 
+<!--						<input type="button" value="加入购物车" />-->
+						</div>
+					</div>
+				</div>
+				#end
+				#if($!pageBean.count>0)
+				#PageBarIII('fm')
+				#end
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,158 @@
+<script language="javascript">
+#if($!errorinfo !="")
+	alert('$!errorinfo');
+#end
+//表单提交check
+function checkMe(){
+	if(!check(fm)) return false;
+  	return true;
+}
+//显示隐藏下级菜单
+function toggleModule(tabobj){
+	return false;
+	var tabobjs = document.getElementsByTagName("TABLE");
+	var checkinfo = document.getElementsByName("check"+tabobj.id)[0];
+	if(checkinfo.value=="close"){
+		checkinfo.value="open";
+		for(var i=0;i<tabobjs.length;i++){
+			if(tabobjs[i].name==tabobj.name&&tabobjs[i].id!=tabobj.id&&tabobjs[i].id.indexOf(tabobj.id)==0){
+				tabobjs[i].style.display="";
+			}
+		}
+	}else{
+		checkinfo.value="close";
+		for(var i=0;i<tabobjs.length;i++){
+			if(tabobjs[i].name==tabobj.name&&tabobjs[i].id!=tabobj.id&&tabobjs[i].id.indexOf(tabobj.id)==0){
+				tabobjs[i].style.display="none";
+			}
+		}
+	}
+}
+
+//选择这个模块下所有的下级模块和按钮，选中此模块下的所有上级模块
+function checkAll(modid,obj){
+	var ischeck = obj.checked==true?true:false;
+	var moduleids = document.getElementsByName("moduleid");
+	for(var i=0;i<moduleids.length;i++){
+		if(moduleids[i].value.indexOf(modid)==0){
+			moduleids[i].checked=ischeck;
+		}
+		if(modid.indexOf(moduleids[i].value)==0){
+			if(ischeck==true) moduleids[i].checked=ischeck;
+		}
+		
+	}
+	var actionids = document.getElementsByName("actionid");
+	for(var i=0;i<actionids.length;i++){
+		if(actionids[i].value.indexOf(modid)==0){
+			actionids[i].checked=ischeck;
+		}
+	}
+}
+
+//选择这个按钮的所有上级模块
+function checkFather(actionid,obj){
+	var ischeck = obj.checked==true?true:false;
+	if(obj.checked==true){
+		var moduleids = document.getElementsByName("moduleid");
+		for(var i=0;i<moduleids.length;i++){
+			if(actionid.indexOf(moduleids[i].value)==0){
+				moduleids[i].checked=ischeck;
+			}
+		}
+	}
+}
+function refreshMod(){
+	fm.action = "$link.setActionEvent('manage.permission.PartAction','doRefresh')";
+	fm.submit();
+}
+</script>
+<form name="fm" method="post" action="$link.setAction('manage.permission.PartAction')" onSubmit="return checkMe();">
+<div align="right" style="font-color:green;">
+<a href="javascript:refreshMod();">刷新模块缓存</a>
+#if($!refresh=="true")
+<br>
+<script>
+var data = new Date();
+document.write("<font color='green'>刷新成功！上次刷新时间："+data.toLocaleString()+"</font>");
+</script>
+#end
+</div>
+<p>
+<div class="opttip" style="display:#if($optinfo) block #else none #end">
+	$!optinfo
+</div>
+<p>
+<input name="do" type="hidden" #if("$!part.roleid"=="0")value="add" #else value="update" #end>
+<input name="roleid" type="hidden" value="$!part.roleid">
+<table class="edit">
+	<tr>
+		<td width="80">
+			<font color="red">* </font>角色名称：
+		</td>
+		<td>
+			<input name="rolename" type="text" verify="notnull" vname="角色名称" maxlength="50" value="$!part.rolename" #if("$part.type"== "1") readonly #end>
+			#if("$part.type"=="1")<font color="red">[系统角色,不能修改名称]</font>#end
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;&nbsp;角色说明：
+		</td>
+		<td>
+			<textarea name="memo" cols="72" rows="5" maxlength="200">$!part.memo</textarea>
+		</td>
+	</tr>
+  	<tr>
+    	<td>&nbsp;&nbsp;设定权限：</td>
+    	<td>
+		#foreach($module in $modules) 
+			#if("$!module.level"=="1")
+			#set($class="first")
+			#elseif("$!module.level"=="2")
+			#set($class="second")
+			#elseif("$!module.level"=="3")
+			#set($class="third")
+			#end
+			#if("$!module.isleaf"=="0")
+			<table name="modtab" id="$!module.id" onMouseOver="window.status='$!module.id';" onClick="toggleModule(this);" width="100%" border="0" cellspacing="1" cellpadding="0">
+				<tr>
+					<td class="$class">
+					<input type="hidden" name="check$!module.id" value="open">
+					<img src="$content.getURI('images/main/folderopen.gif')">
+					$!module.name
+					<label for="chkall$!module.id"><input type="checkbox" name="moduleid" id="chkall$!module.id" value="$!module.id" #if($module.checked)checked#end onClick="checkAll('$!module.id',this)">全选</label>
+					</td>
+				</tr>
+			</table>
+			#else
+			<table name="modtab" id="$!module.id" onMouseOver="window.status='$!module.id';" width="100%" border="0" cellspacing="1" cellpadding="0">
+				<tr class="$class">
+					<td style="padding-left:45px;" width="150">
+					<img src="$content.getURI('images/main/folderopen.gif')">
+					$!module.name
+					<label for="chkall$!module.id"><input type="checkbox" name="moduleid" id="chkall$!module.id" value="$!module.id" #if($module.checked)checked#end onClick="checkAll('$!module.id',this)">全选</label>
+					</td>
+					<td>
+					&nbsp;
+					#foreach($action in $module.actions) 
+						<label for="$!action.actionid"><input type="checkbox" name="actionid" value="$!action.actionid" id="$!action.actionid" onClick="checkFather('$!action.actionid',this);" #if($action.checked)checked#end>$!action.actionname</label> 
+					#end
+					</td>
+				</tr>
+			</table>
+			#end
+		#end
+		</td>
+	</tr>
+</table>
+<br>
+<table class="editbar">
+	<tr>
+		<td align="center">
+			<input type="submit" value=" 确 定 "> 
+			<input type="button" value=" 返 回 " onclick="history.back();">
+		</td>
+	</tr>
+</table>
+</form>

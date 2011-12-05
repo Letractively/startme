@@ -1,0 +1,44 @@
+<form action="$link.setPage('manage,permission,loginagain.html')" method="post" name="rel" target="_top">
+	<input type="hidden" name="isfirst" value="yes">
+	<input type="hidden" name="reLoginError" value="$!reLoginError">
+</form>
+<script>
+#if("$!isfirst"!="yes")
+document.rel.submit();
+#end
+</script>
+<form action="$link.setPage('manage,permission,login.html')" method="post" name="send" target="_top">
+	<input type="hidden" name="logout" value="1">
+</form>
+<script language="JavaScript">
+<!--
+var timer = 3;
+function countdown(){
+  	if(timer > 0){
+    	timer -= 1;
+    	setTimeout("countdown()",1000);
+  	}else{
+    	document.send.submit();
+  	}
+}
+countdown();
+// -->
+</script>
+
+<h1>
+	对不起,很抱歉提醒你：
+</h1>
+下列原因会出现这个界面。3秒后会跳转到登录页面
+<ul>
+	<li>
+		你的会话已超时；
+	</li>
+	<li>
+		你当前操作了没有权限的模块。
+	</li>
+</ul>
+
+<h1>
+	服务器返回调试信息
+</h1>
+$!reLoginError

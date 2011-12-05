@@ -1,0 +1,112 @@
+<div style="text-align:center;">
+	<div style="text-align:center;width:800px;">
+		<div style="float:left;text-align:center;width:210px;">
+			<div>
+				<div><img src="$content.getURI('images/shop/new.gif')"></div>
+				<div style="padding:10px;">
+					<marquee DIRECTION=up BEHAVIOR=SCROLL SCROLLAMOUNT=3 SCROLLDELAY=100 style="height:100px;padding:10px;" >
+						#if("$!board.state"=="1")
+						$!board.content
+						#end
+					</marquee>
+				</div>
+			</div>
+			#CatList()
+			<div>
+				<div><img src="$content.getURI('images/shop/hot.gif')"></div>
+				<div style="height:200px;"></div>
+			</div>
+			<div style="display:none;">
+				<div><img src="$content.getURI('images/shop/jpsp.gif')"></div>
+				<div style="height:200px;"></div>
+			</div>
+			<div style="display:none;">
+				<div><img src="$content.getURI('images/shop/hydr.gif')" width="210"></div>
+				<div align="center" style="border:gray 0px solid;margin-bottom:10px;">
+				<input type="text" name="username" value="请输入用户名"　/><br/>
+				<input type="text" name="password" value=""　/><br/>
+				<br/>
+				<input type="submit" value="登录" />
+				<input type="button" value="注册" /><br/><br/>
+				</div>
+			</div>
+		</div>
+		<div>
+			#SearchForm()
+			<div style="width:582;text-align:left;">
+				<div style="float:left;width:50%;">
+					<div>
+						<img src="$content.getURI('images/shop/cxs.gif')"
+							width="290" height="52">
+					</div>
+					<div>
+						#if($popBook)
+						<div style="border:#000 0px solid;float:left;width:90px;height:120px;margin:5px;cursor:hand;">
+						<img id="pic" src="$!popBook.picname" onClick="openDetail($!popBook.id);" width="90" height="120" onerror="javascript:this.src='$content.getURI('images/main/wutu.jpg')';">
+						</div>
+						<div style="float:left;padding:8px;">
+							<div style="height:30px;overflow:auto;border:#000 0px solid;margin-bottom:10px;">
+							<b><a href="$link.setPage('shop,detail.html')?id=$!popBook.id" target="_blank">$!popBook.bookname</a></b>
+							</div>
+							<div style="height:30px;overflow:auto;border:#000 0px solid;">
+							<a href="$link.setPage('shop,detail.html')?id=$!popBook.id" target="_blank">$!popBook.introduce</a>
+							</div>
+							<div style="color:#FF6600;padding:5px;padding-left:0px;">售价:$!popBook.price 元</div> 
+							<input type="button" value="购买" onClick="buythis($!popBook.id);"/> 
+<!--							<input type="button" value="加入购物车" />-->
+						</div>
+						#end
+					</div>
+				</div>
+				<div style="float:left;width:50%;">
+					<div>
+						<img src="$content.getURI('images/shop/jpt.gif')" width="290" height="52">
+					</div>
+					<div>
+						#if($commendBook)
+						<div style="border:#000 0px solid;float:left;width:90px;height:120px;margin:5px;cursor:hand;">
+						<img id="pic" src="$!commendBook.picname" onClick="openDetail($!commendBook.id);" width="90" height="120" onerror="javascript:this.src='$content.getURI('images/main/wutu.jpg')';">
+						</div>
+						<div style="float:left;padding:8px;">
+							<div style="height:30px;overflow:auto;border:#000 0px solid;margin-bottom:10px;">
+							<b><a href="$link.setPage('shop,detail.html')?id=$!commendBook.id" target="_blank">$!commendBook.bookname</a></b>
+							</div>
+							<div style="height:30px;overflow:auto;">
+							<a href="$link.setPage('shop,detail.html')?id=$!commendBook.id" target="_blank">$!commendBook.introduce</a>
+							</div>
+							<div style="color:#FF6600;padding:5px;padding-left:0px;">售价:$!commendBook.price 元</div> 
+							<input type="button" value="购买" onClick="buythis($!commendBook.id);"/> 
+<!--							<input type="button" value="加入购物车" />-->
+						</div>
+						#end
+					</div>
+				</div>
+				<div style="clear:both;height:20px;"></div>
+				<div><img src="$content.getURI('images/shop/xssj.gif')"></div>
+				#set($count=0)
+				#foreach($book in $newbooks)
+				#set($count=$count+1)
+				<div style="float:left;width:50%;">
+					<div style="border:#000 0px solid;float:left;width:90px;height:120px;margin:5px;cursor:hand;">
+					<img id="pic" src="$!book.picname" onClick="openDetail($!book.id);" width="90" height="120" onerror="javascript:this.src='$content.getURI('images/main/wutu.jpg')';">
+					</div>
+					<div style="float:left;padding:8px;">
+						<div style="height:30px;overflow:auto;border:#000 0px solid;margin-bottom:10px;">
+						<b><a href="$link.setPage('shop,detail.html')?id=$!book.id" target="_blank">$!book.bookname</a></b>
+						</div>
+						<div style="height:30px;overflow:auto;">
+						<a href="$link.setPage('shop,detail.html')?id=$!book.id" target="_blank">$!book.introduce</a>
+						</div>
+						<div style="color:#FF6600;padding:5px;padding-left:0px;">售价:$!book.price 元</div> 
+						<input type="button" value="购买" onClick="buythis($!book.id);"/> 
+<!--						<input type="button" value="加入购物车" />-->
+					</div>
+				</div>
+				#if($count%2==0)
+				<div style="clear:both;height:20px;"></div>
+				#end
+				#end
+			</div>
+		</div>
+	</div>
+</div>

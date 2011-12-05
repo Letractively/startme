@@ -1,0 +1,313 @@
+<script language="JavaScript" type="text/JavaScript">
+//切换查询栏显示
+function toggleQueryTable(){
+	var tab = document.getElementById('queryTable');
+	if(tab.style.display==""){
+		tab.style.display="none";
+		document.getElementById("toggleSpan").innerHTML = "显示查询项";
+	}else{
+		tab.style.display="";
+		document.getElementById("toggleSpan").innerHTML = "隐藏查询项";
+	}
+}
+//校验是否有选中的记录
+function isChecked(){
+	var ids = document.getElementsByName('ids');
+	for(i=0;i<ids.length;i++){
+	  	if (ids[i].checked) return true;
+	}
+	alert('您没有选择要操作的记录！');
+	return false;
+}
+//可选中或取消选中本页的记录
+function checkAll(checked){
+	var ids = document.getElementsByName('ids'); 
+	for(i=0;i<ids.length;i++){
+  		if(ids[i].checked!=checked)ids[i].click();
+	}
+}
+//操作单条记录之前取消选中所有其他记录
+function cancelCheck(){
+	var ids = document.getElementsByName('ids');
+	for(i=0;i<ids.length;i++){
+  		ids[i].checked = false;
+	}
+}
+//删除记录
+function doDelete(){
+  	if(!isChecked())return;
+  	if(confirm('你确定要删除所选择的记录吗？')){
+  		fm.action = "$link.setActionEvent('manage.product.ProductAction','doDelete')";
+  		fm.submit();
+  	}
+}
+//删除某条记录
+function doDeleteOne(id){
+	cancelCheck();
+	if (confirm('你确定要删除这条记录吗？')) {
+		fm.action = "$link.setActionEvent('manage.product.ProductAction','doDelete')?ids="+id;
+		fm.submit();
+	}
+}
+//批量发布产品
+function doPub(isPub){
+  	if(!isChecked())return;
+  	if(isPub==1){
+  		tip = "你确定要发布所选择的产品吗？";
+  	}else{
+  		tip = "你确定要撤销发布所选择的产品吗？";
+  	}
+  	if(confirm(tip)){
+  		fm.action = "$link.setActionEvent('manage.product.ProductAction','doPub')?isPub="+isPub;
+  		fm.submit();
+  	}
+}
+//发布某条产品
+function doPubOne(id,isPub){
+	cancelCheck();
+	if(isPub==1){
+  		tip = "你确定要发布这条产品吗？";
+  	}else{
+  		tip = "你确定要撤销发布这条产品吗？";
+  	}
+	if (confirm(tip)) {
+		fm.action = "$link.setActionEvent('manage.product.ProductAction','doPub')?ids="+id+"&isPub="+isPub;
+		fm.submit();
+	}
+}
+//批量畅销产品
+function doPop(isPop){
+  	if(!isChecked())return;
+  	var tip = "";
+  	if(isPop==1){
+  		tip = "你确定要将所选择的产品置为畅销吗？";
+  	}else{
+  		tip = "你确定要将所选择的产品置为非畅销吗？";
+  	}
+  	if(confirm(tip)){
+  		fm.action = "$link.setActionEvent('manage.product.ProductAction','doPop')?isPop="+isPop;
+  		fm.submit();
+  	}
+}
+//畅销某条产品
+function doPopOne(id,isPop){
+	cancelCheck();
+	if(isPop==1){
+  		tip = "你确定要将这条产品置为畅销吗？";
+  	}else{
+  		tip = "你确定要将这条产品置为非畅销吗？";
+  	}
+	if (confirm(tip)) {
+		fm.action = "$link.setActionEvent('manage.product.ProductAction','doPop')?ids="+id+"&isPop="+isPub;
+		fm.submit();
+	}
+}
+//批量推荐产品
+function doCommend(isCommend){
+  	if(!isChecked())return;
+  	var tip = "";
+  	if(isCommend==1){
+  		tip = "你确定要将所选择的产品置为推荐吗？";
+  	}else{
+  		tip = "你确定要将所选择的产品取消推荐吗？";
+  	}
+  	if(confirm(tip)){
+  		fm.action = "$link.setActionEvent('manage.product.ProductAction','doCommend')?isCommend="+isCommend;
+  		fm.submit();
+  	}
+}
+//推荐某条产品
+function doCommendOne(id,isCommend){
+	cancelCheck();
+	if(isPop==1){
+  		tip = "你确定要将这条产品置为畅销吗？";
+  	}else{
+  		tip = "你确定要将这条产品置为非畅销吗？";
+  	}
+	if (confirm(tip)) {
+		fm.action = "$link.setActionEvent('manage.product.ProductAction','doCommend')?ids="+id+"&isCommend="+isCommend;
+		fm.submit();
+	}
+}
+</script>
+<form name="fm" method="post" action="$link.setPage('manage,product,product_list.html')">
+<p>
+	<div class="opttip" style="display:#if($queryfail) block #else none #end">
+		查询有误：$!queryfail
+	</div>
+	<table class="querybar">
+		<tr>
+			<th align="left">
+				<input type="submit" value="查 询">
+				<a id="toggleSpan" hidefocus href="javascript:toggleQueryTable();">显示查询项</a>
+					
+			</th>
+			<th align="right">
+				<input type="button" onClick="window.location='$link.setPage('manage,product,product_edit.html')';" value="新增产品">
+			</th>
+		</tr>
+	</table>
+	<table class="query" id="queryTable" cellspacing="1" style="display:none;padding:5px;">
+		<tr>
+			<td style="padding-left:10px;">
+				书籍名称：
+				<input type="text" name="bookname" value="$!param.bookname">
+				作者：
+				<input type="text" name="bookwriter" value="$!param.bookwriter">
+				<select name="catid">
+					<option value="">所有分类</option>
+					#foreach($cat in $catlist)
+					<option value="$!cat.id" #if("$!param.catid"=="$!cat.id")selected#end>$!cat.catname</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding-left:10px;">
+				<select name="ispopulate">
+					<option value="-1">是否畅销书</option>
+					<option value="1" #if("$!param.ispopulate"=="1")selected#end>是</option>
+					<option value="0" #if("$!param.ispopulate"=="0")selected#end>否</option>
+				</select>
+				<select name="iscommend">
+					<option value="-1">是否推荐</option>
+					<option value="1" #if("$!param.iscommend"=="1")selected#end>是</option>
+					<option value="0" #if("$!param.iscommend"=="0")selected#end>否</option>
+				</select>
+				<select name="state">
+					<option value="-1">发布状态</option>
+					<option value="1" #if("$!param.state"=="1")selected#end>已发布</option>
+					<option value="2" #if("$!param.state"=="2")selected#end>未发布</option>
+				</select>
+				发布时间
+				<input type="text" readonly maxlength="10" size="10" name="startdate" value="$!date.getDateString($!param.startdate)" onClick="calendar(fm.startdate,1);">
+				<img src="$content.getAbsoluteURI('images/calendar/calendar.gif')" onClick="calendar(fm.startdate,1);"
+				align="middle" style="cursor:hand;" title="显示日历" alt="calendar">
+				至
+				<input type="text" readonly maxlength="10" size="10" name="enddate" value="$!date.getDateString($!param.enddate)">
+				<img src="$content.getAbsoluteURI('images/calendar/calendar.gif')" onClick="calendar(fm.enddate);"
+				align="middle" style="cursor:hand;" title="显示日历" alt="calendar">
+			</td>
+		</tr>
+	</table>
+	<table class="list" id="tabls" cellspacing="1">
+		<tr>
+			<th width="2%">
+				选择
+			</th>
+			<th width="2%">
+				序号
+			</th>
+			<th width="10%">
+				书名
+			</th>
+			<th width="8%">
+				作者
+			</th>
+			<th width="12%">
+				分类
+			</th>
+			<th width="10%">
+				是否畅销书
+			</th>
+			<th width="10%">
+				是否推荐
+			</th>
+			<th width="10%">
+				发布状态
+			</th>
+			<th width="10%">
+				最后发布日期
+			</th>
+			<th width="20%">
+				操作项
+			</th>
+		</tr>
+		#set($count=0)
+		#foreach ($item in $vo)
+		#set($count=$count+1)
+		<tr>
+			<td>
+				<input type="checkbox" name="ids" value="$!item.id">
+			</td>
+			<td align="center">
+				$count
+			</td>
+			<td>
+				&nbsp;$!item.bookname
+			</td>
+			<td>
+				&nbsp;$!item.bookwriter
+			</td>
+			<td>
+				&nbsp;$!cat.get($!item.catid)
+			</td>
+			<td align="center">
+				&nbsp;#if("$!item.ispopulate"=="1")<font color="red">是</font>#else<font color="green">否</font>#end
+			</td>
+			<td align="center">
+				&nbsp;#if("$!item.iscommend"=="1")<font color="red">是</font>#else<font color="green">否</font>#end
+			</td>
+			<td align="center">
+				&nbsp;#if("$!item.state"=="1")<font color="red">已发布</font>#elseif("$!item.state"=="2")<font color="green">未发布</font>#end
+			</td>
+			<td align="center">
+				&nbsp;$!date.getDateString($!item.pubdate,"yyyy-MM-dd HH:mm:ss")
+			</td>
+			<td align="center">
+				<input type="button" onClick="window.location='$link.setPage('manage,product,product_edit.html')?isnew=false&id=$!item.id';" value="修改">
+				<input type="button" onClick="doDeleteOne($!item.id);" value="删除">
+				#if("$!item.state"=="2")
+				<input type="button" onClick="doPubOne($!item.id,1);" value="发布上网">
+				#elseif("$!item.state"=="1")
+				<input type="button" onClick="doPubOne($!item.id,0);" value="撤销发布">
+				#end
+<!--				#if("$!item.ispopulate"=="0")-->
+<!--				<input type="button" onClick="doPopOne($!item.id);" value="置为畅销">-->
+<!--				#elseif("$!item.ispopulate"=="1")-->
+<!--				<input type="button" onClick="doDepopOne($!item.id);" value="撤销畅销">-->
+<!--				#end-->
+<!--				#if("$!item.iscommend"=="0")-->
+<!--				<input type="button" onClick="doCommendOne($!item.id);" value="推荐">-->
+<!--				#elseif("$!item.iscommend"=="1")-->
+<!--				<input type="button" onClick="doDecommendOne($!item.id);" value="取消推荐">-->
+<!--				#end-->
+			</td>
+		</tr>
+		#end
+	</table>
+	<table class="listbar">
+		<tr>
+			<td>
+				<label for="chkAll"><input type="checkbox" id="chkAll" onClick="checkAll(this.checked);">本页选择</label>
+				<select class="optsel" onChange="eval(this.value);this.selectedIndex=0;">
+					<option value="" style="color:gray;">==请选择操作==</option>
+					<option value="doDelete();">删 除</option>
+					<option value="doPub(1);">发布上网</option>
+					<option value="doPub(0);">撤销发布</option>
+					<option value="doPop(1);">置为畅销</option>
+					<option value="doPop(0);">撤销畅销</option>
+					<option value="doCommend(1);">推荐</option>
+					<option value="doCommend(0);">取消推荐</option>
+				</select>
+<!--				<input type="button" onClick="doDelete();" value="删 除" >-->
+<!--				<input type="button" onClick="doPub(1);" value="发布上网">-->
+<!--				<input type="button" onClick="doPub(0);" value="撤销发布">-->
+<!--				<input type="button" onClick="doPop(1);" value="置为畅销">-->
+<!--				<input type="button" onClick="doPop(0);" value="撤销畅销">-->
+<!--				<input type="button" onClick="doCommend(1);" value="推荐">-->
+<!--				<input type="button" onClick="doCommend(0);" value="取消推荐">-->
+			</td>
+			<td align="right">
+			#PageBarI(1)
+			</td>
+		</tr>
+	</table>
+</form>
+<script>
+//新增修改删除操作成功后返回此页面的提示信息
+#if($optinfo)
+alert("$optinfo");
+window.location.href = "$link.setPage('manage,product,product_list.html')";
+#end
+</script>

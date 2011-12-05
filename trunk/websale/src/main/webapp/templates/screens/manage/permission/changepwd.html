@@ -1,0 +1,64 @@
+<script language="javascript" type="text/javascript">
+#if($optinfo)
+#if("$!optinfo"=="ok")
+	alert("密码修改成功！");
+	window.location = "$link.setPage('manage,permission,index_center.html')";
+#else
+	alert("$!optinfo");
+#end
+#end
+
+function checkform(theForm){
+	if (theForm.oldpassword.value.trim()==""){
+      	window.alert("请输入旧密码!");
+      	theForm.oldpassword.focus();
+      	return false;
+  	}
+  	if (theForm.newpassword.value==""){
+      	window.alert("请输入新密码!");
+      	theForm.newpassword.focus();
+      	return false;
+  	}
+  	if(theForm.renewpassword.value!=theForm.newpassword.value){
+  		window.alert("两次密码输入不一致");
+      	theForm.renewpassword.focus();
+  		return false;
+  	}
+}
+</script>
+<form name="fm" method="post" action="$link.setAction('manage.permission.ChangepwdAction')" onsubmit="return checkform(this);">
+	<table width="60%" align="center" border="0">
+		<tr>
+			<td align="right">
+				旧密码：
+			</td>
+			<td>
+				<input type="password" name="oldpassword" size="32" maxlength="10" value="">
+			</td>
+		</tr>
+		<tr>
+			<td align="right">
+				新密码：
+			</td>
+			<td>
+				<input type="password" name="newpassword" size="32" maxlength="10">
+			</td>
+		</tr>
+		<tr>
+			<td align="right">
+				确认新密码：
+			</td>
+			<td>
+				<input type="password" name="renewpassword" size="32" maxlength="10">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" name="eventSubmit_doChangepass" value="  修 改  ">
+				<input type="button" value="  返 回  " onclick="history.back();">
+			</td>
+		</tr>
+	</table>
+</form>
+
+

@@ -1,0 +1,17 @@
+<script src="$content.getAbsoluteURI('js/calendar.js')" type="text/javascript"></script>
+<script src="$content.getAbsoluteURI('js/mycalendar.js')" type="text/javascript"></script>
+<!--<DIV id=divStartDate style="POSITION: absolute"></DIV>-->
+<input type="text" readonly maxlength="10" size="10" name="startDate" value="$!info.startDate">
+<img id="imgStartDate"
+	onmouseup="DatePicker('imgStartDate','divStartDate','frm.StartDate',null,null)"
+	src="$content.getAbsoluteURI('images/calendar/calendar.gif')"
+	align="middle" style="cursor:hand;" title="显示日历" alt="calendar">
+
+<script language="javascript" type="text/javascript">
+var CalendarWebControl = new atCalendarControl();
+</script>
+<input type="text" readonly maxlength="10" size="10" name="p_start_date" value="$!info.startDate"/>
+<img src="$content.getAbsoluteURI('images/calendar/calendar.gif')"
+	onmouseup="CalendarWebControl.show(p_start_date,'',this);"
+	src="$content.getAbsoluteURI('images/calendar/calendar.gif')"
+	align="middle" style="cursor:hand;" title="显示日历" alt="v">

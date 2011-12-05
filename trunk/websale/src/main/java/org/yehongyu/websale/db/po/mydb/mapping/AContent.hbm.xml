@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        b2b hibernate hbm.xml 
+        
+-->
+    <class name="org.yehongyu.websale.db.po.mydb.AContent" table="A_CONTENT" >
+	<!--PK-->
+        <id name="id" column="CONID" type="long" >
+            <generator class="increment"/>
+        </id>
+
+        <property name="contype" type="long">
+             <column name="CONTYPE" />
+        </property>
+        <property name="content" type="string">
+             <column name="CONTENT" />
+        </property>
+        <property name="state" type="long">
+             <column name="STATE" />
+        </property>
+    </class>
+</hibernate-mapping>

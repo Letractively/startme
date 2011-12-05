@@ -1,0 +1,33 @@
+<html>
+##TurbineHtmlHead()
+<title>网上商城</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="keywords" content="网上商城,网上书店,管理系统">
+<meta http-equiv="description" content="网上书店管理系统">
+<meta http-equiv="Pragma" content="no-cache" content="">
+<meta http-equiv="Cache-Control" content="no-cache" content="">
+<meta http-equiv="Expires" content="0" content="">
+<link href="$content.getURI('style/main.css')" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="$content.getURI('js/commonVerify.js')"></script>
+<script type="text/javascript" src="$content.getURI('js/loadScript.js')"></script>
+<script type="text/javascript" src="$content.getURI('js/calendar.js')"></script>
+<script type="text/javascript" src="$content.getURI('js/mycal.js')"></script>
+<script type="text/javascript" src="$content.getURI('fckeditor/fckeditor.js')"></script>
+<body #TurbineHtmlBodyAttributes()>
+		<table class="navbar" cellspacing="0" cellpadding="0">
+			<tr>
+				<td><img src="$content.getURI('images/main/titleleft.gif')"></td>
+				<td width="70%">
+					<b>当前位置$!navstr$!opstr<b>
+				</td>
+				<td align="right" width="30%">
+					#if($!opstr)
+					<a href="javascript:history.back();"><font color="white"><b>返回</b></font></a>
+					#end
+				</td>
+				<td><img src="$content.getURI('images/main/titleright.gif')"></td>
+			</tr>
+		</table>
+		$screen_placeholder
+</body>
+</html>

@@ -1,0 +1,29 @@
+<script>
+//新增修改删除操作成功后返回此页面的提示信息
+#if($optinfo)
+alert("$optinfo");
+window.location.href = "$link.setPage('manage,web,boardset.html')";
+#end
+</script>
+<form name="fm" method="post" action="$link.setAction('manage.web.WebAction')">
+	<input type="hidden" name="conid" value="$!item.id"/>
+	<script type="text/javascript">
+	var oFCKeditor = new FCKeditor("content") ;
+	oFCKeditor.BasePath	= "$content.getURI('/fckeditor/')" ;
+	oFCKeditor.Height	= 200 ;
+	oFCKeditor.ToolbarSet = "MyEditor";
+	oFCKeditor.Value	= '$!item.content';
+	oFCKeditor.Create() ;
+	</script>
+	<div style="text-align:center;padding:10px;width:100%;">
+	<label for="state1"><input id="state1" type="radio" name="state" value="1" #if("$!item.state"=="1") checked #end />有效</label>
+	<label for="state0"><input id="state0" type="radio" name="state" value="0" #if("$!item.state"=="0") checked #end />无效</label>
+	</div>
+	<table class="editbar">
+		<tr>
+			<td align="center">
+				<input type="submit" name="eventSubmit_doEditboard" value=" 保 存 ">
+			</td>
+		</tr>
+	</table>
+</form>

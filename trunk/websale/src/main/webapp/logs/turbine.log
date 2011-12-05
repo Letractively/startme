@@ -1,0 +1,102 @@
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.Turbine - Configured log4j from D:\yehy\workspace\websale\web\WEB-INF\conf\log4j.properties
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.Turbine - Loaded configuration  (Properties) from /WEB-INF/conf/TurbineResources.properties (D:\yehy\workspace\websale\web\WEB-INF\conf\TurbineResources.properties)
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: AvalonComponentService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: CryptoService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: FactoryService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: PoolService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: RunDataService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: ServletService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: AssemblerBrokerService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: GlobalCacheService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: PullService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: TemplateService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: VelocityService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: UploadService
+2008-07-26 17:06:54,687 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: JspService
+2008-07-26 17:06:54,703 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Added Mapping for Service: SecurityService
+2008-07-26 17:06:54,703 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (early): AvalonComponentService
+2008-07-26 17:06:54,718 [main] ERROR org.apache.turbine.services.BaseServiceBroker - org.apache.turbine.services.InstantiationException: Failed to instantiate service AvalonComponentService
+2008-07-26 17:06:54,718 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (early): PullService
+2008-07-26 17:06:54,718 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (late): PoolService
+2008-07-26 17:06:54,718 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (late): FactoryService
+2008-07-26 17:06:54,734 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (late): FactoryService
+2008-07-26 17:06:54,734 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (late): PoolService
+2008-07-26 17:06:54,734 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (late): VelocityService
+2008-07-26 17:06:55,078 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (late): TemplateService
+2008-07-26 17:06:55,093 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (late): AssemblerBrokerService
+2008-07-26 17:06:55,093 [main] INFO  org.apache.turbine.services.assemblerbroker.TurbineAssemblerBrokerService - Registering 1 action factories.
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.assemblerbroker.TurbineAssemblerBrokerService - Registering 1 screen factories.
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.assemblerbroker.TurbineAssemblerBrokerService - Registering 1 navigation factories.
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.assemblerbroker.TurbineAssemblerBrokerService - Registering 1 layout factories.
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.assemblerbroker.TurbineAssemblerBrokerService - Registering 1 page factories.
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.assemblerbroker.TurbineAssemblerBrokerService - Registering 1 scheduledjob factories.
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (late): AssemblerBrokerService
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.template.TurbineTemplateService - Using org.apache.turbine.services.template.mapper.DirectMapper to map page elements
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.template.TurbineTemplateService - Using org.apache.turbine.services.template.mapper.ClassMapper to map screen elements
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.template.TurbineTemplateService - Using org.apache.turbine.services.template.mapper.ClassMapper to map layout elements
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.template.TurbineTemplateService - Using org.apache.turbine.services.template.mapper.ClassMapper to map navigation elements
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.template.TurbineTemplateService - Using org.apache.turbine.services.template.mapper.LayoutTemplateMapper to map layout.template elements
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.template.TurbineTemplateService - Using org.apache.turbine.services.template.mapper.ScreenTemplateMapper to map screen.template elements
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.template.TurbineTemplateService - Using org.apache.turbine.services.template.mapper.DirectTemplateMapper to map navigation.template elements
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (late): TemplateService
+2008-07-26 17:06:55,109 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (late): VelocityService
+2008-07-26 17:06:55,125 [main] INFO  org.apache.turbine.services.pull.TurbinePullService - Tool org.apache.turbine.util.template.TemplateLink to add to the context as '$link'
+2008-07-26 17:06:55,125 [main] INFO  org.apache.turbine.services.pull.TurbinePullService - Tool org.apache.turbine.util.template.HtmlPageAttributes to add to the context as '$page'
+2008-07-26 17:06:55,125 [main] INFO  org.apache.turbine.services.pull.TurbinePullService - Tool org.apache.turbine.services.pull.tools.ContentTool to add to the context as '$content'
+2008-07-26 17:06:55,125 [main] INFO  org.apache.turbine.services.pull.TurbinePullService - Tool org.apache.turbine.services.pull.util.DateFormatter to add to the context as '$dateFormatter'
+2008-07-26 17:06:55,125 [main] INFO  org.apache.turbine.services.pull.TurbinePullService - Tool org.apache.turbine.services.pull.util.SessionData to add to the context as '$sessionData'
+2008-07-26 17:06:55,140 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (early): PullService
+2008-07-26 17:06:55,140 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (early): VelocityService
+2008-07-26 17:06:55,140 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (early): VelocityService
+2008-07-26 17:06:55,140 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (early): JspService
+2008-07-26 17:06:55,140 [main] WARN  org.apache.turbine.services.jsp.TurbineJspService - Template //tree/ has a leading /, which is wrong!
+2008-07-26 17:06:55,140 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (early): JspService
+2008-07-26 17:06:55,140 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finished initializing all services!
+2008-07-26 17:06:55,156 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Start Initializing service (late): RunDataService
+2008-07-26 17:06:55,156 [main] INFO  org.apache.turbine.services.BaseServiceBroker - Finish Initializing service (late): RunDataService
+2008-07-26 17:06:55,156 [main] INFO  org.apache.turbine.Turbine - Turbine: init() Ready to Rumble!
+2008-07-26 22:58:23,234 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down all services!
+2008-07-26 22:58:23,234 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: SecurityService
+2008-07-26 22:58:23,250 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: JspService
+2008-07-26 22:58:23,250 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: UploadService
+2008-07-26 22:58:23,250 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: VelocityService
+2008-07-26 22:58:23,250 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: TemplateService
+2008-07-26 22:58:23,250 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: PullService
+2008-07-26 22:58:23,250 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: GlobalCacheService
+2008-07-26 22:58:23,265 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: AssemblerBrokerService
+2008-07-26 22:58:23,265 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: ServletService
+2008-07-26 22:58:23,265 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: RunDataService
+2008-07-26 22:58:23,265 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: PoolService
+2008-07-26 22:58:23,265 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: FactoryService
+2008-07-26 22:58:23,265 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: CryptoService
+2008-07-26 22:58:23,265 [Thread-1] INFO  org.apache.turbine.services.BaseServiceBroker - Shutting down service: AvalonComponentService
+2008-07-26 22:58:23,265 [Thread-1] ERROR org.apache.turbine.services.BaseServiceBroker - Shutdown of a nonexistent Service 'AvalonComponentService' was requested
+org.apache.turbine.services.InstantiationException: Failed to instantiate service AvalonComponentService
+	at org.apache.turbine.services.BaseServiceBroker.getServiceInstance(BaseServiceBroker.java:565)
+	at org.apache.turbine.services.BaseServiceBroker.shutdownService(BaseServiceBroker.java:380)
+	at org.apache.turbine.services.BaseServiceBroker.shutdownServices(BaseServiceBroker.java:429)
+	at org.apache.turbine.Turbine.destroy(Turbine.java:631)
+	at org.apache.catalina.core.StandardWrapper.unload(StandardWrapper.java:1382)
+	at org.apache.catalina.core.StandardWrapper.stop(StandardWrapper.java:1727)
+	at org.apache.catalina.core.StandardContext.stop(StandardContext.java:4489)
+	at org.apache.catalina.core.ContainerBase.removeChild(ContainerBase.java:924)
+	at org.apache.catalina.startup.HostConfig.undeployApps(HostConfig.java:1180)
+	at org.apache.catalina.startup.HostConfig.stop(HostConfig.java:1151)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:313)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.core.ContainerBase.stop(ContainerBase.java:1086)
+	at org.apache.catalina.core.ContainerBase.stop(ContainerBase.java:1098)
+	at org.apache.catalina.core.StandardEngine.stop(StandardEngine.java:448)
+	at org.apache.catalina.core.StandardService.stop(StandardService.java:584)
+	at org.apache.catalina.core.StandardServer.stop(StandardServer.java:744)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:616)
+	at org.apache.catalina.startup.Catalina$CatalinaShutdownHook.run(Catalina.java:659)
+Caused by: org.apache.turbine.services.InstantiationException: A class referenced by org.apache.turbine.services.avaloncomponent.TurbineAvalonComponentService is unavailable. Check your jars and classes.
+	at org.apache.turbine.services.BaseServiceBroker.getServiceInstance(BaseServiceBroker.java:553)
+	... 18 more
+Caused by: java.lang.NoClassDefFoundError: org/apache/avalon/excalibur/logger/LoggerManager
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.apache.turbine.services.BaseServiceBroker.getServiceInstance(BaseServiceBroker.java:517)
+	... 18 more
+2008-07-26 22:58:23,500 [Thread-1] INFO  org.apache.turbine.Turbine - Turbine: Done shutting down!

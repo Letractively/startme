@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        b2b hibernate hbm.xml 
+        
+-->
+    <class name="org.yehongyu.websale.db.po.mydb.SUser" table="S_USER" >
+	<!--PK-->
+        <id name="id" column="USERID" type="long" >
+        	<generator class="increment"/>
+<!--            <generator class="sequence">-->
+<!--                <param name="sequence">S_USER_SEQ</param>-->
+<!--            </generator>-->
+        </id>
+
+        <property name="username" type="string">
+             <column name="USERNAME" />
+        </property>
+        <property name="password" type="string">
+             <column name="PASSWORD" />
+        </property>
+        <property name="name" type="string">
+             <column name="NAME" />
+        </property>
+        <property name="phone" type="string">
+             <column name="PHONE" />
+        </property>
+        <property name="email" type="string">
+             <column name="EMAIL" />
+        </property>
+        <property name="department" type="string">
+             <column name="DEPARTMENT" />
+        </property>
+        <property name="admin" type="string">
+             <column name="ADMIN" />
+        </property>
+        <property name="type" type="long">
+             <column name="TYPE" />
+        </property>
+        <property name="memo" type="string">
+             <column name="MEMO" />
+        </property>
+    </class>
+</hibernate-mapping>

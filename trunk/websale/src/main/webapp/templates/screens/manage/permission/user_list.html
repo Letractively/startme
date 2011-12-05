@@ -1,0 +1,163 @@
+<script language="JavaScript" type="text/JavaScript">
+//删除时校验是否有选中的记录
+function isChecked(){
+	var ids = document.getElementsByName('ids');
+	for(i=0;i<ids.length;i++){
+	  	if (ids[i].checked) return true;
+	}
+	alert('您没有选择要操作的记录！');
+	return false;
+}
+//删除记录
+function doDelete(){
+  	if(!isChecked())return;
+  	if(confirm('你确定要删除所选择的记录吗？')){
+  		fm.action = "$link.setActionEvent('manage.permission.UserAction','doDelete')";
+  		fm.submit();
+  	}
+}
+//可选中或取消选中本页要删除的记录
+function checkAll(checked){
+	var ids = document.getElementsByName('ids'); 
+	for(i=0;i<ids.length;i++){
+  		if(ids[i].checked!=checked)ids[i].click();
+	}
+}
+//删除某条记录
+function doDeleteOne(id){
+	var ids = document.getElementsByName('ids');
+	for(i=0;i<ids.length;i++){
+  		ids[i].checked = false;
+	}
+	if (confirm('你确定要删除这条记录吗？')) {
+		fm.action = "$link.setActionEvent('manage.permission.UserAction','doDelete')?ids="+id;
+		fm.submit();
+	}
+}
+function toggleQueryTable(){
+	var tab = document.getElementById('queryTable');
+	if(tab.style.display==""){
+		tab.style.display="none";
+		document.getElementById("toggleSpan").innerHTML = "显示查询项";
+	}else{
+		tab.style.display="";
+		document.getElementById("toggleSpan").innerHTML = "隐藏查询项";
+	}
+}
+</script>
+<form name="fm" method="post" action="$link.setPage('manage,permission,user_list.html')">
+<p>
+	<table class="querybar">
+		<tr>
+			<th align="left">
+				<input type="submit" value="查 询">
+				<a id="toggleSpan" hidefocus href="javascript:toggleQueryTable();">显示查询项</a>
+			</th>
+			<th align="right">
+				<input type="button" onClick="window.location='$link.setPage('manage,permission,user_edit.html')';" value="新增人员">
+			</th>
+		</tr>
+	</table>
+	<table class="query" id="queryTable" cellspacing="1" style="display:none;">
+		<tr>
+			<td>
+				帐号名称：
+				<input type="text" name="username" value="$!param.username">
+				姓    名：
+				<input type="text" name="name" value="$!param.name">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				部门名称：
+				<input type="text" name="depname" value="$!param.depname">
+				父帐号：
+				<input type="text" name="admin" value="$!param.admin">
+			</td>
+		</tr>
+	</table>
+	<table class="list" id="tabls" cellspacing="1">
+		<tr>
+			<th width="2%">
+				选择
+			</th>
+			<th width="2%">
+				序号
+			</th>
+			<th width="10%">
+				帐号名称
+			</th>
+			<th width="8%">
+				姓名
+			</th>
+			<th width="10%">
+				部门
+			</th>
+			<th width="10%">
+				电话
+			</th>
+			<th width="12%">
+				邮件地址
+			</th>
+			<th width="10%">
+				父帐号
+			</th>
+			<th width="20%">
+				操作项
+			</th>
+		</tr>
+		#set($count=0)
+		#foreach ($user in $results)
+		#set($count=$count+1)
+		<tr>
+			<td>
+				<input type="checkbox" name="ids" value="$!user.id">
+			</td>
+			<td align="center">
+				$count
+			</td>
+			<td>
+				&nbsp;$!user.username
+			</td>
+			<td>
+				&nbsp;$!user.name
+			</td>
+			<td>
+				&nbsp;$!user.department
+			</td>
+			<td>
+				&nbsp;$!user.phone
+			</td>
+			<td>
+				&nbsp;$!user.email
+			</td>
+			<td>
+				&nbsp;$!user.admin
+			</td>
+			<td align="center">
+				<input type="button" onClick="window.location='$link.setPage('manage,permission,user_edit.html')?isnew=false&userid=$!user.id';" value="修改">
+				<input type="button" onClick="doDeleteOne($!user.id);" value="删除">
+<!--				<input type="button" value="转移帐号" onClick="window.open('$link.setPage('manage,permission,user_trans.html')?sourceaccount=$!user.username', '_blank' , 'height=300,width=500,top=300,left=400,scrollbars=yes')"/>-->
+			</td>
+		</tr>
+		#end
+	</table>
+	<table class="listbar">
+		<tr>
+			<td>
+				<label for="chkAll"><input type="checkbox" id="chkAll" onClick="checkAll(this.checked);">本页选择</label>
+				<input type="button" value="删 除" onClick="doDelete();">
+			</td>
+			<td align="right">
+			#PageBarI(1)
+			</td>
+		</tr>
+	</table>
+</form>
+<script>
+//新增修改删除操作成功后返回此页面的提示信息
+#if($optinfo)
+alert("$optinfo");
+fm.submit();
+#end
+</script>
