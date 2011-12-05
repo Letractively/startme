@@ -1,0 +1,25 @@
+ENTER键可以让光标移到下一个输入框 
+<input onkeydown="if(event.keyCode==13)event.keyCode=9" > <br>
+
+只能是中文<input onkeyup="value=value.replace(/[ -~]/g,'')" onkeydown="if(event.keyCode==13)event.keyCode=9"> <br>
+
+屏蔽输入法<input style="ime-mode:disabled" onkeydown="if(event.keyCode==13)event.keyCode=9"> <br>
+
+只能输入英文和数字<input onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeydown="if(event.keyCode==13)event.keyCode=9"> <br>
+
+只能是数字<input onkeyup="value=value.replace(/[^\d]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"><br>
+只能为数字(无闪动) 
+　　<input style="ime-mode:disabled" onkeydown="if(event.keyCode==13)event.keyCode=9" onKeyPress="if ((event.keyCode<48 || event.keyCode>57)) event.returnValue=false"><br>
+
+只能显示，不能修改<input readonly value="只能显示，不能修改">
+<br>
+ 只能输入 数字，小数点，减号（-） 字符(无闪动) 
+　　<input onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false"> 
+<br>
+只能输入两位数，三位小数(有闪动) 
+　　<input maxlength=9 onkeyup="if(value.match(/^\d{3}$/))value=value.replace(value,parseInt(value/10)) ;value=value.replace(/\.\d*\./g,'.')" onKeyPress="if((event.keyCode<48 || event.keyCode>57) && event.keyCode!=46 && event.keyCode!=45 || value.match(/^\d{3}$/) || /\.\d{3}$/.test(value)) {event.returnValue=false}" id=text_kfxe name=text_kfxe>
+取消按钮按下时的虚线框 
+<input type="button" value="Button" hideFocus />
+<input type="button" value="Button" hideFocus=true />
+<input type="button" value="Button" />
+ 

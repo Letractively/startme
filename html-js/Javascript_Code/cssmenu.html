@@ -1,0 +1,132 @@
+<style>
+* {margin:0px;font-size:12px;background:#D4D0C8;color:#000000;}
+hr {color:gray;border:1px inset;}
+#dyMenu {width:100%;background:#D4D0C8;border:2px outset;}
+#dyMenu a {display:block;width:60px;display:inline;text-decoration:none;cursor:default;}
+#dyMenu a:hover {background:#2C3D43;}
+#dyMenu table {width:60px;padding:0px;}
+#dyMenu td.main {text-align:center;padding:3px 0px 2px 0px;cursor:default;height:22px;}
+#dyMenu a:hover td.main {border:1px inset;}
+#dyMenu a div {display:none;}
+#dyMenu a:hover div {display:block;position:absolute;border:2px outset;}
+#dyMenu a div a {background:#D4D0C8;width:250px;padding:2px 0px 2px 3px;}
+#dyMenu a div a span.thr {width:6%;}
+#dyMenu a div a span.for {width:6%;background:url('blackRight.gif') center center no-repeat;}
+#dyMenu a div a span {width:10%;}
+#dyMenu a div a span.sub {width:10%;background:url('files.gif') left top no-repeat;}
+#dyMenu a div a i {font-style:normal;width:72%;padding:0px;}
+#dyMenu a div a i.sub {font-style:normal;width:68%;padding:0px;}
+#dyMenu a div a b {font-weight:normal;width:16%;}
+#dyMenu a div a em {font-style:normal;width:5%;background:url('blackPoint.gif') left center no-repeat;}
+#dyMenu a div a:hover {background:#0A246A;color:#ffffff;}
+#dyMenu a div a:hover span.thr {width:6%;background:#0A246A;}
+#dyMenu a div a:hover span.for {width:6%;background:url('whiteRight.gif') center center no-repeat;}
+#dyMenu a div a:hover span {width:10%;background:#0A246A;}
+#dyMenu a div a:hover span.sub {width:10%;background:#0A246A;background:url('files.gif') left top no-repeat;}
+#dyMenu a div a:hover i {font-style:normal;width:72%;background:#0A246A;color:#ffffff;padding:0px;}
+#dyMenu a div a:hover i.sub {font-style:normal;width:68%;background:#0A246A;color:#ffffff;padding:0px;}
+#dyMenu a div a:hover b {font-weight:normal;width:16%;background:#0A246A;color:#ffffff;}
+#dyMenu a div a:hover em {font-style:normal;width:5%;background:#0A246A;color:#ffffff;background:url('whitePoint.gif') left center no-repeat;}
+</style>
+
+<div id="dyMenu">
+  <a href="#">
+    <table cellspacing="0">
+      <tr><td class="main">文件(<u>F</u>)</td></tr>
+      <tr><td>
+        <div>
+          <a href="#"><span class="thr"></span><i>新建(N)</i><b></b><em></em></a>
+          <a href="#"><span class="thr"></span><i>打开(O)...</i><b>Ctrl+O</b></a>
+          <a href="#"><span class="thr"></span><i>使用 记事本 编辑(D)</i><b></b></a>
+          <a href="#" disabled><span class="thr"></span><i>保存(S)</i><b>Ctrl+S</b></a>
+          <a href="#"><span class="thr"></span><i>另存为(A)...</i><b></b></a><hr>
+          <a href="#"><span class="thr"></span><i>页面设置(U)...</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>打印(P)...</i><b>Ctrl+P</b></a>
+          <a href="#"><span class="thr"></span><i>打印预览(V)...</i><b></b></a><hr>
+          <a href="#"><span class="thr"></span><i>发送(E)</i><b></b><em></em></a>
+          <a href="#"><span class="thr"></span><i>导入和导出(I)...</i><b></b></a><hr>
+          <a href="#"><span class="thr"></span><i>属性(R)</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>关闭(C)</i><b></b></a>
+        </div>
+      </td></tr>
+    </table>
+  </a>
+  <a href="#">
+    <table cellspacing="0">
+      <tr><td class="main">编辑(<u>E</u>)</td></tr>
+      <tr><td>
+        <div>
+          <a href="#" disabled><span class="thr"></span><i>剪切</i><b>Ctrl+X</b></a>
+          <a href="#" disabled><span class="thr"></span><i>复制</i><b>Ctrl+C</b></a>
+          <a href="#" disabled><span class="thr"></span><i>粘贴</i><b>Ctrl+V</b></a><hr>
+          <a href="#"><span class="thr"></span><i>全选(A)</i><b>Ctrl+A</b></a><hr>
+          <a href="#"><span class="thr"></span><i>查找(在当前页)(F)...</i><b>Ctrl+F</b></a>
+        </div>
+      </td></tr>
+    </table>
+  </a>
+  <a href="#">
+    <table cellspacing="0">
+      <tr><td class="main">查看(<u>V</u>)</td></tr>
+      <tr><td>
+        <div>
+          <a href="#"><span class="thr"></span><i>工具栏(T)</i><b></b><em></em></a>
+          <a href="#"><span class="for"></span><i>状态栏(B)</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>浏览器栏(E)</i><b></b><em></em></a><hr>
+          <a href="#"><span class="thr"></span><i>转到(O)</i><b></b><em></em></a>
+          <a href="#"><span class="thr"></span><i>停止(P)</i><b>Esc</b></a>
+          <a href="#"><span class="thr"></span><i>刷新(R)</i><b>F5</b></a><hr>
+          <a href="#"><span class="thr"></span><i>文字大小(X)</i><b></b><em></em></a>
+          <a href="#"><span class="thr"></span><i>编码(D)</i><b></b><em></em></a><hr>
+          <a href="#"><span class="thr"></span><i>源文件(C)</i><b></b></a>
+          <a href="#" disabled><span class="thr"></span><i>隐私报告(V)...</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>全屏显示(F)</i><b>F11</b></a>
+        </div>
+      </td></tr>
+    </table>
+  </a>
+  <a href="#">
+    <table cellspacing="0">
+      <tr><td class="main">收藏(<u>A</u>)</td></tr>
+      <tr><td>
+        <div>
+          <a href="#"><span></span><i class="sub">添加到收藏夹(A)...</i><b></b></a>
+          <a href="#"><span></span><i class="sub">整理收藏夹(O)...</i><b></b></a><hr>
+          <a href="#"><span class="sub"></span><i class="sub">链接</i><b></b><em></em></a>
+          <a href="#"><span class="sub"></span><i class="sub">软件在载</i><b></b><em></em></a>
+        </div>
+      </td></tr>
+    </table>
+  </a>
+  <a href="#">
+    <table cellspacing="0">
+      <tr><td class="main">工具(<u>T</u>)</td></tr>
+      <tr><td>
+        <div>
+          <a href="#"><span class="thr"></span><i>邮件和新闻(M)</i><b></b><em></em></a>
+          <a href="#"><span class="thr"></span><i>弹出窗口阻止程序(P)</i><b></b><em></em></a>
+          <a href="#"><span class="thr"></span><i>管理加载项(A)...</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>同步(S)...</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>Window Update(U)</i><b></b></a><hr>
+          <a href="#"><span class="thr"></span><i>Internet 选项(O)...</i><b></b></a>
+        </div>
+      </td></tr>
+    </table>
+  </a>
+  <a href="#">
+    <table cellspacing="0">
+      <tr><td class="main">帮助(<u>H</u>)</td></tr>
+      <tr><td>
+        <div>
+          <a href="#"><span class="thr"></span><i>目录和索引(C)</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>每日提示(D)</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>Netscape 用户(N)</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>联机支持(S)</i><b></b></a>
+          <a href="#"><span class="thr"></span><i>发送反馈意见(K)</i><b></b></a><hr>
+          <a href="#/"><span class="thr"></span><i>关于 Internet Explorer(A)</i><b></b></a>
+        </div>
+      </td></tr>
+    </table>
+  </a>
+</div>
+<div style="padding:20px 0px 0px 20px;color:red;font-weight:bold;">[ IE6.0下调试通过 ]</div>

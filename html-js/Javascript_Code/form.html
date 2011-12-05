@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>表单元素</title>
+</head>
+<body>
+<form action="http://www.google.com" method="POST">
+单行文本输入：
+<input type="text" name="text" value="" size="40" maxlength="5"/><br/>
+密码输入：
+<input type="password" name="password" size="40" maxlength="5"/><br/>
+复选框：
+<input type="checkbox" name="checkbox1" id="ora" value="桔子" checked/><label for="ora">Orange</label>
+<input type="checkbox" name="checkbox2" id="app" value="苹果" /><label for="app">Apple</label>
+<input type="checkbox" name="checkbox3" id="pea" value="梨" /><label for="pea">Pear</label>
+<br/>
+单选钮：
+<input type="radio" name="radio" id="orara" value="桔子" checked/><label for="orara">Orange</label>
+<input type="radio" name="radio" id="appra" value="苹果" /><label for="appra">Apple</label>
+<input type="radio" name="radio" id="peara" value="梨" /><label for="peara">Pear</label>
+<br/>
+图片按钮：
+<input type="image" name="image" src="http://www.google.com/images/logo_sm.gif" width="60" height="30"/><br/>
+隐藏域：
+<input type="hidden" name="hidden"/><br/>
+列表框:
+<select name="fruits">
+   <option value="Banana">Banana</option>
+   <option value="Apple" selected>Apple</option>
+   <option value="Orange">Orange</option>
+</select>
+<select name="fruits" size="3">
+   <option value="Banana">Banana</option>
+   <option value="Apple" selected>Apple</option>
+   <option value="Orange">Orange</option>
+   <option value="Peach">Peach</option>
+</select>
+<select name="fruits" size="4" multiple>
+   <option value="Banana">Banana</option>
+   <option value="Apple" selected>Apple</option>
+   <option value="Orange">Orange</option>
+   <option value="Peach">Peach</option>
+</select><br/>
+文本区域:
+<textarea wrap="off" name="comment" rows="5" cols="30">文本内容</textarea>
+<textarea wrap="soft" name="comment" rows="5" cols="30">文本内容</textarea>
+<textarea wrap="hard" name="comment" rows="5" cols="30">文本内容</textarea><br/>
+
+<input type="submit" value="发送"> 
+<input type="reset" value="重设"/>
+</form> 
+</body>
+</html>
+<script>
+//alert(document.getElementsByName("comment")[0].value);
+</script>

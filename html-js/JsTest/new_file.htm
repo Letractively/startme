@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+		<title>Untitled Document</title>
+		<script type="text/javascript" src="new_file.js"></script>
+	</head>
+	<body onload="insertTR();ins();">
+	<hr id="hrid">
+	<table bgcolor="green" cellspacing="1" cellpadding="5" style="font-size:9pt;">
+		<tbody id="tb">
+		</tbody>
+	</table>
+	</body>
+</html>
+<script>
+function ins(){
+	var hrobj = document.getElementById("hrid");
+	hrobj.insertBefore(document.createElement("hr"),hrobj);
+}
+</script>

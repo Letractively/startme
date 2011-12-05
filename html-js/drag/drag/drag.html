@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>dragitem_test</title>
+<SCRIPT src="./drag.js" type="text/javascript"></SCRIPT>
+<link href="./drag.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<!--容器对象必须要(开始)-->
+<div id="dragarea" align="center">
+<div id="allcon"></div>
+</div>
+<!--容器对象必须要(结束)-->
+
+<!--布局元素放在此隐藏域中必须要(开始)-->
+<div id="elepool" style="display:none;">
+	<!--页面编辑设置区域(开始)-->
+	<div id="pageset" style="text-align:left;border:#000 1px solid;padding:3px;margin-bottom:5px;width:100%;">
+		网站布局：<input type="button" value="左侧" onClick="setLayout(1);" />
+							<input type="button" value="横向" onClick="setLayout(2);" />
+							<input type="button" value="右侧" onClick="setLayout(3);" />
+		页面宽度：<input type="text" name="fieldwidth" value="" size="3" maxlength="4" onKeyDown="if(event.keyCode==13){setSetWidth();}" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" />
+		<input type="button" value="添加模块" onClick="showAddMod();" />
+		<div id="addable">
+		</div>
+	</div>
+	<!--页面编辑设置区域(结束)-->
+	<input type="hidden" value="2" name="laytype" />
+	<div id="pagehead" style="border:#000 1px solid;margin-bottom:5px;padding:5px;">页头</div>
+	<div id="pagetitle" style="border:#000 1px solid;margin-bottom:5px;padding:50px;">招牌区</div>
+	<div id="menu">栏目导航区</div>
+	<div id="pagestatus" style="border:#000 1px solid;margin-bottom:5px;padding:5px;">状态区</div>
+	<div id="pagetail" style="border:#000 1px solid;margin-bottom:5px;padding:5px;clear:both;">页尾</div>
+	<div id="smalldiv">
+	  <DIV id="smallcon" contype="sm" history="hisdiv">
+	  </DIV>
+	</div>
+	<div id="middlediv">
+	</div>
+	<div id="bigdiv">
+	  <DIV id="bigcon" contype="bg" history="hisdiv">
+	  </DIV>
+	</div>
+	<DIV id="hisdiv" class=History></DIV>
+</div>
+<!--布局元素放在此隐藏域中必须要(结束)-->
+
+<!--所有可显示的模块在此隐藏域中必须要(开始)-->
+<div id="modpool" style="display:none;">
+  <div id="cs" modname="产品展示测试" isshow="1" contype="bg" order="1">
+
+		产品展示DIV产品展示DIV<br>
+		产品展示DIV产品展示DIV<br>
+		产品展示DIV产品展示DIV<br>
+	</div>
+  <!--联系方式DIV开始-->
+  <div id="lxfs" modname="联系方式" isshow="1" contype="sm" order="3">
+		联系方式DIV<br>
+		联系方式DIV<br>
+		联系方式DIV<br>
+	</div>
+	<!--联系方式DIV结束-->
+	<!--公司介绍DIV开始-->
+	<div id="gsjsa" modname="公司介绍" isshow="1" contype="bg" order="2">
+		公司介绍DIV<br>
+		公司介绍DIV<br>
+		公司介绍DIV<br>
+  </div>
+  <!--公司介绍DIV结束-->
+  <!--产品展示DIV开始-->
+  <div id="cpzs" modname="产品展示" isshow="1" contype="bg" order="6">
+		产品展示DIV<br>
+		产品展示DIV<br>
+		产品展示DIV<br>
+	</div>
+	<!--产品展示DIV结束-->
+	<!--站内搜索DIV开始-->
+	<div id="znss" modname="站内搜索" isshow="1" contype="sm" order="5">
+			站内搜索DIV<br>
+			站内搜索DIV<br>
+			站内搜索DIV<br>
+  </div>
+  <!--站内搜索DIV结束-->
+  <!--友情链接DIV开始-->
+  <div id="yqlj" modname="友情链接" isshow="1" contype="sm" order="4">
+	  友情链接DIV<br>
+	  友情链接DIV<br>
+	  友情链接DIV<br>
+	</div>
+	<!--友情链接DIV结束-->
+</div>	
+<!--所有可显示的模块在些隐藏域中必须要(结束)-->
+</body>
+</html>
+
+
+<script defer="defer">
+	//设定全局变量,获取容器对象
+	var allcon = document.getElementById("allcon");
+	var smdiv = document.getElementById("smalldiv");
+	var mddiv = document.getElementById("middlediv");
+	var bgdiv = document.getElementById("bigdiv");
+	var menu = document.getElementById("menu");
+	var smcon = document.getElementById("smallcon");
+	var bgcon = document.getElementById("bigcon");
+	var elepool = document.getElementById("elepool");
+	var modpool = document.getElementById("modpool");
+	var pageset = document.getElementById("pageset");
+	var pagehead = document.getElementById("pagehead");
+	var pagetitle = document.getElementById("pagetitle");
+	var pagestatus = document.getElementById("pagestatus");
+	var pagetail = document.getElementById("pagetail");
+	var laytype = document.getElementsByName("laytype")[0].value;
+	//先设定布局（然后再将模块加入容器）
+	setLayout(laytype);
+	initcon();
+</script>

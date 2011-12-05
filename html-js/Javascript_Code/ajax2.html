@@ -1,0 +1,200 @@
+<HTML>
+	<HEAD>
+		<TITLE>DRAG the DIV</TITLE>
+		<style type="text/css">
+		*{font-size:12px}
+		.dragTable{
+		font-size:12px;
+		border-top:1px solid #3366cc;
+		margin-bottom: 10px;
+		width:100%;
+		background-color:#FFFFFF;
+		}
+		.dragTR{
+		cursor:move;
+		color:#7787cc;
+		background-color:#e5eef9;
+		}
+		td{vertical-align:top;}
+		#parentTable{
+		border-collapse:collapse;
+		letter-spacing:25px;
+		}
+		</style>
+		<script defer="defer" language="javascript" type="text/javascript">
+		/****JoeLee************E-MAIL:hktx@163.com****QQ:48293707*****11:09 2006-2-9******/
+		var draged=false;
+		tdiv=null;
+		function dragStart(){
+			//alert(event.srcElement.offsetParent.firstChild.firstChild.nextSibling.nodeType);
+			ao=event.srcElement;
+			if((ao.tagName=="TD")||(ao.tagName=="TR"))ao=ao.offsetParent;
+			else return;
+			draged=true;
+			tdiv=document.createElement("div");
+			tdiv.innerHTML=ao.outerHTML;
+			tdiv.style.display="block";
+			tdiv.style.position="absolute";
+			tdiv.style.filter="alpha(opacity=70)";
+			tdiv.style.cursor="move";
+			tdiv.style.width=ao.offsetWidth;
+			tdiv.style.height=ao.offsetHeight;
+			tdiv.style.top=getInfo(ao).top;
+			tdiv.style.left=getInfo(ao).left;
+			document.body.appendChild(tdiv);
+			lastX=event.clientX;
+			lastY=event.clientY;
+			lastLeft=tdiv.style.left;
+			lastTop=tdiv.style.top;
+			try{
+			ao.dragDrop();
+			}catch(e){}
+		}
+		function draging(){//重要:判断MOUSE的位置
+			if(!draged)return;
+			var tX=event.clientX;
+			var tY=event.clientY;
+			tdiv.style.left=parseInt(lastLeft)+tX-lastX;
+			tdiv.style.top=parseInt(lastTop)+tY-lastY;
+			for(var i=0;i<parentTable.cells.length;i++){
+				var parentCell=getInfo(parentTable.cells[i]);
+				if(tX>=parentCell.left&&tX<=parentCell.right&&tY>=parentCell.top&&tY<=parentCell.bottom){
+					var subTables=parentTable.cells[i].getElementsByTagName("table");
+					if(subTables.length==0){
+						if(tX>=parentCell.left&&tX<=parentCell.right&&tY>=parentCell.top&&tY<=parentCell.bottom){
+						parentTable.cells[i].appendChild(ao);
+						}
+						break;
+					}
+					for(var j=0;j<subTables.length;j++){
+						var subTable=getInfo(subTables[j]);
+						if(tX>=subTable.left&&tX<=subTable.right&&tY>=subTable.top&&tY<=subTable.bottom){
+							parentTable.cells[i].insertBefore(ao,subTables[j]);
+							break;
+						}else{
+							parentTable.cells[i].appendChild(ao);
+						}
+					}
+				}
+			}
+		}
+		function dragEnd(){
+			if(!draged)return;
+			draged=false;
+			mm=ff(150,15);
+		}
+		function getInfo(o){//取得坐标
+			var to=new Object();
+			to.left=to.right=to.top=to.bottom=0;
+			var twidth=o.offsetWidth;
+			var theight=o.offsetHeight;
+			while(o!=document.body){
+				to.left+=o.offsetLeft;
+				to.top+=o.offsetTop;
+				o=o.offsetParent;
+			}
+			to.right=to.left+twidth;
+			to.bottom=to.top+theight;
+			return to;
+		}
+		function ff(aa,ab){//从GOOGLE网站来,用于恢复位置
+			var ac=parseInt(getInfo(tdiv).left);
+			var ad=parseInt(getInfo(tdiv).top);
+			var ae=(ac-getInfo(ao).left)/ab;
+			var af=(ad-getInfo(ao).top)/ab;
+			return setInterval(function(){
+				if(ab<1){
+					clearInterval(mm);
+					tdiv.removeNode(true);
+					ao=null;
+					return
+				}
+				ab--;
+				ac-=ae;
+				ad-=af;
+				tdiv.style.left=parseInt(ac)+"px";
+				tdiv.style.top=parseInt(ad)+"px"
+			}
+			,aa/ab)
+		}
+		function inint(){//初始化
+			for(var i=0;i<parentTable.cells.length;i++){
+				var subTables=parentTable.cells[i].getElementsByTagName("table");
+				for(var j=0;j<subTables.length;j++){
+					if(subTables[j].className!="dragTable")break;
+					subTables[j].rows[0].className="dragTR";
+					subTables[j].rows[0].attachEvent("onmousedown",dragStart);
+					subTables[j].attachEvent("ondrag",draging);
+					subTables[j].attachEvent("ondragend",dragEnd);
+				}
+			}
+		}
+		inint();
+		</script>
+	</HEAD>
+	<BODY>
+		<TABLE border="0" cellpadding="0" cellspacing="10" width="100%" height=500 id="parentTable">
+			<TR>
+				<TD width="25%" valgin="top">
+					<TABLE border=0 class="dragTable" cellspacing="0">
+						<TR>
+							<TD><b>GMAIL</b></TD>
+						</TR>
+						<TR>
+							<TD>暂时无法显示GMAIL内容</TD>
+						<TR>
+					</TABLE>
+					<TABLE border=0 class="dragTable" cellspacing="0">
+						<TR>
+							<TD>新浪体育</TD>
+						</TR>
+						<TR>
+							<TD>解剖威队独门利器FW28 2万转引擎匹配超级变速器颁奖：辛吉斯欣喜能以冠军起步 印度搭档创下纪录法新社前瞻冬奥短道速滑：中韩唱主角 美加施冷箭</TD>
+						<TR>
+					</TABLE>
+					<TABLE border=0 class="dragTable" cellspacing="0">
+						<TR>
+							<TD>焦点</TD>
+						</TR>
+						<TR>
+							<TD>京广线中断4小时20临客返汉晚点
+								中国<a href="http://www.qqread.com/keywords/news.html" target="_blank">新闻</a>网-湖北分社 - 所有 235 相关报道 ?哈马斯已有总理人选
+								解放日报报业集团 - 所有 489 相关报道 ?陈水扁是两岸关系麻烦制造者
+								武汉晨报 - 所有 179 相关报道 ?</TD>
+						<TR>
+					</TABLE>
+				</TD>
+				<TD width="25%">
+					<TABLE border="0" class="dragTable" cellSpacing="0">
+						<TBODY>
+							<TR>
+								<TD>中关村在线</TD>
+							</TR>
+							<TR>
+								<TD>新年行情速递 双敏板卡低价推荐 终于等到了，映泰6600GT一降降一百 罗技G15游戏键盘热力促销，代购价仅529元 </TD>
+							</TR>
+						</TBODY>
+					</TABLE>
+				</TD>
+				<TD width="25%">
+					<TABLE border=0 class="dragTable" cellspacing="0">
+						<TR>
+							<TD>网易商业</TD>
+						</TR>
+						<TR>
+							<TD>上海GDP增幅去年出现回落应对反倾销 中国鞋企联手对抗欧盟尹家绪操盘南方汽车 长安谋求曲线整体境外上市</TD>
+						<TR>
+					</TABLE>
+					<TABLE border=0 class="dragTable" cellspacing="0">
+						<TR>
+							<TD>网易商业2</TD>
+						</TR>
+						<TR>
+							<TD>上海GDP增幅去年出现回落应对反倾销 中国鞋企联手对抗欧盟尹家绪操盘南方汽车 长安谋求曲线整体境外上市</TD>
+						<TR>
+					</TABLE>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>script.aculo.us - javascript drag-and-drop</title>
+    <style type="text/css">
+		.puzz {
+		  margin-left:10px;
+		  width:272px;
+		  height:68px;
+		  border:1px solid #e8a400;
+		}
+		.puzz img {
+		  float:left;
+		  margin:0px;
+		  cursor:move;
+		  border:1px solid #e8a500;
+		}
+    </style>
+    <script src="drag_test/funcTools.js" type="text/javascript"></script>
+    <script src="drag_test/dragedObj.js" type="text/javascript"></script>
+    <script language="javascript">
+	   //初始化源数据被拖拽对象的属性(包括触发事件)
+	   function dragImg2(){
+	    var element = document.getElementById("puzzle_src");
+	    var elementDesc = document.getElementById("puzzle_desc");
+	    var garbageBin = document.getElementById("garbage_bin");
+	    var elements = element.childNodes;
+	    for (var i = 0; i < elements.length; i++) 
+	      if(elements[i].tagName && elements[i].tagName=='IMG') {
+	        new Dragged(elements[i], elementDesc, garbageBin);
+	      }
+	   }
+	   function saveData(){
+	    var elements = document.getElementById("puzzle_desc").childNodes;
+	    for (var i = 0; i < elements.length; i++) {
+	      if(elements[i].tagName && elements[i].tagName=='IMG') {
+	        alert(elements[i].id);
+	      }
+	      }
+	   }
+    </script>
+</head>
+<body>
+    /**********************源数据*********************/
+    <div id="puzzle_src" class="puzz">
+    	<img style="position: relative;" id="image_1" src="drag_test/379_icon.jpg" />
+    	<img style="position: relative;" id="image_2" src="drag_test/412_icon.jpg" />
+    	<img style="position: relative;" id="image_3" src="drag_test/415_icon.jpg" />
+    	<img style="position: relative;" id="image_4" src="drag_test/417_icon.jpg" />
+    	<img style="position: relative;" id="image_5" src="drag_test/418_icon.jpg" />
+    	<img style="position: relative;" id="image_6" src="drag_test/419_icon.jpg" />
+    	<img style="position: relative;" id="image_7" src="drag_test/428_icon.jpg" />
+    	<img style="position: relative;" id="image_8" src="drag_test/429_icon.jpg" />
+    	<img style="position: relative;" id="image_9" src="drag_test/430_icon.jpg" />
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/>/**********************目标数据*********************/
+    <div id="puzzle_desc" class="puzz">
+    </div>
+    <input type="button" value="save" onclick="saveData();"/><br/>
+	<textarea cols="20" rows="3" id="garbage_bin">垃圾桶</textarea>
+    <script language="javascript">dragImg2();</script>
+</body>
+</html>

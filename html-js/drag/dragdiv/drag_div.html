@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>drag_div</title>
+<script type="text/javascript" src="nashihou.js"></script>
+<script type="text/javascript">
+ var divDrag=new Drag('div','mydrag');
+</script>
+</head>
+<body>
+<div id="mydiv1" class="mydrag" style="top:100px; width:200px; background-color:#0099CC;z-index:0; position:absolute">
+ <div title="ÍÏ¶¯" style="width:100%;cursor:move" onmousedown="divDrag.startMove(event,'mydiv1')">::</div>
+ <div>A</div>
+</div>
+
+<div id="mydiv2" class="mydrag"  style="top:150px;width:200px; background-color:#996600;z-index:0; position:absolute" >
+ <div title="ÍÏ¶¯" style="width:100%;cursor:move" onmousedown="divDrag.startMove(event,'mydiv2')">::</div>
+ <div>B</div>
+</div>
+
+<div id="mydiv3" class="mydrag"  style="top:200px;width:200px; background-color:#CC9900;z-index:0; position:absolute" >
+ <div title="ÍÏ¶¯" style=" width:100%;cursor:move" onmousedown="divDrag.startMove(event,'mydiv3')">::</div>
+ <div>c</div>
+</div>
+
+</body>
+</html>

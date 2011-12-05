@@ -1,0 +1,1520 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>商铺个性化设置</title>
+<SCRIPT src="./detailshow.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="./detailset.js" type="text/javascript"></SCRIPT>
+<link href="./detail.css" rel="stylesheet" type="text/css">
+<link href="./templet/style_a_01.css" rel="stylesheet" type="text/css" id="stylesheet">
+<IE:DOWNLOAD   ID="oDownload"   STYLE="behavior:url(#default#download)"   />  
+</head>
+<body onMouseDown="closeControl();">
+<!--容器对象必须要(开始)-->
+<div id="dragarea" align="center">
+	<!--页面设置信息保存区域(开始)-->
+		<div style="display:none;" id="allinfo">
+			<input type="text" value="1" name="loginstatus" id="loginstatus"/><!--登录状态,已登录时可以进行页面设置-->
+			<input type="text" value="2" name="laytype" id="laytype"/><!--布局样式-->
+			<input type="text" value="960" name="fieldwidth" id="fieldwidth"/><!--页面宽度-->
+			<input type="text" value="./templet/style_19.css" name="themestyle" id="themestyle"/><!--主题样式-->
+			
+      <input type="hidden" id="styletype" value="a"	/>
+      <input type="hidden" id="stylecolor" value="01"	/>
+      
+			<input type="text" value="#00aaff" name="background" id="background"/><!--页面背景-->
+			<input type="text" value="images/dinosau.ani" name="mousestyle" id="mousestyle"/><!--页面背景-->
+			<input type="button" onClick="alert(GE('navitem').innerHTML);" value="显示导航栏目"/>
+			<input type="button" onClick="alert(GE('modpool').innerHTML);" value="显示版块" />
+			<!--导航菜单内容-->
+			<div id="navitem" style="display:none;">
+				<li id="navfirst" navname="首页" ischosed="1" isshow="1" order="1" ischangename="0" ischangeshow="0" navurl="javascript:gotoPage(1);" ></li>
+				<li id="navgyxx" navname="供应信息" ischosed="0" isshow="1" order="2" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(2);"></li>
+				<li id="navzpzt" navname="公司相册" ischosed="0" isshow="1" order="3" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(3);"></li>
+				<li id="navsmzt" navname="私密展厅" ischosed="0" isshow="1" order="4" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(4);"></li>
+				<li id="navgscg" navname="公司采购" ischosed="0" isshow="1" order="5" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(5);"></li>
+				<li id="navcgzc" navname="采购专场" ischosed="0" isshow="1" order="6" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(6);"></li>
+				<li id="navgsjs" navname="公司介绍" ischosed="0" isshow="1" order="7" ischangename="1" ischangeshow="0" navurl="javascript:gotoPage(7);"></li>
+				<li id="navgszx" navname="公司资讯" ischosed="0" isshow="1" order="8" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(8);"></li>
+				<li id="navgssq" navname="公司商圈" ischosed="0" isshow="1" order="9" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(9);"></li>
+				<li id="navzpzx" navname="招聘中心" ischosed="0" isshow="1" order="10" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(10);"></li>
+				<li id="navzxly" navname="在线留言" ischosed="0" isshow="1" order="11" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(11);"></li>
+				<li id="navlxfs" navname="联系方式" ischosed="0" isshow="1" order="12" ischangename="1" ischangeshow="0" navurl="javascript:gotoPage(12);"></li>
+				<li id="navzcft" navname="总裁访谈" ischosed="0" isshow="1" order="13" ischangename="0" ischangeshow="1" navurl="javascript:gotoPage(13);"></li>
+				<li id="navgszt" navname="公司专题" ischosed="0" isshow="1" order="14" ischangename="0" ischangeshow="1" navurl="javascript:gotoPage(14);"></li>
+				<li id="navhdjl" navname="活动记录" ischosed="0" isshow="1" order="15" ischangename="1" ischangeshow="1" navurl="javascript:gotoPage(15);"></li>
+			</div>
+			<!--首页模块信息(未登录时可只加载显示的模块)-->
+			<div id="modpool" style="display:none;">
+			  <div id="modcpcc" modname="产品橱窗" isshow="1" contype="sm" order="1" modurl="http://www.google.com">
+				</div>
+			  <div id="modcpzt" modname="公司相册" isshow="1" contype="sm" order="2" modurl="http://www.sohu.com">
+				</div>
+				<div id="modgsjs" modname="公司介绍" isshow="1" contype="bg" order="3" modurl="http://www.google.com">
+			  </div>
+				<div id="modzcft" modname="总裁访谈" isshow="1" contype="bg" order="4" modurl="http://www.google.com">
+			  </div>
+			  <div id="modmmtda" modname="买卖通档案" isshow="1" contype="bg" order="5" modurl="http://www.google.com">
+				</div>
+			  <div id="modzxgy" modname="最新供应" isshow="1" contype="bg" order="6" modurl="http://www.google.com">
+				</div>
+			  <div id="modzpxx" modname="招聘信息" isshow="1" contype="bg" order="7" modurl="http://www.google.com">
+				</div>
+			  <div id="modlyxx" modname="留言信息" isshow="1" contype="bg" order="8" modurl="http://www.google.com">
+				</div>
+				<div id="modgszx" modname="公司资讯" isshow="1" contype="bg" order="9" modurl="http://www.google.com">
+				</div>
+			  <div id="modlxfs" modname="联系方式" isshow="1" contype="bg" order="10" modurl="http://www.google.com">
+				</div>
+			  <div id="modyqlj" modname="友情链接" isshow="1" contype="bg" order="11" modurl="http://www.google.com">
+				</div>
+			</div>
+		</div>
+		<!--页面设置信息保存区域(结束)-->
+	<!--页面编辑设置区域(开始)-->
+	<div id="pageset" style="display:none;">
+		<div class="layout">
+			<div class="layout_t">
+				<img src="images/layout_1.jpg">
+			</div>
+			<div class="layout_r">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+				    <td width="6"><img src="images/layout_2.jpg" width="6" height="37"></td>
+	    			<td background="images/layout_3.jpg">
+							<div class="layout_nav">
+								<ul>
+									<li><a href="#" hidefocus onClick="showFloat(this,'layout');" id="btnlayout">网站布局</a></li>
+									<li><a href="#" hidefocus onClick="showFloat(this,'theme');" id="btntheme">风格主题</a></li>
+									<li><a href="#" hidefocus onClick="showNavItem();showFloat(this,'navset');" id="btnnavset">导航设置</a></li>
+									<li><a href="#" hidefocus onClick="showFloat(this,'zpset');" id="btnzpset">招牌设置</a></li>
+									<li><a href="#" hidefocus onClick="showFloat(this,'hbset');" id="btnhbset">海报设置</a></li>
+								</ul>
+								<span><a href="#">我的商务中心</a></span>
+								<img style="cursor:hand;" src="images/layout_5.jpg" width="61" height="21" align="absmiddle" onClick="if(confirm('您确定要保存当前网站设置吗？')) alert('请将页面信息allinfo保存至数据库：\r\n'+GE('allinfo').innerHTML);;"> 
+								<img style="cursor:hand;" src="images/layout_7.jpg" width="66" height="21" align="absmiddle" onClick="if(confirm('您确定要恢复网站的初始化设置吗？')) {location.reload();}">
+								<img style="cursor:hand;" src="images/layout_6.jpg" width="65" height="22" align="absmiddle" id="start" onClick="showHelpFloat(this,'help');">	
+							</div>
+						</td>
+				    <td width="6"><img src="images/layout_4.jpg" width="6" height="37"></td>
+				  </tr>
+				</table>
+				<h5>您现在正在编辑的页面是： 首页</h5>
+			</div>
+		</div>
+	</div>
+	<!--页面编辑设置区域(结束)-->
+	<div id="allcon"></div>
+</div>
+<!--容器对象必须要(结束)-->
+
+<!--布局元素放在此隐藏域中必须要(开始)-->
+<div id="elepool" style="display:none;">
+	
+	<!--页头元素DIV开始-->
+	<div id="pagehead">
+		<div class="pagehead">
+			<ul>
+				<li><a href="javascript:void(0)" onClick="try{window.external.addfavorite('#','天津市宝鹏机械制造有限公司');return false;}catch(e){}" onMouseDown="return aliclick(this,'?tracelog=list_ielink');">收藏本站</a>&nbsp;|&nbsp;<a href="javascript:try{this.style.behavior='url(#default#homepage)';this.setHomePage(parent.window.location.href);}catch(e){}" target="_self" onMouseDown="return aliclick(this,'?tracelog=ui_chinaindex_070214_part1');">设为首页</a> 
+	&nbsp;
+<img src="images/mmt.gif" alt="买卖通" width="18" height="18" align="absmiddle"/> <a href="#" target="_blank" style="text-decoration:none; color:#FF0000;font-size:14px; font-weight:bold;">买卖通会员</a> 第 <a href="#"><font style="color:#ff0000;text-decoration:underline; font-size:16px; font-weight:bold;">1</font></a> 年 买卖通指数：<a href="http://chinajav.b2b.hc360.com/shop/mmtdocs.html"><font style="color:#ff0000; font-size:16px; font-weight:bold;text-decoration:underline;">81</font></a></li>
+		<li><div class="pagehead_button1">&nbsp;&nbsp;<a href="http://sso.hc360.com/ssologin?ReturnURL=当前地址" style="cursor:hand; text-decoration:none">登陆</a></div>
+	<div class="pagehead_button2">&nbsp;&nbsp;<a href="http://b2b.hc360.com/member/reg_10.html" target="_blank" style="cursor:hand; text-decoration:none">免费注册</a></div></li>
+			</ul>
+		</div>
+	</div>
+	<!--页头元素DIV结束-->
+	
+	<!--页面招牌区DIV开始-->
+	<div id="pagetitle">
+		<div class="pagetitle_c">
+			<div class="pagetitle_l"></div>
+			<div class="">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="comdiy">
+          <tr>
+            <td class="pagetitle_comdiy"><img src="images/logo.jpg" width="92" height="63" /></td>
+            <td class="pagetitle_name">天津市宝鹏机械制造有限公司</td>
+            <td class="pagetitle_comdiy_right_img"><img src="images/top_tu.jpg" width="88" height="66" /></td>
+          </tr>
+        </table>
+			</div>
+			<div class="pagetitle_r"></div>
+		</div>
+	</div>
+	<!--页面招牌区DIV结束-->
+	
+	<!--页面菜单区(横向)DIV开始-->
+	<div id="menuh">
+	</div>
+	<!--页面菜单区(横向)DIV结束-->
+	
+	<!--页面菜单区DIV开始-->
+	<div id="menu" class="menu">
+	</div>
+	<!--页面菜单区DIV结束-->
+	
+	<!--导航栏目LI模板-->
+	<div>
+		<li id="tmpnavitemnow" class="menuh_a"></li>
+		<li id="tmpnavitem" onMouseOver="this.className='menuh_o';" onMouseOut="this.className='';"></li>
+	</div>
+	
+	
+	<!--供应产品目录DIV开始-->
+	<div id="infomenu">
+		<div class="infomenu_title">供应产品目录</div>
+		<div class="infomenu">
+			<ul>
+				<li><a href="#">公司供应产品一</a></li>
+				<li><a href="#">公司供应产品二</a></li>
+				<li><a href="#">公司供应产品三</a></li>
+				<li><a href="#">公司供应产品四</a></li>
+				<li><a href="#">公司供应产品五</a></li>
+			</ul>
+		</div>
+		<div class="infomenu_more"><a href="#">查看更多>></a></div>
+	</div>
+	<!--供应产品目录DIV结束-->
+	
+	<!--页面状态区DIV开始-->
+	<div id="pagestatus">
+		<div class="pagestatus">
+			<dl>
+				<dt>
+	<b>站内搜索:</b>	<input name="businname" value="输入产品关键字" size="6" type="text" class="i_in" onfocus="this.value=''" />
+					<input onClick="gotoURL('company.html');" value="搜 索" class="i_bt" type="button"/>
+				</dt>
+				<dd>
+		<img src="images/icon_mail.gif" width="16" height="16" align="absmiddle" /> <a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,notes,links.html?providerid=100005124451" target="_blank">我要留言</a>
+		<img src="images/icon_tel.gif" width="16" height="16" align="absmiddle" /> <a href="company_br.html" target="_blank">联系方式</a>
+		
+		<img src="images/b_offline_2.gif" alt="买卖通IM" width="23" height="18" align="absmiddle" onclick="javascript:IsInstallQQ('http://my.b2b.hc360.com/b2b/turbine/template/my,pub,tmcard.html?tmusr=yunica','yunica','1','0')" /> <a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,notes,links.html?providerid=100005124451" target="_blank">跟我洽谈</a>
+		
+		| <a href="http://my.b2b.hc360.com/my/turbine/template/corcenter,favorites,infoadd.html?infoname=%B6%AB%DD%B8%CA%D0%C9V%D2%E3%C9%CC%C3%B3%D3%D0%CF%DE%B9%AB%CB%BE&amp;infoid=100001965156&amp;infotype=9" target="_blank">收藏企业</a>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<!--页面状态区DIV结束-->
+	
+	<!--页尾元素DIV开始-->
+	<div id="pagetail">
+		上海詹妮瑞热能设备有限公司 <BR>
+		地址：中国 上海 上海市 上海市南汇区周浦镇南麓工业园229号 <BR>
+		技术支持：HC360慧聪网
+	</div>
+	<!--页尾元素DIV结束-->
+	
+	<div id="smalldiv">
+	  <DIV id="smallcon" contype="sm" history="hisdiv">
+	  </DIV>
+	</div>
+	
+	<div id="middlediv">
+	</div>
+	
+	<div id="bigdiv">
+	  <DIV id="bigcon" contype="bg" history="hisdiv">
+	  </DIV>
+	  <div ID=oText>   
+	  </div>
+	  <SCRIPT>   
+	  function onDownloadDone(s){   
+	  	oText.innerHTML=s;   
+	  }
+	  function gotoURL(linkurl){
+	  	bgcon.setAttribute('DropObj', null);	//设置容器为可拖动
+  		bgcon.style.display = "none";
+  		for(;bgcon.childNodes.length>0;){
+					modpool.appendChild(bgcon.childNodes[0].lastChild);
+					bgcon.removeChild(bgcon.childNodes[0]);
+				}
+	  	oDownload.startDownload(linkurl,   onDownloadDone);
+	  }
+	  function gotoPage(page){
+	  	if(page==1){
+				var navitem = GE('navitem');
+				for(var i=0;i<navitem.childNodes.length;i++){
+					navitem.childNodes[i].setAttribute("ischosed","0");
+				}
+	  		var li = GE("navfirst");
+				li.setAttribute("ischosed","1");
+				setNavItem();
+	  		initcon();
+				setAllContent();
+	  		oText.innerHTML="";
+	  		bigcon.style.display = "";
+	  	}else{
+	  		bgcon.setAttribute('DropObj', null);	//设置容器为可拖动
+	  		bgcon.style.display = "none";
+				bgcon.innerHTML = "";
+				var navitem = GE('navitem');
+				for(var i=0;i<navitem.childNodes.length;i++){
+					navitem.childNodes[i].setAttribute("ischosed","0");
+				}
+				var li = GE("navgyxx");
+				switch(page){
+					case 2:
+						li = GE("navgyxx");
+		  			oDownload.startDownload("provide.html",   onDownloadDone);
+						break;
+					case 3:
+						li = GE("navzpzt");
+		  			oDownload.startDownload("company.html",   onDownloadDone);
+						break;
+					case 4:
+						li = GE("navsmzt");
+		  			oDownload.startDownload("simi.html",   onDownloadDone);
+						break;
+					case 5:
+						li = GE("navgscg");
+		  			oDownload.startDownload("stock.html",   onDownloadDone);
+						break;
+					case 6:
+						li = GE("navcgzc");
+		  			oDownload.startDownload("note.html",   onDownloadDone);
+						break;
+					case 7:
+						li = GE("navgsjs");
+		  			oDownload.startDownload("intro.html",   onDownloadDone);
+						break;
+					case 8:
+						li = GE("navgszx");
+		  			oDownload.startDownload("dynamic.html",   onDownloadDone);
+						break;
+					case 9:
+						li = GE("navgssq");
+		  			oDownload.startDownload("shangquan.html",   onDownloadDone);
+						break;
+					case 10:
+						li = GE("navzpzx");
+		  			oDownload.startDownload("job.html",   onDownloadDone);
+						break;
+					case 11:
+						li = GE("navzxly");
+		  			oDownload.startDownload("paq.html",   onDownloadDone);
+						break;
+					case 12:
+						li = GE("navlxfs");
+		  			oDownload.startDownload("lianxi.htm",   onDownloadDone);
+						break;
+					case 13:
+						li = GE("navzcft");
+		  			oDownload.startDownload("interview.html",   onDownloadDone);
+						break;
+					case 14:
+						li = GE("navgszt");
+		  			oDownload.startDownload("interview.html",   onDownloadDone);
+						break;
+					case 15:
+						li = GE("navhdjl");
+		  			oDownload.startDownload("interview.html",   onDownloadDone);
+						break;
+				}
+				li.setAttribute("ischosed","1");
+				setNavItem();
+		  	var con = new Array();
+				con.push(smcon);
+				init(con);
+	  	}
+	  }
+	  </SCRIPT>   
+	</div>
+	<DIV id="hisdiv" class=History></DIV>
+	
+	<!--模块内容加载前DIV显示载入中-->
+	<div id="tiploading" style="border:gray 1px solid;background:white;">
+		载入中，请稍候。。。
+	</div>
+	
+	<!--以下DIV未登录状态下可不加载-->
+	<!--模块图标控制条-->
+	<div id="boxcon">
+		<ul>
+			<li class="boxtitlec_down" onClick="showControl(this);" title="显示控制菜单"></li>
+			<li class="boxtitlec_min" onClick="maxminMod(this);" title="最小化版块"></li>
+			<li class="boxtitlec_close" onClick="delMod(this);" title="删除版块"></li>
+		</ul>
+	</div>
+
+	<!--模块控制菜单元素-->
+	<div id="pull_down">
+		<ul>
+			<li id="pulldown_upmod"><a href="javascript:void(0);" onClick="MoveupMod(this);">上移版块</a></li>
+			<li id="pulldown_dnmod"><a href="javascript:void(0);" onClick="MovedownMod(this);">下移版块</a></li>
+			<li id="pulldown_edmodname"><a href="javascript:void(0);" onClick="changeNameMod(this);">编辑名称</a></li>
+			<li id="pulldown_edmodcon"><a href="javascript:void(0);" onClick="editModContent(this);">编辑内容</a></li>
+			<li id="pulldown_inmod"><a href="javascript:void(0);" onClick="showAddInMod(this);">插入版块</a></li>
+			<li id="pulldown_dlmod"><a href="javascript:void(0);" onClick="deleteMod(this);">删除版块</a></li>
+		</ul>
+	</div>
+	
+	<!--布局设置DIV内容-->
+	<div id="layout_con">
+		<div class="layer">
+	<div class="layer_title">
+		<dl>
+			<dt>网站布局</dt>
+			<dd><img src="images/help.jpg" onClick="showHelpFloat(null,'helplayout');"> <img src="images/layout_close_1.jpg" onClick="GE('anidiv').style.display='none';"></dd>
+		</dl>
+	</div>
+	<div class="layer_c">
+		<div class="lmnav">
+			<h2>栏目导航</h2>
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+			  <tr>
+			    <td align="center"><img style="cursor:hand;" src="images/lmnav_1.jpg" id="layoutoption1" class="imgb" onClick="setLayout(2);GE('layoutoption1').className='imgb';GE('layoutoption2').className='';GE('layoutoption3').className='';"/></td>
+			    <td align="center"><img style="cursor:hand;" src="images/lmnav_2.jpg" id="layoutoption2" onClick="setLayout(1);GE('layoutoption1').className='';GE('layoutoption2').className='imgb';GE('layoutoption3').className='';"/></td>
+			    <td align="center"><img style="cursor:hand;" src="images/lmnav_3.jpg" id="layoutoption3" onClick="setLayout(3);GE('layoutoption1').className='';GE('layoutoption2').className='';GE('layoutoption3').className='imgb';"/></td>
+			  </tr>
+			</table>
+					</div>
+					<h2>页面宽度</h2>
+					<div class="webwidth">
+						<div>
+							<span><input type="radio" name="radiobutton" value="radiobutton" onClick="GE('webwieth_zdy').style.display='none';setSetWidth(960);" checked> 960px</span>
+							<span><input type="radio" name="radiobutton" value="radiobutton" onClick="GE('webwieth_zdy').style.display='none';setSetWidth(780);"> 780px</span>
+							<span><input type="radio" name="radiobutton" value="radiobutton" onClick="GE('webwieth_zdy').style.display='';"> 自定义</span>
+						</div>
+						<div class="webwieth_zdy" style="display:none;" id="webwieth_zdy">
+							<input type="text" id="fieldwidthid" value="800" maxlength="4" onKeyDown="if(event.keyCode==13&&event.srcElement==this){setSetWidth(this.value);}" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" /> PX <img style="cursor:hand;" src="images/layout_fixed.jpg" align="absmiddle" onClick="setSetWidth(GE('fieldwidthid').value);"><br/>
+							<span>(可设置的范围在780px-1024px之间)</span>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	
+	<!--导航设置DIV内容-->
+	<div id="navset_con">
+		<div class="nav_sz">
+			<div class="layer_title">
+				<dl>
+					<dt>导航设置</dt>
+					<dd><img src="images/help.jpg" onClick="showHelpFloat(null,'helpnavset');"> <img src="images/layout_close_1.jpg" onClick="GE('anidiv').style.display='none';"></dd>
+				</dl>
+			</div>
+		  <div class="nav_sz_c">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="nav_sz_tab">
+					<tbody id="nav_tr">
+					  <tr class="nav_title">
+					    <td width="90" align="center">栏目名称</td>
+					    <td align="center">是否显示</td>
+					    <td width="90" align="center">显示顺序</td>
+					  </tr>
+					  <tr align="center">
+					    <td>
+					    	<input type="text" value="首页" class="lmmc" disabled />
+					    </td>
+					    <td>
+					    	<input type="checkbox" value="1" disabled checked />显示
+					    </td>
+					    <td>
+					    	<input type="button" value="上移" disabled />
+					      <input type="button" value="下移" disabled />
+					    </td>
+					  </tr>
+					</tbody>
+				</table>
+				<input type="button" value="保存" onClick="saveNavItem();">
+				<input type="button" value="恢复默认">
+		  </div>
+		</div>
+	</div>
+	
+	<!--招牌设置DIV内容-->
+	<div id="zpset_con">	
+		<div class="zpsz">
+		<div class="layer_title">
+			<dl>
+				<dt>招牌设置</dt>
+				<dd><img src="images/help.jpg" onClick="showHelpFloat(null,'helpzpset');"> <img src="images/layout_close_1.jpg" onClick="GE('anidiv').style.display='none';"></dd>
+			</dl>
+		</div>
+		<div class="zpsz_c">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="zpsz_tab">
+	  <tr>
+	    <td>公司标志:
+	      <input type="text" name="textfield4" class="zpsz_input">
+	      <input type="submit" name="Submit4" value="浏览">
+	      <input type="submit" name="Submit42" value="上传">
+	      <br>
+	     <span> 格式为jpg或gif，图片尺寸请勿超过80(宽)×80(高)，且大小保持100K以内！</span></td>
+	    <td width="50"><input type="checkbox" name="checkbox2" value="checkbox">显示</td>
+	  </tr>
+	  <tr>
+	    <td>展示图片:
+	      <input type="text" name="textfield42" class="zpsz_input">
+	      <input type="submit" name="Submit43" value="浏览">
+	      <input type="submit" name="Submit422" value="上传">
+	      <br>
+	      <span>格式为jpg或gif，图片尺寸请勿超过1024(宽)×300(高)，且大小保持350K以内！ </span></td>
+	    <td><input type="checkbox" name="checkbox22" value="checkbox">显示</td>
+	  </tr>
+	  <tr>
+	    <td>招牌整体展示:
+	      <input type="text" name="textfield422" class="zpsz_input">
+	      <input type="submit" name="Submit432" value="浏览">
+	      <input type="submit" name="Submit4222" value="上传">
+		<span>格式为jpg或gif，图片尺寸请勿超过80(宽)×80(高)，且大小保持100K以内！</span></td>
+	    <td><input name="checkbox23" type="checkbox" value="checkbox" checked>显示</td>
+	  </tr>
+	  <tr>
+	    <td>文字内容:
+	      <input name="textfield4222" type="text" value="默认为公司名称" class="zpsz_name">
+	      <div class="zpsz_font">
+	      字号
+	      <select name="select">
+	        <option>大</option>
+	        <option>小</option>
+	      </select>
+	      字体
+	      <select name="select2">
+	        <option>黑体</option>
+	        <option>宋体</option>
+	      </select>
+	      颜色<span></span> <img src="images/font_bold.jpg" width="9" height="9"> <img src="images/font_italic.jpg" width="9" height="9"></div></td>
+	    <td><input type="checkbox" name="checkbox24" value="checkbox">显示</td>
+	  </tr>
+	</table>
+		</div>
+		</div>
+	</div>
+	
+	<!--海报设置DIV内容-->
+	<div id="hbset_con">
+		<div class="hbsz">
+		<div class="layer_title">
+			<dl>
+				<dt>海报设置</dt>
+				<dd><img src="images/help.jpg" onClick="showHelpFloat(null,'helphbset');"> <img src="images/layout_close_1.jpg" onClick="GE('anidiv').style.display='none';"></dd>
+			</dl>
+		</div>
+		<div class="hbsz_c">
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="hbsz_tab">
+	        <tr>
+	          <td width="60">海报状态：</td>
+	          <td>
+	            <input type="radio" name="radiobutton" value="radiobutton">使用
+	        	<input type="radio" name="radiobutton" value="radiobutton">停用
+	          </td>
+	        </tr>
+	        <tr>
+	          <td>海报标题：</td>
+	          <td><input type="text" name="textfield5"></td>
+	        </tr>
+	        <tr>
+	          <td valign="top">海报内容：</td>
+	          <td><textarea name="textarea"></textarea></td>
+	        </tr>
+	        <tr>
+	          <td valign="top">上传图片：</td>
+	          <td><input type="text" name="textfield422" class="zpsz_input">
+	      <input type="submit" name="Submit432" value="浏览">
+	      <input type="submit" name="Submit4222" value="上传">
+	      <br>
+		<span>格式为jpg或gif，图片尺寸请勿超过80(宽)×80(高)，且大小保持100K以内！</span></td>
+	        </tr>
+	        <tr>
+	          <td>图片链接：</td>
+	          <td><input name="textfield6" type="text" value="http://"></td>
+	        </tr>
+	      </table>
+		  <input type="submit" name="Submit5" value="保存">
+	  </div>
+		</div>
+	</div>
+	
+	<!--编辑名称DIV内容-->
+	<div id="editname_con">
+		<div class="editname">
+		<div class="layer_title">
+			<dl>
+				<dt>编辑名称</dt>
+				<dd><img src="images/help.jpg" onClick="showHelpFloat(null,'helpeditname');"> <img src="images/layout_close_1.jpg" onClick="GE('anidiv').style.display='none';"></dd>
+			</dl>
+		</div>
+		<div class="editname_c">
+		<input id="edtingmod" type="hidden" value="" class="lmmc">
+		<input id="edtingmodname" type="text" maxlength="6" value="" class="lmmc" onKeyDown="if(event.keyCode==13&&event.srcElement==this){setModName();}"><input type="button" value="确定" onclick="setModName();">
+	  </div>
+		</div>
+	</div>
+	
+	<!--主题设置DIV内容-->
+	<div id="theme_con">
+			<div class="theme">
+				<div class="layer_title">
+					<dl>
+						<dt>风格主题</dt>
+						<dd><img src="images/help.jpg" onClick="showHelpFloat(null,'helptheme');"> <img src="images/layout_close_1.jpg" onClick="GE('anidiv').style.display='none';"></dd>
+					</dl>
+				</div>
+				<div class="theme_c">
+				  <h2 onClick="if(GE('item_ptzt').style.display=='')GE('item_ptzt').style.display='none';else GE('item_ptzt').style.display='';">普通主题</h2>
+				  <div id="item_ptzt">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="theme_pt_tu">
+						  <tr>
+						    <td align="center" height="94px" class="theme_pt">
+						    	<a href="javascript:setStyleType('a');" onClick="this.className='theme_pt_now';"><img src="images/tm_img/1_1.gif" width="114" height="90" id="theme_a"></a>
+						    	</td>
+						    <td align="center">
+						    	<a href="javascript:setStyleType('b');"><img src="images/tm_img/1_2.gif" width="114" height="90" id="theme_b"></a>
+						    	</td>
+						  </tr>
+						  <tr style="display:none;">
+						    <td align="center"><input type="radio" name="radiobutton" value="radiobutton" onClick="setStyleType('a');">
+						      水晶型
+						    </td>
+						    <td align="center"><input type="radio" name="radiobutton" value="radiobutton" onClick="setStyleType('b');"> 
+						      简约型
+								</td>
+						  </tr>
+						</table>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" id="theme1" class="theme_pt">
+						    <tr>
+						      <td><a href="#" id="stylecolor01" onClick="setStyleColor('01');this.className='theme_pt_now';" style="background-color:#005DA2" class="theme_pt_now">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor02" onClick="setStyleColor('02');this.className='theme_pt_now';" style="background-color:#1E5BCE">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor03" onClick="setStyleColor('03');this.className='theme_pt_now';" style="background-color:#C44A9F">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor04" onClick="setStyleColor('04');this.className='theme_pt_now';" style="background-color:#DF37B1">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor05" onClick="setStyleColor('05');this.className='theme_pt_now';" style="background-color:#438045">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor06" onClick="setStyleColor('06');this.className='theme_pt_now';" style="background-color:#519532">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor07" onClick="setStyleColor('07');this.className='theme_pt_now';" style="background-color:#C73B00">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor08" onClick="setStyleColor('08');this.className='theme_pt_now';" style="background-color:#AC731C">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor09" onClick="setStyleColor('09');this.className='theme_pt_now';" style="background-color:#6784A4">&nbsp;</a></td>
+						      <td><a href="#" id="stylecolor10" onClick="setStyleColor('10');this.className='theme_pt_now';" style="background-color:#329276">&nbsp;</a></td>
+						     </tr>
+						</table>
+					</div>
+					
+					<h2 onClick="if(GE('item_gjzt').style.display=='')GE('item_gjzt').style.display='none';else GE('item_gjzt').style.display='';">高级主题</h2>
+					<div id="item_gjzt">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" id="theme2" class="theme_gj">
+						   <tr>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_01.css';setNavItemh();" class="theme_gj_now"><img src="images/style_img/style_01_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_02.css';setNavItemh();"><img src="images/style_img/style_02_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_03.css';setNavItemh();"><img src="images/style_img/style_03_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_04.css';setNavItemh();"><img src="images/style_img/style_04_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_05.css';setNavItemh();"><img src="images/style_img/style_05_a.jpg" width="66" height="66" /></a></td>
+						   </tr>
+						   <tr>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_06.css';setNavItemh();"><img src="images/style_img/style_06_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_07.css';setNavItemh();"><img src="images/style_img/style_07_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_08.css';setNavItemh();"><img src="images/style_img/style_08_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_09.css';setNavItemh();"><img src="images/style_img/style_09_a.jpg" width="66" height="66" /></a></td>
+						     <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_10.css';setNavItemh();"><img src="images/style_img/style_10_a.jpg" width="66" height="66" /></a></td>
+						  </tr>
+						  <tr>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_11.css';setNavItemh();"><img src="images/style_img/style_11_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_12.css';setNavItemh();"><img src="images/style_img/style_12_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_13.css';setNavItemh();"><img src="images/style_img/style_13_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_14.css';setNavItemh();"><img src="images/style_img/style_14_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_15.css';setNavItemh();"><img src="images/style_img/style_15_a.jpg" width="66" height="66" /></a></td>
+						  </tr>
+						  <tr>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_16.css';setNavItemh();"><img src="images/style_img/style_16_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_17.css';setNavItemh();"><img src="images/style_img/style_17_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_18.css';setNavItemh();"><img src="images/style_img/style_18_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_19.css';setNavItemh();"><img src="images/style_img/style_19_a.jpg" width="66" height="66" /></a></td>
+						    <td><a href="javascript:void(0);" onClick="GE('stylesheet').href='./templet/style_20.css';setNavItemh();"><img src="images/style_img/style_20_a.jpg" width="66" height="66" /></a></td>
+						  </tr>
+						</table>
+					</div>
+					
+					<h2 onClick="if(GE('item_bjys').style.display=='')GE('item_bjys').style.display='none';else GE('item_bjys').style.display='';">背景样式</h2>
+					<div id="item_bjys" style="display:none;">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" id="theme3" class="theme_bgstyle">
+						  <tr>
+						    <td>
+							    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="bgstyle1" class="theme_bgcolor">
+							      <tr>
+							        <td><a href="javascript:setBackground('#7D7D7D');" style="background-color:#7D7D7D"></a></td>
+							        <td><a href="javascript:setBackground('#4778B4');" style="background-color:#4778B4"></a></td>
+							        <td><a href="javascript:setBackground('#328ECF');" style="background-color:#328ECF"></a></td>
+							        <td><a href="javascript:setBackground('#419DBB');" style="background-color:#419DBB"></a></td>
+							        <td><a href="javascript:setBackground('#9355AB');" style="background-color:#9355AB"></a></td>
+							        <td><a href="javascript:setBackground('#C98D33');" style="background-color:#C98D33"></a></td>
+							        <td><a href="#" style="background-color:#7EAA52"></a></td>
+							        <td><a href="#" style="background-color:#C53875"></a></td>
+							        <td><a href="#" style="background-color:#FF7300"></a></td>
+							        <td><a href="#" style="background-color:#D52B2B"></a></td>
+							        <td><a href="#" style="background-color:#B39D00"></a></td>
+							        <td><a href="#" style="background-color:#005A53"></a></td>
+							        <td><a href="#" style="background-color:#833D1A"></a></td>
+							      </tr>
+							      <tr>
+							        <td><a href="#" style="background-color:#A4A4A4"></a></td>
+							        <td><a href="#" style="background-color:#7FA1CB"></a></td>
+							        <td><a href="#" style="background-color:#70B0DD"></a></td>
+							        <td><a href="#" style="background-color:#7ABBD0"></a></td>
+							        <td><a href="#" style="background-color:#B488C4"></a></td>
+							        <td><a href="#" style="background-color:#D9AF71"></a></td>
+							        <td><a href="#" style="background-color:#A5C486"></a></td>
+							        <td><a href="#" style="background-color:#D7749F"></a></td>
+							        <td><a href="#" style="background-color:#FF9D4D"></a></td>
+							        <td><a href="#" style="background-color:#E26B6B"></a></td>
+							        <td><a href="#" style="background-color:#BAA617"></a></td>
+							        <td><a href="#" style="background-color:#0A605A"></a></td>
+							        <td><a href="#" style="background-color:#9C552D"></a></td>
+							      </tr>
+							      <tr>
+							        <td><a href="#" style="background-color:#BEBEBE"></a></td>
+							        <td><a href="#" style="background-color:#A3BCDA"></a></td>
+							        <td><a href="#" style="background-color:#99C7E7"></a></td>
+							        <td><a href="#" style="background-color:#A0CEDD"></a></td>
+							        <td><a href="#" style="background-color:#C9AAD5"></a></td>
+							        <td><a href="#" style="background-color:#E4C699"></a></td>
+							        <td><a href="#" style="background-color:#BFD5A9"></a></td>
+							        <td><a href="#" style="background-color:#E29CBA"></a></td>
+							        <td><a href="#" style="background-color:#FFB980"></a></td>
+							        <td><a href="#" style="background-color:#EA9595"></a></td>
+							        <td><a href="#" style="background-color:#B8A310"></a></td>
+							        <td><a href="#" style="background-color:#075F58"></a></td>
+							        <td><a href="#" style="background-color:#CC9274"></a></td>
+							      </tr>
+							      <tr>
+							        <td><a href="#" style="background-color:#D8D8D8"></a></td>
+							        <td><a href="#" style="background-color:#C8D7E9"></a></td>
+							        <td><a href="#" style="background-color:#C2DDF1"></a></td>
+							        <td><a href="#" style="background-color:#C6E2EB"></a></td>
+							        <td><a href="#" style="background-color:#DFCCE6"></a></td>
+							        <td><a href="#" style="background-color:#EFDDC2"></a></td>
+							        <td><a href="#" style="background-color:#D9E6CB"></a></td>
+							        <td><a href="#" style="background-color:#EEC4D6"></a></td>
+							        <td><a href="#" style="background-color:#FFD5B3"></a></td>
+							        <td><a href="#" style="background-color:#F2C0C0"></a></td>
+							        <td><a href="#" style="background-color:#B7A20E"></a></td>
+							        <td><a href="#" style="background-color:#045D56"></a></td>
+							        <td><a href="#" style="background-color:#CC9274"></a></td>
+							      </tr>
+							    </table>
+							    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="bgstyle2" style="display:none;" class="theme_bg_tu">
+									   <tr>
+									     <td align="center"><a href="#" class="theme_bg_tu_now"><img src="images/bg_style_01.jpg" width="68" height="68" /></a></td>
+									     <td align="center"><a href="#"><img src="images/bg_style_02.jpg" width="68" height="68" /></a></td>
+									     <td align="center"><a href="#"><img src="images/bg_style_03.jpg" width="68" height="68" /></a></td>
+									     <td align="center"><a href="#"><img src="images/bg_style_04.jpg" width="68" height="68" /></a></td>
+									   </tr>
+									   <tr>
+									     <td align="center"><a href="#"><img src="images/bg_style_05.jpg" width="68" height="68" /></a></td>
+									     <td align="center"><a href="#"><img src="images/bg_style_06.jpg" width="68" height="68" /></a></td>
+									     <td align="center"><a href="#"><img src="images/bg_style_07.jpg" width="68" height="68" /></a></td>
+									     <td align="center"><a href="#"><img src="images/bg_style_08.jpg" width="68" height="68" /></a></td>
+									   </tr>
+										 <tr>
+										   	<td colspan="4">自定义上传:
+													  <input type="text" name="textfield">
+													  <input type="submit" name="Submit" value="浏览...">
+													  <input type="submit" name="Submit" value="上传">
+												</td>
+										 </tr>
+									</table>
+						   	</td>
+						    <td width="58" align="center" valign="middle">
+						    	<img onClick="GE('bgstyle1').style.display='block';GE('bgstyle2').style.display='none';" style="cursor:hand;" src="images/bg_style_1.jpg" width="46" height="38" style="margin-bottom:4px;"><br>
+	      					<img onClick="GE('bgstyle1').style.display='none';GE('bgstyle2').style.display='block';" style="cursor:hand;" src="images/bg_style.jpg" width="48" height="42">
+	      				</td>
+						  </tr>
+						</table>
+					</div>
+					
+					<h2 onClick="if(GE('item_sbys').style.display=='')GE('item_sbys').style.display='none';else GE('item_sbys').style.display='';">鼠标样式</h2>
+					<div id="item_sbys" style="display:none;">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" id="theme3" class="theme_sb">
+						   <tr>
+						     <td><a href="#" class="theme_sb_now"><img onClick="document.body.style.cursor='default';" src="images/mouse_style_01.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img onClick="document.body.style.cursor='url(images/dinosau.ani)';" src="images/mouse_style_02.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img onClick="document.body.style.cursor='url(images/horse.ani)';" src="images/mouse_style_03.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img src="images/mouse_style_04.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img src="images/mouse_style_05.jpg" width="68" height="68" /></a></td>
+						   </tr>
+						   <tr>
+						     <td><a href="#"><img src="images/mouse_style_06.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img src="images/mouse_style_07.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img src="images/mouse_style_08.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img src="images/mouse_style_09.jpg" width="68" height="68" /></a></td>
+						     <td><a href="#"><img src="images/mouse_style_10.jpg" width="68" height="68" /></a></td>
+						  </tr>
+						</table>
+					</div>
+				</div>
+			</div>
+	</div>
+	
+	<!--插入版块DIV内容-->
+	<div id="charu_con">
+		<div class="charu">
+			<div class="layer_title">
+				<dl>
+					<dt>插入版块</dt>
+					<dd><img src="images/help.jpg" onClick="showHelpFloat(null,'helpcharu');"> <img src="images/layout_close_1.jpg" onClick="GE('anidiv').style.display='none';"></dd>
+				</dl>
+			</div>
+		  <div class="charu_c">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="charu_tab">
+					<tbody id="charu_tr">
+					  <tr class="charu_title">
+					    <td width="90" align="center">版块名称</td>
+					    <td align="center">操  作</td>
+					  </tr>
+					</tbody>
+				</table>
+		  </div>
+		</div>
+	</div>
+	
+	<!--帮助DIV内容-->
+	<div id="help_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>开始</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="showHelpFloat(GE('btnlayout'),'helplayout');" value="下一步"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	<!--帮助(网站布局)DIV内容-->
+	<div id="helplayout_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>网站布局</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="showHelpFloat(GE('btntheme'),'helptheme');" value="下一步"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	<!--帮助(风格主题)DIV内容-->
+	<div id="helptheme_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>风格主题</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="showHelpFloat(GE('btnnavset'),'helpnavset');" value="下一步"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	<!--帮助(导航设置)DIV内容-->
+	<div id="helpnavset_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>导航设置</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="showHelpFloat(GE('btnzpset'),'helpzpset');" value="下一步"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	<!--帮助(招牌设置)DIV内容-->
+	<div id="helpzpset_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>招牌设置</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="showHelpFloat(GE('btnhbset'),'helphbset');" value="下一步"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	<!--帮助(海报设置)DIV内容-->
+	<div id="helphbset_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>海报设置</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="GE('helpanidiv').style.display='none';" value="结束"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	<!--帮助(插入版块)DIV内容-->
+	<div id="helpcharu_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>插入版块</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="GE('helpanidiv').style.display='none';" value="关闭"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	<!--帮助(编辑名称)DIV内容-->
+	<div id="helpeditname_con">
+		<div class="help">
+			<div class="help_t"></div>
+			<div class="help_c">
+				<div class="help_title"><h5>编辑名称</h5><a href="#"><img src="images/help_2.gif" onClick="GE('helpanidiv').style.display='none';"></a></div>
+				风格主题包括普通主题、高级主题、背景样式及鼠标样式，您可以按照自己的喜欢的进行各种设置，使您的商铺更加符合您的需求！
+				<div style="text-align:right;width:100%"><input type="button" onClick="GE('helpanidiv').style.display='none';" value="关闭"></div>
+			</div>
+			<div class="help_b"></div>
+		</div>
+	</div>
+	
+	
+</div>
+<!--布局元素放在此隐藏域中必须要(结束)-->
+
+<!--控制元素浮动层放在此区域中必须要(结束)-->
+<div id="ctrlele">
+	
+	<!--横向其他菜单浮动层(开始)-->
+	<div id="otherdiv" style="display:none;" type="modfloatc">
+	</div>
+	<!--横向其他菜单浮动层(结束)-->
+	
+	<!--以下DIV未登录状态下可不加载-->
+	<!--浮动弹出动画显示层（开始）-->
+	<div id="anidiv" style="display:none;" type="modfloatc">
+	</div>
+	<!--浮动弹出动画显示层（结束）-->
+	
+	<!--帮助浮动弹出动画显示层（开始）-->
+	<div id="helpanidiv" style="display:none;" type="modfloatc">
+	</div>
+	<!--帮助浮动弹出动画显示层（结束）-->
+	
+	<!--移动模块的效果DIV请勿修改(开始)-->
+	<div id="movdiv">
+	</div>
+	<!--移动模块的效果DIV请勿修改(结束)-->
+	
+</div>
+<!--控制元素浮动层放在此区域中必须要(结束)-->
+
+
+
+
+<script>
+	//设定全局变量,获取容器对象
+	var allcon = GE("allcon");	//整个布局容器，除页面设置区域
+	var pagehead = GE("pagehead");	//页头
+	var pagetitle = GE("pagetitle");	//招牌区
+	var pagestatus = GE("pagestatus");	//状态区
+	var pagetail = GE("pagetail");	//页尾
+	var smdiv = GE("smalldiv");	//小容器DIV
+	var mddiv = GE("middlediv");	//中间分隔DIV
+	var bgdiv = GE("bigdiv");	//大容器DIV
+	var menu = GE("menu");	//两侧导航菜单
+	var infomenu = GE("infomenu");	//供应产品目录
+	var smcon = GE("smallcon");	//小容器
+	var bgcon = GE("bigcon");	//大容器
+	var elepool = GE("elepool");	//布局元素DIV池
+	var modpool = GE("modpool");	//模块元素DIV池
+	//获取登录状态，加载模块时使用（企业登录时可拖拽，控制模块）
+	var loginstatus = GE("loginstatus").value;	
+	initpage();
+</script>
+<!--实际载入模块内容，放在页面布局之后。在未登录状态下可以只加载显示的对应模块(开始)-->
+<div style="display:none;">
+	<!--未登录时可只加载显示的模块-->
+	<!--产品橱窗(左侧)DIV开始-->
+  <div id="cpccl">
+     <div class="cpccl">
+				<ul>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /> <br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /> <br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /><br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /><br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+				</ul>
+			</div>
+			<div class="more">查看更多>></div>
+	</div>
+	<!--产品橱窗(左侧)DIV结束-->
+	<!--产品橱窗DIV开始-->
+  <div id="cpcc">
+     <div class="cpcc">
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tab_img">
+                          <tbody>
+                            <tr>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                            </tr>
+                            <tr>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日<br />
+                                单价：<span class="red b">320.00/只</span>                                </font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                            </tr>
+                          </tbody>
+                        </table>
+		</div>
+	</div>
+	<!--产品橱窗DIV结束-->
+	 <!--产品展厅(左侧)DIV开始-->
+  <div id="cpztl">
+     <div class="cpztl">
+				<ul>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /> <br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /> <br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+				</ul>
+			</div>
+			<div class="more">查看更多>></div>
+	</div>
+	<!--产品展厅(左侧)DIV结束-->
+	<!--产品展厅DIV开始-->
+  <div id="cpzt">
+     <div class="cpzt">
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tab_img">
+                          <tbody>
+                            <tr>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                            </tr>
+                            <tr>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日<br />
+                                单价：<span class="red b">320.00/只</span>                                </font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                            </tr>
+                          </tbody>
+                        </table>
+		</div>
+	</div>
+	<!--产品展厅DIV结束-->
+	<!--公司介绍(左侧)DIV开始-->
+  <div id="gsjsl">
+        <div class="gsjsl">
+				<dl>
+					<dt><img src="images/m_9-45-74945.jpg" width="120" height="120" /></dt>
+					<dd>&nbsp;&nbsp;&nbsp;&nbsp;原“弘铼五金电器店”已经正式改名为“蒝毅商贸有限公司”。 <br />
+                        &nbsp;&nbsp;广铼国际贸易有限公司在台湾成立二十余年，一步一脚印始终坚持?“品质...</dd>
+				</dl>
+			</div>
+			<div class="more">查看更多>></div>
+	</div>
+  <!--公司介绍(左侧)DIV结束-->
+	<!--公司介绍DIV开始-->
+	<div id="gsjs">
+		<div class="gsjs">
+<table class="p14h23" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" id="com_info_com">
+                    <tr>
+                      <td align="left" class="note"><table align="right" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <td align="center"><div style="border:1px solid #eee; margin:0px;">
+                              <table width="180" height="180" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center"><a href="intro.html"><img src="images/m_9-45-74945.jpg" border="0" onload="javascript:if(this.width&gt;180)this.width=180;if(this.height&gt;180)this.height=180;"/></a></td>
+                                </tr>
+                              </table>
+                              <span class="note0">//修改此处图片及表格尺寸</span><br />
+                              <a href="#" target="_blank"></a>
+          天津市宝鹏机械制造有限公司</div></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                        原“弘铼五金电器店”已经正式改名为“蒝毅商贸有限公司”。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;广铼国际贸易有限公司在台湾成立二十余年，一步一脚印始终坚持&nbsp;“品质第一&nbsp;客户至上&nbsp;价格合理”，拥有強大向心力之团队使生产销售及服务达到最高品质。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;从刚成立时仅销售手工具类五金产品，至今成为专业气动工具供应商，旗下优力卡（YUNICA）和日本川崎（KAWASAKI）两大品牌深获使用者受用。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;优力卡（YUNICA）----为自产品牌，拥有完整研发团队，从产品设计、制图、模具开发、装配、测试专业化生产流程，使品质保持高水准。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;川崎（KAWASAKI）----在日本已成立超过五十年,其零件及装配皆在日本<br />
+                      <div align="right"> <a href="intro.html">查看详细介绍...</a>&nbsp;&nbsp; </div></td>
+                    </tr>
+                  </table>
+		</div>
+		<div class="more">查看更多>></div>
+  </div>
+  <!--公司介绍DIV结束-->
+  <!--总裁访谈(左侧)DIV开始-->
+  <div id="zcftl">
+           <div class="zcftl">
+				<dl>
+					<dt><img src="images/m_9-45-74945.jpg" width="120" height="120" /></dt>
+					<dd>    【慧聪网暖通制冷行业频道】澳蓝（福建）实业有限公司自成立以来，业务发展迅速，现有国内业务已覆盖除西藏外所有的省份；同时，公司国际业务范围已覆盖到欧洲、中亚、东南亚、美洲、非洲、澳洲等二十余个国家，总业务量在国内同行业中位居前列。在短短的几年间，澳蓝公司蒸发式冷气机从市场空白状态发展到了迅速扩张，并且获得市场的认可，从澳蓝公司的发展轨迹来看，这并不是偶然的。</dd>
+				</dl>
+			</div>
+			<div class="more">查看更多>></div>
+	</div>
+  <!--总裁访谈(左侧)DIV结束-->
+	<!--总裁访谈DIV开始-->
+	<div id="zcft">
+		<div class="zcft">
+			<table class="p14h23" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" id="com_info_com">
+                    <tr>
+                      <td align="left" class="note"><table align="left" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <td align="center"><div style="border:1px solid #eee; margin:0px;">
+                              <table width="180" height="180" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center"><a href="intro.html"><img src="images/m_9-45-74945.jpg" border="0" onload="javascript:if(this.width&gt;180)this.width=180;if(this.height&gt;180)this.height=180;"/></a></td>
+                                </tr>
+                              </table>
+                              <span class="note0">//修改此处图片及表格尺寸</span><br />
+                              <a href="#" target="_blank"></a>
+          天津市宝鹏机械制造有限公司</div></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                        原“弘铼五金电器店”已经正式改名为“蒝毅商贸有限公司”。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;广铼国际贸易有限公司在台湾成立二十余年，一步一脚印始终坚持&nbsp;“品质第一&nbsp;客户至上&nbsp;价格合理”，拥有強大向心力之团队使生产销售及服务达到最高品质。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;从刚成立时仅销售手工具类五金产品，至今成为专业气动工具供应商，旗下优力卡（YUNICA）和日本川崎（KAWASAKI）两大品牌深获使用者受用。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;优力卡（YUNICA）----为自产品牌，拥有完整研发团队，从产品设计、制图、模具开发、装配、测试专业化生产流程，使品质保持高水准。 <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;川崎（KAWASAKI）----在日本已成立超过五十年,其零件及装配皆在日本<br />
+                      <div align="right"> <a href="intro.html">查看详细介绍...</a>&nbsp;&nbsp; </div></td>
+                    </tr>
+                  </table>
+		</div>
+		<div class="more">查看更多>></div>
+  </div>
+  <!--总裁访谈DIV结束-->
+  <!--买卖通档案(左侧)DIV开始-->
+  <div id="mmtdal">
+	  <div class="mmtdal">
+			 买卖通指数：<a href="#">45</a><br />
+             企业身份认证：<a href="#">已认证</a><br />
+             客户评价： <a href="#">8</a> 条<br />
+             证书荣誉： <a href="#">10</a> 项<br />
+             联系人：<a href="#">某某</a> 女士 
+	  </div>
+	</div>
+	<!--买卖通档案(左侧)DIV结束-->
+  <!--买卖通档案DIV开始-->
+  <div id="mmtda">
+	  <div class="mmtda">
+			 买卖通指数：<a href="#">45</a><br />
+             企业身份认证：<a href="#">已认证</a><br />
+             客户评价： <a href="#">8</a> 条<br />
+             证书荣誉： <a href="#">10</a> 项<br />
+             联系人：<a href="#">某某</a> 女士 
+	  </div>
+	</div>
+	<!--买卖通档案DIV结束-->
+  <!--最新供应(左侧)DIV开始-->
+  <div id="zxgyl">
+			<div class="zxgyl">
+				<ul>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /> <br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+					<li>
+						<img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /> <br>
+						<a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R </a> <br />
+						<font color="#666666">发布时间：2007年01月18日</font>
+					</li>
+				</ul>
+			</div>
+			<div class="more">查看更多>></div>
+	</div>
+	<!--最新供应(左侧)DIV结束-->
+  <!--最新供应DIV开始-->
+  <div id="zxgy">
+				<div class="zxgy">
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="tab_img">
+                          <tbody>
+                            <tr>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                            </tr>
+                            <tr>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日<br />
+                                单价：<span class="red b">320.00/只</span>                                </font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                              <td>								<TABLE width=110 height=110 border=0 cellPadding=0 cellSpacing=0>
+									<tr>
+										<td align=center style="vertical-align:middle">
+																						<a href="provide_list.html" target="_blank"><img src="images/l_1-73-2322173.jpg" alt="供应气动起子 YD-4R （图）" width="100" height="100" border="0" onerror="javascript:this.src='http://img.b2b.hc360.com/pubimages/noimg.gif';" /></a>																					</td>
+									</tr>
+								</table>
+                                <a href="product.html" title="供应气动起子 YD-4R （图）" target="_blank" class="pt12"> 供应气动应气动起应气动起起子 YD-4R    </a> <br />
+                                <font color="#666666">发布时间：2007年01月18日</font></td>
+                            </tr>
+                          </tbody>
+                        </table>
+		</div>
+	</div>
+	<!--最新供应DIV结束-->
+  <!--招聘信息(左侧)DIV开始-->
+  <div id="zpxxl">
+           <div class="zpxxl">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabls">
+                          <tr class="tabls_head">
+                            <td >招聘职位</td>
+                            <td>截止时间</td>
+                            <td>薪资水平</td>
+                            <td>工作地点</td>
+                            <td>招聘人数</td>
+                          </tr>
+                          <tr>
+                            <td align="center"><a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="会计"> 会计</a></td>
+                            <td align="center"> 2006-05-09</td>
+                            <td align="center"> 面议</td>
+                            <td align="center"> 广东省</td>
+                            <td align="center"> 1  														名</td>
+                          </tr>
+                          <tr>
+                            <td align="center"><a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="秘书"> 秘书</a></td>
+                            <td align="center"> 2006-05-09</td>
+                            <td align="center"> 面议</td>
+                            <td align="center"> 广东省</td>
+                            <td align="center"> 1  														名</td>
+                          </tr>
+                        </table>
+		</div>
+		<div class="more">查看更多>></div>
+	</div>
+	<!--招聘信息(左侧)DIV结束-->
+  <!--招聘信息DIV开始-->
+  <div id="zpxx">
+           <div class="zpxx">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabls">
+                          <tr class="tabls_head">
+                            <td >招聘职位</td>
+                            <td>截止时间</td>
+                            <td>薪资水平</td>
+                            <td>工作地点</td>
+                            <td>招聘人数</td>
+                          </tr>
+                          <tr>
+                            <td align="center"><a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="会计"> 会计</a></td>
+                            <td align="center"> 2006-05-09</td>
+                            <td align="center"> 面议</td>
+                            <td align="center"> 广东省</td>
+                            <td align="center"> 1  														名</td>
+                          </tr>
+                          <tr>
+                            <td align="center"><a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="秘书"> 秘书</a></td>
+                            <td align="center"> 2006-05-09</td>
+                            <td align="center"> 面议</td>
+                            <td align="center"> 广东省</td>
+                            <td align="center"> 1  														名</td>
+                          </tr>
+                        </table>
+		</div>
+		<div class="more">查看更多>></div>
+	</div>
+	<!--招聘信息DIV结束-->
+  <!--留言信息(左侧)DIV开始-->
+  <div id="lyxxl">
+           <div class="lyxxl">
+				<dl>
+					<dt><img src="images/zq_012502_07.gif" width="23" height="23" /></dt>
+					<dd><span class="hui">提问者:桔澳峰 <br /> 时间:2006-12-12 12:20 </span></dd>
+				</dl>
+				<dl>
+					<dt><img src="images/zq_012503_10.gif" width="23" height="24" /></dt>
+					<dd><span class="shong">您好，MP4的价格。。。。。</span><br /><span class="hui">回复者:桔澳峰 <br />时间:2006-12-12 12:20 </span></dd>
+				</dl>
+			</div>
+			<div class="more">查看更多>></div>
+	</div>
+	<!--留言信息(左侧)DIV结束-->
+  <!--留言信息DIV开始-->
+  <div id="lyxx">
+           <div class="lyxx">
+				<dl>
+					<dt><img src="images/zq_012502_07.gif" width="23" height="23" /></dt>
+					<dd><span class="hui">提问者:桔澳峰 <br /> 时间:2006-12-12 12:20 </span></dd>
+				</dl>
+				<dl>
+					<dt><img src="images/zq_012503_10.gif" width="23" height="24" /></dt>
+					<dd><span class="shong">您好，MP4的价格。。。。。</span><br /><span class="hui">回复者:桔澳峰 <br />时间:2006-12-12 12:20 </span></dd>
+				</dl>
+			</div>
+			<div class="more">查看更多>></div>
+	</div>
+	<!--留言信息DIV结束-->
+	<!--公司资讯(左侧)DIV开始-->
+	<div id="gszxl">
+		<div class="gszxl">
+			<ul>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+			</ul>
+		</div>
+		<div class="more">查看更多>></div>
+	</div>
+  <!--公司资讯(左侧)DIV结束-->
+	<!--公司资讯DIV开始-->
+	<div id="gszx">
+		<div class="gszx">
+			<ul>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+				<li>·<a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,person,jobdetail.html?pos_id=273454&amp;areaid=074" target="_blank" title="网络维护人员">公司将于下月30日在香港上市</a>  2008-10-26</li>
+			</ul>
+		</div>
+		<div class="more">查看更多>></div>
+	</div>
+  <!--公司资讯DIV结束-->
+  <!--联系方式(左侧)DIV开始-->
+  <div id="lxfsl">
+           <div class="lxfsl">
+				游芳蒝 先生 
+				<a href="../../&#21830;&#21153;&#20013;&#24515;/my/company/company_edit_2.html" target="_blank"><img src="images/edit.gif" width="16" height="14" border="0"  /></a><br />
+                  电话：86-010-83116991<br />
+				  手机：1398888888<br />
+				  传真：86-010-83116991<br />
+                <dt style="float:left"><a href="company_br.html">详细信息</a></dt>
+				<dt style="float:left; margin-left:15px"><a href="../../商务中心/liuyan/company.html" target="_blank"><img src="images/ly.gif" border="0" /></a></dt>
+			</div>
+	</div>
+	<!--联系方式(左侧)DIV结束-->
+  <!--联系方式DIV开始-->
+  <div id="lxfs">
+				<div class="lxfs">
+						<a href="#">姓名</a> 先生（职位）<img src="images/b_offline_2.gif" alt="买卖通IM" width="23" height="23" align="absmiddle" onclick="javascript:IsInstallQQ('http://my.b2b.hc360.com/b2b/turbine/template/my,pub,tmcard.html?tmusr=yunica','yunica','1','0')" /> <a href="http://my.b2b.hc360.com/my/turbine/template/pubinfo,notes,links.html?providerid=100005124451" target="_blank">跟我洽谈</a><br />
+                        电 话：86-769-83116991 / 86-769-83116991<br>
+                        手 机：13829296967 <br>
+                        传 真：86-769-83116992<br>
+                        地 址：广东省东莞市大朗镇富华中路500号恒兴楼3楼<br>
+                        邮 编：<span class="px1216">523779</span><br>
+                        网 址：http://yunica.b2b.hc360.
+						http://www.yunica.com
+				</div><div class="more">查看更多>></div>
+	</div>
+	<!--联系方式DIV结束-->
+  <!--友情链接(左侧)DIV开始-->
+  <div id="yqljl">
+	<div class="yqljl_add">添加</div>
+	  <div class="yqljl">
+			<dl>
+				<dt><a href="http://www.yunica.com/" target="_blank">公司企业网</a></dt>
+				<dd><a href="javascript:void(vh('edit_link_1'));"><img src="images/edit.gif" width="16" height="14" /></a> 
+					<a href="javascript:;" onclick="javascript:confirm('删除的信息将无法恢复，您确认删除吗？')"><img src="images/delete.gif" width="9" height="9" /></a>
+				</dd>
+			</dl>
+	  </div>
+	  <div class="more">查看更多></div>
+	</div>
+	<!--友情链接(左侧)DIV结束-->
+  <!--友情链接DIV开始-->
+  <div id="yqlj">
+	<div class="yqlj_add">添加</div>
+	  <div class="yqlj">
+			<dl>
+				<dt><a href="http://www.yunica.com/" target="_blank">公司企业网</a></dt>
+				<dd><a href="javascript:void(vh('edit_link_1'));"><img src="images/edit.gif" width="16" height="14" /></a> 
+					<a href="javascript:;" onclick="javascript:confirm('删除的信息将无法恢复，您确认删除吗？')"><img src="images/delete.gif" width="9" height="9" /></a>
+				</dd>
+			</dl>
+	  </div>
+	  <div class="more">查看更多></div>
+	</div>
+	<!--友情链接DIV结束-->
+</div>
+<!--实际载入模块内容，放在页面布局之后。在未登录状态下可以只加载显示的对应模块(结束)-->
+<script>
+	//加载完内容之后，用此脚本填充模块内容
+	setAllContent();	
+</script>
+</body>
+</html>

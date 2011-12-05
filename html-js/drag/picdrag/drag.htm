@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>script.aculo.us - javascript drag-and-drop</title>
+    <style type="text/css">
+		#puzzle {
+		  margin-left:10px;
+		  width:450px;
+		  height:450px;
+		  border:1px solid #e8a400;
+		}
+		#puzzle img {
+		  float:left;
+		  margin:0px;
+		  cursor:move;
+		}
+    </style>
+    <script src="drag/funcTools.js" type="text/javascript"></script>
+    <script src="drag/dragedObj.js" type="text/javascript"></script>
+    <script language="javascript">
+      function dragImg(){
+	    var element = document.getElementById("puzzle");
+	    var elements = element.childNodes;
+	    for (var i = 0; i < elements.length; i++) 
+	      if(elements[i].tagName && elements[i].tagName=='IMG') {
+	        new Draggable(elements[i], elements);//初始化被拖拽对象的属性(包括触发事件)
+	      }
+	   }
+    </script>
+</head>
+<body>
+    <div id="puzzle">
+    	<img style="position: relative;" id="image_5" src="drag/puzzle5.jpg" />
+    	<img style="position: relative;" id="image_1" src="drag/puzzle1.jpg" />
+    	<img style="position: relative;" id="image_9" src="drag/puzzle9.jpg" />
+    	<img style="position: relative;" id="image_7" src="drag/puzzle7.jpg" />
+    	<img style="position: relative;" id="image_4" src="drag/puzzle4.jpg" />
+    	<img style="position: relative;" id="image_2" src="drag/puzzle2.jpg" />
+    	<img style="position: relative;" id="image_6" src="drag/puzzle6.jpg" />
+    	<img style="position: relative;" id="image_8" src="drag/puzzle8.jpg" />
+    	<img style="position: relative;" id="image_3" src="drag/puzzle3.jpg" />
+    </div>
+    <script language="javascript">dragImg();</script>
+   </div>
+</body>
+</html>

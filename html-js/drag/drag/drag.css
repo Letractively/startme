@@ -1,0 +1,128 @@
+
+		/* 整个布局的容器DIV样式 */
+		#allcon {
+			width: 998px;	/*整个容器的宽度，这个是默认值，由初始化布局数据时初始化重新设定*/
+			border: black 0px solid;	/*有边框的话，内容的宽度就变小了，因为内容宽度＝对象宽度－边框宽度(调试时可将边框设定为1)*/
+			PADDING: 0px; /*内容距离边框的像素，为０说明内容紧挨着容器，所以内容宽度＝对象宽度－边框宽度－对象Padding*/
+		}
+		/* 小容器所在DIV的样式 */
+		#smalldiv {
+			 	WIDTH: 250px;	/*小容器的宽度(固定值)，可以修改此处调整*/
+			 	BORDER: #669999 0px solid;	/*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px;  /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+			 	MARGIN-bottom: 5px;  /*设置容器与其他元素的在底部空间(在设定的宽度外),会增加外宽度*/
+			 	float:left;	/*此设置说明此元素可以其他元素并列一行(宽度足够的话),为right时说明此元素从右边开始显示*/
+		}
+		/* 大容器所在DIV与小容器所在DIV隔开的DIV样式 */
+		#middlediv {
+			 	WIDTH: 5px; /*中间隔的宽度(固定值)，可以修改此处调整*/
+			 	BORDER: #669999 0px solid;	/*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+			 	float:left;	/*此设置说明此元素可以其他元素并列一行(宽度足够的话),为right时说明此元素从右边开始显示*/
+		}
+		/* 大容器所在DIV的样式 */
+		#bigdiv {
+				width:100%;	/*宽度＝整个容器的内容宽度－小容器－中间隔条（在脚本中会去动态调整，这里不用设置）*/
+			 	BORDER: #669999 0px solid; /*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+			 	MARGIN-bottom: 5px;  /*设置容器与其他元素的在底部空间(在设定的宽度外),会增加外宽度*/
+			 	float:left;	/*此设置说明此元素可以其他元素并列一行(宽度足够的话),为right时说明此元素从右边开始显示*/
+		}
+		/* 小容器的样式 */
+		#smallcon {
+			 	WIDTH: 100%; /*宽度与所在容器DIV的宽度一样*/
+			 	BORDER: #669999 0px solid; /*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+		}
+		/* 大容器的样式 */
+		#bigcon {
+			 	WIDTH: 100%; /*宽度与所在容器DIV的宽度一样*/
+			 	BORDER: #669999 0px solid;	/*(调试时可将边框设定为1)*/
+			 	PADDING: 0px;	/*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+		}
+		/* 菜单在两侧的样式 */
+		.menu {
+			 	WIDTH: 100%; /*宽度与所在容器DIV的宽度一样*/
+			 	BORDER: #669999 1px solid;	/*设置菜单的边框*/
+			 	PADDING: 5px; /*设置内容距离边框的像素(在设定的宽度内)*/
+			 	PADDING-bottom: 300px; /*设置底部内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px;	/*设置容器与其他元素的空间(在设定的宽度外),会增加外宽度*/
+			 	MARGIN-bottom: 3px;  /*设置容器与其他元素的在底部空间(在设定的宽度外),会增加外宽度*/
+			 	background-color: #aabbcc;	/*菜单的背景色*/
+		}
+		/* 菜单在顶部的样式 */
+		.menutop {
+			 	WIDTH: 100%; /*宽度与所在容器DIV的宽度一样*/
+			 	BORDER: #669999 1px solid;	/*设置菜单的边框*/
+			 	PADDING: 5px; /*设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px;	/*设置容器与其他元素的空间(在设定的宽度外),会增加外宽度*/
+			 	MARGIN-bottom: 3px;  /*设置容器与其他元素的在底部空间(在设定的宽度外),会增加外宽度*/
+			 	background-color: #ccbbaa;	/*菜单的背景色*/
+		}
+		/* 拖拽项的样式 */
+		.DragBox { 
+				WIDTH: 100%; /*拖拽项的宽度*/
+				BORDER: #000000 1px solid; /*拖拽项的边框*/
+				PADDING: 0px; 
+				MARGIN-BOTTOM: 5px; /*设置拖拽项与下一拖拽项的底部空间*/
+				CURSOR: default; 
+		} 
+		/* 拖拽项鼠标悬浮的样式 */
+		.OverDragBox { 
+				WIDTH: 100%; /*悬浮时拖拽项的宽度*/
+				BORDER: #0000ff 1px solid; /*悬浮时拖拽项的边框*/
+				PADDING: 0px; 
+				MARGIN-BOTTOM: 5px; /*设置悬浮时拖拽项与下一拖拽项的底部空间*/
+				CURSOR: move; /*悬浮在拖拽项时指针的样式*/
+		} 
+		/* 拖拽项拖拽时(随鼠标移动时)的样式 */
+		.DragDragBox { 
+				WIDTH: 100%; /*拖拽时拖拽项的宽度*/
+				BORDER: #ff0000 1px dotted; /*拖拽时拖拽项的边框*/
+				PADDING: 0px; 
+				MARGIN-BOTTOM: 5px; 
+				CURSOR: move; /*拖拽时拖拽项时指针的样式*/
+				FILTER: alpha(opacity=30); /*设置拖拽时拖拽项的透明程度*/
+		} 
+		/* 拖拽项标题栏的样式(供拖拽用) */
+		.boxtitle { 
+				WIDTH: 100%; /*拖拽标题栏的宽度*/
+				BORDER: #000000 0px solid; /*拖拽标题栏的边框*/
+				BORDER-bottom: #000000 1px solid;  /*拖拽标题栏的下边框*/
+				PADDING: 2px; 
+				CURSOR: move; /*拖拽标题栏的指针样式（为十字供拖拽用）*/
+				background-color:#008888;	/*拖拽标题栏的背景色*/
+		}
+		/* 拖拽项标题栏的左边标题样式 */
+		.boxtitleleft { 
+				BORDER: #000000 0px solid; 
+				PADDING: 2px; 
+			 	float:left;	/*在标题栏左边显示*/
+				CURSOR: default;
+		}
+		/* 拖拽项标题栏的右边控制钮样式 */
+		.boxtitleright { 
+				BORDER: #000000 0px solid; 
+				PADDING: 2px;  
+			 	float:right;	/*在标题栏右边显示*/
+				CURSOR: default;
+		}
+		/* 显示拖拽历史信息的样式 */
+		.History {
+				FONT-SIZE: 10px; 
+				OVERFLOW: auto; 
+				WIDTH: 100%; 
+				FONT-FAMILY: verdana, tahoma, arial; 
+				HEIGHT: 82px
+		}
+		/* 页面样式 */
+		body {
+			margin: 3px;
+			font-family: arial, 宋体, serif;
+      font-size:14px;
+		}

@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Ajax Request Test</title>
+<script language="javascript" type="text/javascript">
+
+var request;
+
+function createRequest() {
+　try {
+　　request = new XMLHttpRequest();
+　} catch (trymicrosoft) {
+　　try {
+　　　request = new ActiveXObject("Msxml2.XMLHTTP");
+      alert(request);
+　　} catch (othermicrosoft) {
+　　　try {
+　　　　request = new ActiveXObject("Microsoft.XMLHTTP");
+　　　} catch (failed) {
+　　　　request = false;
+　　　}
+　　}
+　}
+
+　if (!request)
+　　alert("Error initializing XMLHttpRequest!");
+}
+
+function getCustomerInfo() {
+　createRequest();
+　// Do something with the request variable
+　var phone = document.getElementById("phone").value;
+　var url = "http://www.hc360.com?phone=" + escape(phone);
+  request.open("GET", url, true);
+  request.onreadystatechange = updatePage;
+  request.send(null);
+}
+function updatePage() {
+　if (request.readyState == 4) {
+　　if (request.status == 200) {
+	alert("ajax response sussess!");
+　　　var response = request.responseText.split("|");
+　　　//document.getElementById("order").value = response[0];
+　　　//document.getElementById("address").innerHTML = response[1].replace(/\n/g, "");
+　　} else
+　　　alert("status is " + request.status);
+　}
+}
+</script>
+</head>
+<body>
+　<p><img src="breakneck-logo_4c.gif" alt="Break Neck Pizza" /></p>
+　<form action="POST">
+　　<p>Enter your phone number:
+　　　<input type="text" size="14" name="phone" id="phone" onChange="getCustomerInfo();" />
+　　</p>
+　　<p>Your order will be delivered to:</p>
+　　<div id="address"></div>
+　　<p>Type your order in here:</p>
+　　<p><textarea name="order" rows="6" cols="50" id="order"></textarea></p>
+　　<p><input type="submit" value="Order Pizza" id="submit" /></p>
+　</form>
+</body>
+</html>
