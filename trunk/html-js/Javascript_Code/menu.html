@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>AgetimeMenu Demo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+ .agetime_bar{
+  position:absolute;top:0px;left:0px;height:22px;width:100%;border:1px outset;background-color:RGB(212,208,200);z-index:98;
+ }
+ .agetime_barItem{
+  width:60px;height:20px;border:1px solid RGB(212,208,200);text-align:left;padding-left:10px;
+  background:RGB(212,208,200);color:#000000;font-size:9pt;
+ }
+ .agetime_barItemDown{
+  width:60px;height:20px;border:1px inset RGB(212,208,200);text-align:left;padding-left:10px;
+  background:#F0F0F0;color:#000000;font-size:9pt;
+ }
+ .agetime_barItemHover{
+  width:60px;height:20px;border:1 outset;text-align:left;padding-left:10px;
+  background:#F0F0F0;color:#000000;font-size:9pt;
+ }
+ .agetime_pad{
+  cursor:default;font-size:9pt;width:100%;
+ }
+ .agetime_padItem{
+  width:100%;height:18px;border:1px solid RGB(212,208,200);text-align:left;padding-left:10px;
+  background:RGB(212,208,200);color:#000000;font-size:9pt;
+ }
+ .agetime_padItemFalse{
+  padding-left:10px;font-size:9pt; color:#808080;
+ }
+ .agetime_padItemFalseHover{
+  padding-left:10px;font-size:9pt; color:#808080;background-color:#333366;
+ }
+ .agetime_padItemHover{
+  width:100%;height:18px;text-align:left;padding-left:10px;
+  background-color:#333366;color:#FFFFFF;font-size:9pt;
+ }
+ .agetime_padItemDown{
+  width:100%;height:18px;text-align:left;padding-left:10px;border:1px inset;
+  background-color:#9999CC;color:#FFFFFF;font-size:9pt;
+ }
+ .agetime_hr{
+  border:1px inset;
+ }
+ .agetime_board{
+  background-color:RGB(212,208,200);border:2px outset;
+ }
+</style>
+</head>
+<body>
+<script language="javascript">
+ var menu = agetimeMenu("agetime",
+  [
+   [
+    ["文件",null,null,true,"打开文件"],  //显示文字,方法,命令,状态,状栏显示文字
+    ["打开",null,null,false,"打开文件"],
+    ["--"],
+    ["你好","js","alert('Hello')",true,"一声问候"],
+    ["新窗口","ABC","about:blank",true,"弹出ABC窗口"],
+    ["空白",null,"about:blank",true,"在当前窗口显示空白页"]
+   ],
+   [
+    ["编辑",null,null,false,"打开文件"],
+    ["撤消",null,null,true,"打开文件"],
+    ["重做",null,null,true,"打开文件"]
+   ],
+   [
+    ["文件","js","alert('无子菜单')",true,"打开文件"]
+   ]
+  ]
+ );
+ //方法为"js"时,命令则为javascript语句,为非"js"值时,命令则是一个URL,而打开这个URL的目标位置则是方法所指定的窗口;
+ //["你好","js","alert('Hello'),true,"一声问候"];
+ //显示文字为"--"是按钮是一个分隔符;
+
+ function agetimeMenu(id,array){
+  var menu=this;
+  menu.pad=null;     //装载各个子菜单
+  menu.barItems=[];    //菜单条的各位按钮
+  menu.pads=[];     //每个子菜单为一个table存放于menu.pad上;
+  menu.selectedIndex=-1;  //菜单条选中按钮的索引值
+  menu.board=null;    //子菜单面板
+
+  //建立菜单条
+  this.crtMenuBar=function(){
+   var len=array.length;
+   menu.bar = document.body.appendChild(document.createElement('div'));
+   menu.bar.className=id+"_bar";
+   for(var i=0;i<len;i++){
+    menu.barItems[i]=menu.addMenuBarItem(array[i][0],i);
+    menu.addMenuPad(array[i],i);
+   }
+  }
+
+  //子菜单
+  this.addMenuPad=function(ary,index){
+   var len=ary.length;
+   var pad=menu.crtElement("table",menu.pad);
+   pad.cellSpacing=1;  pad.cellPadding=0;
+   pad.className=id+"_pad";
+pad.style.display="none";
+   for(var i=1;i<len;i++){
+    var Row=pad.insertRow(i-1);
+    menu.addMenuPadItem(ary[i],Row);
+   }
+   menu.pads[index]=pad;
+  }
+
+  //各子菜单按钮
+  this.addMenuPadItem=function(ary,Row){
+    var Cell=Row.insertCell(0);
+    if(ary[0]!="--"){
+     Cell.innerText=ary[0];
+     if(ary[3]){  //有效状态;
+      Cell.className=id+"_padItem";
+      Cell.onmouseover=function(){
+       Cell.className=id+"_padItemHover";
+       window.status=ary[4];
+      }
+      Cell.onmouseout=function(){
+       Cell.className=id+"_padItem";
+       window.status="";
+      }
+      Cell.onmousedown=function(){ Cell.className=id+"_padItemDown"; }
+      Cell.onmouseup=function(){ 
+       Cell.className=id+"_padItemHover";
+       menu.hideMenu();
+       menu.execute(ary);
+      }
+     }
+     else{  //按钮无效;
+      Cell.className=id+"_padItemFalse";
+      Cell.onmouseover=function(){
+       Cell.className=id+"_padItemFalseHover";
+       window.status=ary[4];
+      }
+      Cell.onmouseout=function(){
+       Cell.className=id+"_padItemFalse";
+       window.status="";
+      }
+     }
+    }
+    else{
+     var hr=menu.crtElement("hr",Cell);
+     hr.className=id+"_hr";
+    }
+    Cell.onclick=function(){
+     event.cancelBubble=true;
+    }
+  }
+//菜单条的按钮
+  this.addMenuBarItem=function(ary,index){
+   var item=menu.crtElement("button",menu.bar);
+   item.value=ary[0];
+   item.disabled=!ary[3];
+   item.className=id+"_barItem";
+   item.onmouseover=function(){
+    if(menu.selectedIndex==-1){
+     item.className=id+"_barItemHover";
+    }
+    else{
+     menu.barItems[selectedIndex].className=id+"_barItem";
+     item.className=id+"_barItemDown";
+     menu.showMenu(index);
+    }
+    window.status=ary[4];
+   }
+   item.onmouseout=function(){
+    if(menu.selectedIndex==-1)  item.className=id+"_barItem"; 
+    window.status="";
+   }
+   item.onclick=function(){ 
+    event.cancelBubble=true;
+    if(menu.selectedIndex==-1){
+     item.className=id+"_barItemDown"; 
+     menu.showMenu(index);
+    }
+    else{
+     menu.hideMenu();
+     item.className=id+"_barItemHover"; 
+    }
+    menu.execute(ary);
+    item.blur(); 
+   }
+   return item;
+  }
+
+  //显示子菜单
+  this.showMenu=function(index){
+   if(menu.selectedIndex!=-1) menu.pads[selectedIndex].style.display="none";
+   menu.board.style.pixelLeft=menu.barItems[index].offsetLeft+2;
+   //menu.board.style.pixelHeight="";
+   if(menu.pads[index].rows.length>0) menu.board.style.display="";
+   else menu.board.style.display="none";
+   menu.pads[index].style.display="";
+   menu.selectedIndex=index;
+  }
+//隐藏子菜单
+  this.hideMenu=function(){
+   if(menu.selectedIndex==-1) return;
+   menu.barItems[menu.selectedIndex].className=id+"_barItem";
+   menu.pads[selectedIndex].style.display="none";
+   menu.selectedIndex=-1;
+   menu.board.style.display="none";
+  }
+
+  //执行菜单命令;
+  this.execute=function(ary){
+   if(ary[2]==null) return;
+   if(ary[1]=="js") { eval(ary[2]); menu.hideMenu(); }
+   else if(ary[1]==null || ary[1].toLowerCase=="_self") location.href=ary[2];
+   else{ var x=window.open(ary[2],ary[1]); x.focus(); }
+  }
+
+  //建立子菜单的显示面板
+  this.crtMenuBoard=function(){
+   document.write(
+    "<div id='"+id+"_board' style='position:absolute;width:160px;height:10px;left:0px;top:20px;background-color:#666666;z-index:99;display:none;'>"+
+     "<div style='position:absolute;width:100%;height:100%;left:0px;top:0px;'>"+
+      "<iframe id='"+id+"_frame' name='"+id+"_frame' width='100%' height='100%' frameborder='0' scrolling='no'></iframe>"+
+     "</div>"+
+     "<div id='"+id+"_pad' style='position:absolute;width:100%;height:100%;left:0px;top:0px;'></div>"+
+    "</div>"
+   );
+   menu.board=document.getElementById(id+"_board");
+   menu.pad=document.getElementById(id+"_pad");
+   menu.pad.className=id+"_board";
+   menu.pad.onselectstart=function(){ return false;}
+  }
+
+  //增加对像的一个子元素
+  this.crtElement=function(el,p){
+   return p.appendChild(document.createElement(el));
+  }
+
+  //安装菜单;
+  this.setup=function(){
+   menu.crtMenuBoard();
+   menu.crtMenuBar();
+   document.attachEvent("onclick",menu.hideMenu);
+  }
+
+  menu.setup();
+ }
+</script>
+</body>
+</html>

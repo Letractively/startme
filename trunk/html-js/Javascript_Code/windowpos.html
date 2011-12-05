@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body onmousemove="mousePos();mouseMove();">
+<br><br><br><br><br><br><br><br>
+<span id="info"></span>
+<br>
+<textarea name="textinfo" value="" rows="6" cols="80" style="bg-color:green;"></textarea>
+<script>
+function mousePos(){
+document.getElementsByName("textinfo")[0].value="鼠标距浏览器左边框："+window.event.clientX+" 鼠标距浏览器上边框："+window.event.clientY;
+document.getElementsByName("textinfo")[0].value +="\n滚动条距文档左边框："+document.body.scrollLeft+" 滚动条距文档上边框："+document.body.scrollTop;
+document.getElementsByName("textinfo")[0].value +="\n左边框："+document.body.clientLeft+" 上边框："+document.body.clientTop;
+document.getElementsByName("textinfo")[0].value +="\n鼠标距文档左边框："+(window.event.clientX+document.body.scrollLeft-document.body.clientLeft)+" 鼠标距文档上边框："+(window.event.clientY+document.body.scrollTop-document.body.clientTop);
+}
+
+function mouseMove(ev){
+ ev = ev || window.event;
+ var mousePos = mouseCoords(ev);
+ document.getElementById("info").innerHTML = "鼠标距文档左边框："+mousePos.x+" 鼠标距文档上边框："+mousePos.y;
+}
+
+function mouseCoords(ev){
+ if(ev.pageX || ev.pageY){
+  return {x:ev.pageX, y:ev.pageY};
+ }
+ return {
+  x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+  y:ev.clientY + document.body.scrollTop  - document.body.clientTop
+ };
+}
+
+</script>
+</body>
+</html>

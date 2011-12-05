@@ -1,0 +1,261 @@
+/*整体定义*/
+*{margin:0;padding:0;}
+body{background:#FFF;text-align:center;color:#06315C;margin:0;padding:0;}
+img{border:0;}
+ul,li{list-style:none;margin:0;padding:0;}
+div,ul,li,dl,dt,dd{font:12px/20px "宋体";color:#333;}
+table,td,input{font:12px "宋体";color:#333;}
+td{line-height:20px;}
+.clear{clear:both;}
+.hidden{ display:none;/*内容块样式*/}
+.more{background:#ddd; text-align:right; width:100%; padding-right:30px; line-height:22px; margin-bottom:3px;}
+/* 链接颜色 */
+a:link {color: #000; text-decoration:underline;}
+a:visited {color: #000;text-decoration:none;}
+a:hover {color: #000; text-decoration:underline;}
+a:active {color: #000;}
+
+/*状态区*/
+#pagestatus{ margin:0px; padding:0px; width:100%; padding:5px;}
+.i_in{width:100px;height:23px;line-height:22px; color:#666;}
+.i_bt{line-height:15px; padding-top:2px;}
+
+
+/*路径*/
+#path{width:100%; margin:10px 0;}
+#path th{font-weight:100; text-align:left;}
+#path td{text-align:right;}
+
+		/* 整个布局的容器DIV样式 */
+		#allcon {
+			width: 900px;	/*整个容器的宽度，这个是默认值，由初始化布局数据时初始化重新设定*/
+			border: black 0px solid;	/*有边框的话，内容的宽度就变小了，因为内容宽度＝对象宽度－边框宽度(调试时可将边框设定为1)*/
+			PADDING: 0px; /*内容距离边框的像素，为０说明内容紧挨着容器，所以内容宽度＝对象宽度－边框宽度－对象Padding*/
+		}
+		/* 小容器所在DIV的样式 */
+		#smalldiv {
+			 	WIDTH: 175px;	/*小容器的宽度(固定值)，可以修改此处调整*/
+			 	BORDER: #669999 0px solid;	/*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px;  /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+			 	MARGIN-bottom: 5px;  /*设置容器与其他元素的在底部空间(在设定的宽度外),会增加外宽度*/
+			 	float:left;	/*此设置说明此元素可以其他元素并列一行(宽度足够的话),为right时说明此元素从右边开始显示*/
+		}
+		/* 大容器所在DIV与小容器所在DIV隔开的DIV样式 */
+		#middlediv {
+			 	WIDTH: 5px; /*中间隔的宽度(固定值)，可以修改此处调整*/
+			 	BORDER: #669999 0px solid;	/*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+			 	float:left;	/*此设置说明此元素可以其他元素并列一行(宽度足够的话),为right时说明此元素从右边开始显示*/
+		}
+		/* 大容器所在DIV的样式 */
+		#bigdiv {
+				width:100%;	/*宽度＝整个容器的内容宽度－小容器－中间隔条（在脚本中会去动态调整，这里不用设置）*/
+			 	BORDER: #669999 0px solid; /*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+			 	MARGIN-bottom: 5px;  /*设置容器与其他元素的在底部空间(在设定的宽度外),会增加外宽度*/
+			 	float:left;	/*此设置说明此元素可以其他元素并列一行(宽度足够的话),为right时说明此元素从右边开始显示*/
+		}
+		/* 小容器的样式 */
+		#smallcon {
+			 	WIDTH: 100%; /*宽度与所在容器DIV的宽度一样*/
+			 	BORDER: #669999 0px solid; /*(调试时可将边框设定为1)*/
+			 	PADDING: 0px; /*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+		}
+		/* 大容器的样式 */
+		#bigcon {
+			 	WIDTH: 100%; /*宽度与所在容器DIV的宽度一样*/
+			 	BORDER: #669999 0px solid;	/*(调试时可将边框设定为1)*/
+			 	PADDING: 0px;	/*可设置内容距离边框的像素(在设定的宽度内)*/
+			 	MARGIN: 0px; /*可设置容器与其他元素的空间(在设定的宽度外),此处为0，不增加外宽度*/
+		}
+		/* 拖拽项的样式 */
+		.DragBox { 
+				WIDTH: 100%; /*拖拽项的宽度*/
+				/*BORDER: #000000 1px solid; 拖拽项的边框*/
+				PADDING: 0px; 
+				MARGIN-BOTTOM: 5px; /*设置拖拽项与下一拖拽项的底部空间*/
+		} 
+		/* 拖拽项鼠标悬浮的样式 */
+		.OverDragBox { 
+				WIDTH: 100%; /*悬浮时拖拽项的宽度*/
+				BORDER: #0000ff 1px solid; 悬浮时拖拽项的边框
+				PADDING: 0px; 
+				MARGIN-BOTTOM: 5px; /*设置悬浮时拖拽项与下一拖拽项的底部空间*/
+				CURSOR: move; /*悬浮在拖拽项时指针的样式*/
+		} 
+		/* 拖拽项拖拽时(随鼠标移动时)的样式 */
+		.DragDragBox { 
+				WIDTH: 100%; /*拖拽时拖拽项的宽度*/
+				BORDER: #ff0000 0px dotted;/*拖拽时拖拽项的边框*/
+				PADDING: 0px; 
+				MARGIN-BOTTOM: 5px; 
+				CURSOR: move; /*拖拽时拖拽项时指针的样式*/
+				FILTER: alpha(opacity=100); /*设置拖拽时拖拽项的透明程度*/
+		}
+		/* 显示拖拽历史信息的样式 */
+		.History {
+				FONT-SIZE: 10px; 
+				OVERFLOW: auto; 
+				WIDTH: 100%; 
+				FONT-FAMILY: verdana, tahoma, arial; 
+				HEIGHT: 82px
+		}
+		
+		
+		/*标准表格式内容*/
+.tabls{width:100%; margin-top:5px; border-bottom:1px solid #ddd;border-right:1px solid #ddd; font-size:12px; background-color:white;}
+.tabls .tabls_head{text-align:center; font-size:12px; line-height:24px;}
+.tabls .tabls_head td{border-top:1px solid #ddd; padding:0px 0px; background-color:#F8F8F8; font-size:12px; font-weight:bold;}
+.tabls td{border-left:1px solid #ddd;border-top:1px solid #ddd;}
+.tabls th{background-color:#eee; border-top:1px solid white;}
+.tabls td td{border:none; height:auto;}
+.tabls td li{list-style:none;}
+.tabls a:link,.tabls a:visited{color:#003399;}
+.tabls a:hover{color:#f00;}
+
+/*================弹出层开始===============*/
+.layer{width:250px; margin:0; padding:0; height:24px;}
+.layer_title{background:url(images/layout_bg_1.jpg); border:1px solid #4B7585; float:left; }
+.layer_title dt{background:url(images/layout_l_1.jpg) no-repeat 0 left; padding-left:8px; color:#fff; font-weight:bold; float:left; line-height:20px;}
+.layer_title dd{background:url(images/layout_r_1.jpg) no-repeat 0 right; float:right; padding:4px 8px 0 3px;height:16px;}
+.layer h2,.theme h2{background:#EEEEEE url(images/ico_submenuhide.gif) no-repeat 3px left; border-bottom:1px solid #DDDDDD; padding:3px 0px 0 15px; font:12px "宋体"; text-align:left; margin-top:5px;}
+
+/*网站布局弹出层*/
+#layout{position:absolute;top:60px;left:100px;}
+.layer_c{border:1px solid #4B7784; background:#fff; border-top:none; float:left; width:250px;}
+.lmnav .imgb{border:3px solid #C0E8F2;}
+.lmnav table{margin-top:8px;}
+.webwidth{text-align:left; margin:6px 0 3px 6px;}
+.webwidth span{color:#808080;}
+
+/*主题风格弹出层*/
+#theme{position:absolute;top:60px;left:180px;}
+.theme{width:405px;}
+.theme_c{border:1px solid #4B7784; background:#fff; border-top:none; float:left; width:405px; padding-bottom:8px;}
+
+/*普通主题*/
+.theme_pt_tu{margin:6px auto 0}
+.theme_pt{margin:4px auto ;}
+.theme_pt td{text-align:center;}
+.theme_pt td a{display:block; border:0px solid #ddd; margin:4px auto;}
+.theme_pt td a.theme_pt_now{border-color:red;border:3px solid red;}
+.theme_pt td a:hover{border:3px solid red;}
+#theme1 td a{width:25px; height:25px; text-decoration:none; line-height:0px;}
+#theme_a{filter:alpha(opacity=100);}
+#theme_b{filter:alpha(opacity=30);}
+.theme_pt_tu td{width:50%;}
+.theme_pt_tu td a:hover{border:2px solid #f60; width:114px; height:90px; display:block;}
+
+/*高级主题*/
+.theme_gj td{text-align:center;}
+.theme_gj td a{border:1px solid #ddd; padding:3px; margin:4px auto 0px auto;}
+.theme_gj td a.theme_gj_now{border-color:red;border:1px solid red;}
+.theme_gj td a:hover{border:1px solid red;}
+#theme2 td a{width:66px; height:66px;}
+
+/*背景样式*/
+.theme_bgstyle{margin:4px auto;}
+.theme_bgcolor{margin:auto 4px;}
+.theme_bgcolor td{text-align:center;}
+.theme_bgcolor td a{display:block; border:0px solid #ddd; margin:3px auto;}
+#theme3 td a{width:22px; height:15px; text-decoration:none; line-height:0px;}
+
+/*鼠标样式*/
+.theme_sb td{text-align:center;}
+.theme_sb td a{border:1px solid #BCBCBC;  margin:4px auto 0px auto;}
+.theme_sb td a.theme_sb_now{border-color:red;border:1px solid red;}
+.theme_sb td a:hover{border:1px solid red; }
+#theme4 td a{width:68px; height:68px;}
+
+/*导航设置弹出层*/
+#navset{position:absolute;top:60px;left:260px;}
+#syset{position:absolute;top:60px;left:340px;}
+.nav_sz{width:277px;}
+.nav_sz_c{border:1px solid #4B7784; background:#fff; border-top:none; float:left; width:277px;}
+.nav_sz_tab td{border-bottom:1px solid #ddd;}
+.nav_sz_tab .lmmc{width:75px; height:18px;margin:3px 0;}
+.nav_sz_tab .nav_title td{background:#EFEFEF; border-bottom:1px solid #ddd; font:bold 12px "宋体"; padding-top:5px; text-align:center;}
+
+/*招牌设置弹出层*/
+#zpset{position:absolute;top:60px;left:420px;}
+.zpsz{width:370px;}
+.zpsz_c{border:1px solid #4B7784; background:#fff; border-top:none; float:left; width:370px;}
+.zpsz_tab td{border-left:1px solid #ddd;border-bottom:1px solid #ddd; padding:3px 0 3px 5px ;}
+.zpsz_tab .zpsz_input{width:127px; height:18px;}
+.zpsz_tab .zpsz_name{width:216px; height:18px;}
+.zpsz_tab select{height:20px;}
+.zpsz_tab span{color:#A2A2A2;}
+.zpsz_font {margin:3px auto;}
+.zpsz_font span{background:#000; width:15px; height:15px; cursor:hand; margin-left:3px;}
+
+/*海报设置弹出层*/
+#hbset{position:absolute;top:60px;left:500px;}
+.hbsz{width:370px;}
+.hbsz_c{border:1px solid #4B7784; background:#fff; border-top:none; float:left; width:370px;}
+.hbsz_tab td{border-left:1px solid #ddd;border-bottom:1px solid #ddd; padding:3px 0 3px 8px ;}
+.hbsz_c textarea{width:270px; height:80px;}
+.hbsz_c span{color:#A2A2A2;}
+
+/*编辑名称*/
+#editname{position:absolute;top:60px;left:500px;}
+.editname{width:270px;}
+.editname_c{border:1px solid #4B7784; background:#fff; border-top:none; float:left; width:270px; padding:5px 10px; text-align:left;}
+
+/*下拉弹出层*/
+.condown{visibility:hidden;z-index:99;position:absolute;top:0px;left:0px;border:0px solid #FA8178; background:#fff;}
+.pull_down{border:1px solid #FA8178; background:#fff; width:76px;}
+.pull_down a:hover{background:url(images/down_bg.jpg)}
+.pull_down li{list-style:none; padding:0px; display:block; border-bottom:none;}
+.pull_down a{display:block; font-size:12px; margin:0px auto; background-position:center center; background-repeat:no-repeat; line-height:22px; width:76px; }
+.pull_down a:hover{text-decoration:none;}
+
+/*插入版块弹出层*/
+#charu{position:absolute;top:60px;left:260px;}
+.charu{width:220px;}
+.charu_c{border:1px solid #4B7784; background:#fff; border-top:none; float:left; width:220px;}
+.charu_tab td{border-bottom:1px solid #ddd; padding:3px 0px;}
+.charu_tab .charu_title td{background:#EFEFEF; border-bottom:1px solid #ddd; font:bold 12px "宋体"; padding:5px 0 0 0; text-align:center;}
+
+/*导航其它出层*/
+.condown{visibility:hidden;z-index:99;position:absolute;top:0px;left:0px;border:0px solid #FA8178; background:#fff;}
+.nav_othe_title{background:url(images/nav_1_tbg.gif);width:76px;line-height:23px; border-bottom:1px solid #A6D37E; }
+.nav_othe{border:1px solid #62AC23; background:#fff; width:76px;margin:0px;}
+.nav_othe a:hover{background:url(images/nav_1_tbg.gif);line-height:23px;}
+.nav_othe li{list-style:none; padding:0px; display:block; border-bottom:none;}
+.nav_othe a{display:block; font-size:12px; margin:0px auto; line-height:23px; width:76px; }
+.nav_othe a:hover{text-decoration:none;}
+
+#anidiv{position:absolute;top:60px;left:100px;}
+#helpanidiv{position:absolute;top:60px;left:100px;}
+/*================弹出层结束===============*/
+
+/*布局导航*/
+.layout{ background:url(images/layout_bg.jpg);float:left;padding:4px 0 4px 0;}
+.layout_t {float:left;width:80px;}
+.layout_r{float:left; padding-right:5px;}
+.layout_r li{float:left}
+.layout_c{ background:white; float:left}
+.layout h5{font:bold 12px/25px "宋体"; color:#ff0000; text-align:left;}
+.layout_nav span{ line-height:33px; float:left; padding:0 5px 0 5px;background:url(images/layout_bg_2.jpg) right 0 no-repeat; line-height:33px; margin-right:15px;}
+.layout_nav img{margin-top:4px;;}
+.layout_nav li{background:url(images/layout_bg_2.jpg) right 0 no-repeat; width:80px; line-height:33px; padding-left:2px;}
+.layout_nav li a{background:url(images/layout_button1.jpg) 0 no-repeat;width:75px;height:33px;display:block; padding:0 0 0 8px;}
+.layout_nav li a:hover{ background:url(images/layout_button.jpg) 0 no-repeat;width:75px;height:33px; text-decoration:none; color:#ff0000;}
+.layout_nav a,.layout_nav a:visited{text-decoration:none;}
+
+/*帮助*/
+#help{position:absolute;top:60px;left:100px;}
+.help{width:299px;}
+.help_t{background:url(images/help_1.gif); height:21px;}
+.help_c{border-left:2px solid #7DB1C8; border-right:2px solid #7DB1C8; background:#fff; text-align:left;clear:both; padding:0px 5px}
+.help_b{background:url(images/help_3.gif); height:9px; font-size:1px}
+.help_title {clear:both;width:100%;}
+.help_title h5{float:left;}
+.help_title img{float:right;}
+
+/*页尾*/
+#pagetail{border-top:2px solid #fff; width:100%; background:#fff; clear:both}

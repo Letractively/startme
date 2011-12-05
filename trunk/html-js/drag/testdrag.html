@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>试题2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<SCRIPT language=javascript>
+<!--
+ //问题1
+    var Interval=0;
+    var xPos = 10;
+    var step = 1;
+    var isLeft = true;
+    
+ 	function changePos() {
+		divObj.style.left = xPos + document.body.scrollLeft + "px";
+		if (isLeft) {
+			xPos = xPos + step;
+		}
+		else {
+			xPos = xPos - step;
+		}
+		if (xPos < 0) {
+			isLeft = true;
+			xPos = 0;
+		}
+		if (xPos >= (document.body.clientWidth - divObj.offsetWidth)) {
+			isLeft = false;
+			xPos = (document.body.clientWidth - divObj.offsetWidth);
+		}
+	}
+
+	function onMoveV(obj){
+		if(obj.value=="开始"){
+			obj.value="停止";
+			Interval=setInterval("changePos()", 16);
+		}else{
+			obj.value="开始";
+			clearInterval(Interval);
+		}
+	}
+	
+//问题2
+	var isDrag = false;
+    var offsetX = 0;
+    var offsetY = 0;
+	
+	function onChangeDivColor(col){
+		div_element.style.background=col;
+	}
+	
+	function onMouseOutDiv(col){
+		div_element.style.background=col;
+		if(isDrag){
+			stopDrag();
+        }
+	}
+	
+	function onMouseDown(event){
+		//在ie中event.button; 在firefox中event.which
+		if((event.which && event.which == 1) ||
+            (event.button && event.button == 1)){
+			isDrag = true;
+            offsetY =  event.clientY;
+            offsetX =  event.clientX;
+			divObj.style.cursor="move";
+		}
+	}
+	
+	function stopDrag(){
+		isDrag = false;
+		divObj.style.cursor="default";
+	    originalLeft = parseInt(divObj.style.left);
+        originalTop  = parseInt(divObj.style.top);
+	}
+		
+	function onMouseMove(event){
+		if(isDrag){
+			divObj.style.left = event.clientX + originalLeft - offsetX + "px";
+			divObj.style.top  = event.clientY + originalTop - offsetY + "px";
+		}
+	}
+//-->
+</SCRIPT>
+</head>
+
+<body>
+试题2
+<br>
+测试内容：移动“DIV元素”。(共30分)
+<br>要求：
+<br>1、点“开始”按钮后，“开始”按钮变为“停止”按钮，
+“DIV元素”平滑地往右移动，到达页面的右边框时自动改为往左移动，，到达页面的左边框后又改变方向，依此循环，
+直到点击“停止”按钮后停止移动。(10分)
+<br>2、当鼠标悬停在DIV元素上时，它的背景色发生变化，
+接着按下鼠标左键后可拖拽DIV元素，松开鼠标左键后DIV元素不可拖拽，鼠标移出DIV元素时背景色恢复。(20分)
+<br><br>
+注：发现抄袭别人的代码的，该题为零分。
+<br>
+=========================================================================================
+<br><br><br>
+
+<input type="button" value="开始" onclick="onMoveV(this);">
+<!--firefox中在transitional.dtd限制下一定要style="position:absolute"
+否则div就移动不了-->
+<div id="div_element" onMouseUp="stopDrag();" onMouseOver="onChangeDivColor('#660000');" onMouseOut="onMouseOutDiv('#0000ff');" style="position:absolute;top:300px;left:10px;width:100px;height:80px;background-color:#0000ff;border:#ff0000 solid 3px"><font color="#ffffff">DIV元素</font></div>
+</body>
+<script language=javascript>
+<!--
+    ///firefox中在transitional.dtd限制下一定要
+    var divObj = document.getElementById("div_element");
+    var originalLeft = parseInt(divObj.style.left);
+    var originalTop  = parseInt(divObj.style.top);
+    /*event 加入firefox中的各控件事件里;
+      ie可以不用(event在ie中的各控件事件里是默认的存在的)*/
+	function observe(element, name, observer) {
+	    if(element.addEventListener) {
+	      element.addEventListener(name, observer,false);//"false"在fireFox中一定要
+	    } else if (element.attachEvent) {
+	      element.attachEvent('on'+name, observer);
+	    }
+   }
+   Function.prototype.bindAsEventListener = function(object) {
+	  var __method = this;
+	  return function(event) {
+	    __method.call(object, event);
+	  }
+	}
+	observe(divObj, "mousedown", onMouseDown.bindAsEventListener(divObj));
+    observe(document, "mousemove", onMouseMove.bindAsEventListener(divObj));
+//-->
+</script>
+</html>

@@ -1,0 +1,87 @@
+<script>
+/*
+* 功能：UBB编辑控制函数
+* 参数: tag 为标签名称　val 为标签参数
+* 返回：[标签名称=参数]修饰文字[/标签名称]
+* [标签名称]修饰文字[/标签名称]
+* [标签名称=参数][/标签名称]
+*/
+function ubbaction(tag, val){
+var tag = tag.toUpperCase();
+if(typeof(val) == "undefined"){
+val = "";
+}
+if(val){
+val = "=" + val;
+}
+
+var r = document.selection.createRange().text;
+if(tag == "URL"){
+val = prompt("请输入连接地址:(留空为选定地址)", "http://");
+if(val != "http://" && val != ""){
+val = "=" + val;
+}else{
+val = "";
+}
+}
+if(tag == "MAIL"){
+val = prompt("请输入邮箱地址:(留空为选定地址)", "");
+if(val != ""){
+val = "=" + val;
+}
+}
+rr = "[" + tag + val + "]" + r + "[/" + tag +"]";
+if(r){
+document.selection.createRange().text = rr;
+}else{
+document.all.content.value += rr;
+}
+}
+</script>
+<form name="form1" method="post" action="">
+<input type="button" name="Submit" value="B" onClick="ubbaction('B')">
+<input type="button" name="Submit" value="I" onClick="ubbaction('I')">
+<input type="button" name="Submit" value="U" onClick="ubbaction('U')">
+<select name='ffont' onChange="ubbaction('FONT', this.options[this.selectedIndex].value); this.value = 0;">
+<option value='0'>FONT</option>
+<option value='Arial' style='font-family:Arial'>Arial</option>
+<option value='Times' style='font-family:Times'>Times</option>
+<option value='Courier' style='font-family:Courier'>Courier</option>
+<option value='Impact' style='font-family:Impact'>Impact</option>
+<option value='Geneva' style='font-family:Geneva'>Geneva</option>
+<option value='Optima' style='font-family:Optima'>Optima</option>
+</select>
+<select name='fsize' onChange="ubbaction('SIZE', this.options[this.selectedIndex].value); this.value = 0;">
+<option value='0'>SIZE</option>
+<option value='1'>Small</option>
+<option value='7'>Large</option>
+<option value='14'>Largest</option>
+</select>
+<select name='fcolor' onChange="ubbaction('COLOR', this.options[this.selectedIndex].value); this.value = 0;">
+<option value='0'>COLOR</option>
+<option value=black style="background-color:black;color:black">Black</option>
+<option value=red style="background-color:red;color:red">Red</option>
+<option value=yellow style="background-color:yellow;color:yellow">Yellow</option>
+<option value=pink style="background-color:pink;color:pink">Pink</option>
+<option value=green style="background-color:green;color:green">Green</option>
+<option value=orange style="background-color:orange;color:orange">Orange</option>
+<option value=purple style="background-color:purple;color:purple">Purple</option>
+<option value=blue style="background-color:blue;color:blue">Blue</option>
+<option value=beige style="background-cOlor:beige;color:beige">Beige</option>
+<option value=brown style="background-color:brown;color:brown">Brown</option>
+<option value=teal style="background-color:teal;color:teal">Teal</option>
+<option value=navy style="background-color:navy;colOr:navy">Navy</option>
+<option value=maroon style="background-color:maroon;color:maroon">Maroon</option>
+<option value=limegreen style="background-color:limegreen;color:limegreen">LimeGreen</option>
+</select>
+<br>
+<input type="button" name="Submit" value="URL" onClick="ubbaction('URL')">
+<input type="button" name="Submit" value="IMG" onClick="ubbaction('IMG')">
+<input type="button" name="Submit" value="CODE" onClick="ubbaction('CODE')">
+<input type="button" name="Submit" value="MAIL" onClick="ubbaction('MAIL')">
+<input type="button" name="Submit" value="QUOTE" onClick="ubbaction('QUOTE')">
+<input type="button" name="Submit" value="LIST" onClick="ubbaction('LIST')">
+<br>
+<textarea name="content" cols="50" rows="8" id="content"></textarea>
+<input type="submit" name="submit" value="提交">
+</form>
