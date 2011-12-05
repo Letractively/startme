@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>ManSys</display-name>
+	
+<!-- 	<filter> -->
+<!-- 		<filter-name>MyFilter</filter-name> -->
+<!-- 		<filter-class>com.yehongyu.mansys.web.common.MyFilter</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter> -->
+<!-- 		<filter-name>MyFilter2</filter-name> -->
+<!-- 		<filter-class>com.yehongyu.mansys.web.common.MyFilter2</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>MyFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>MyFilter2</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+	
+<!-- 	<listener> -->
+<!-- 		<listener-class>com.yehongyu.mansys.web.common.MyListener</listener-class> -->
+<!-- 	</listener> -->
+	
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>myservlet</servlet-name> -->
+<!-- 		<servlet-class>com.yehongyu.mansys.web.common.MyServlet</servlet-class> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>myservlet</servlet-name> -->
+<!-- 		<url-pattern>/yehy</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>LoginSubmit</servlet-name> -->
+<!-- 		<servlet-class>com.yehongyu.mansys.web.Login</servlet-class> -->
+<!-- 	</servlet> -->
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>LoginSubmit</servlet-name> -->
+<!-- 		<url-pattern>/loginsubmit</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+
+
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<resource-ref>
+		<description>yehyDB</description>
+		<res-ref-name>yehy</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+</web-app>

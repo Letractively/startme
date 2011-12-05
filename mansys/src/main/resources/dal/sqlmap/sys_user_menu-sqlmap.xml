@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SysUserMenuDAO">
+	<!-- Alias Map Defined -->
+	<typeAlias alias="SysUserMenuQuery" type="com.yehongyu.mansys.dao.query.SysUserMenuQuery" />
+	<typeAlias alias="SysUserMenuDO" type="com.yehongyu.mansys.dao.domain.SysUserMenuDO" />
+	<resultMap id="sysUserMenuDO" class="SysUserMenuDO">
+		<result property="id" column="id" />
+		<result property="userid" column="userid" />
+		<result property="menuid" column="menuid" />
+		<result property="gmtCreate" column="gmt_create" />
+		<result property="gmtModified" column="gmt_modified" />
+	</resultMap>
+		
+	<!-- Select SQL -->
+	<sql id="sysUserMenuDO.selector">
+		SELECT id,userid,menuid,gmt_create,gmt_modified		
+		FROM sys_user_menu
+	</sql>
+	<sql id="sysUserMenuDOList.where">
+		<dynamic>
+			<isNotEmpty property="idList" prepend=" AND ">
+				id in
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+			<isNotNull property="userid" prepend=" AND ">
+				userid=#userid#
+		  	</isNotNull>
+			<isNotNull property="menuid" prepend=" AND ">
+				menuid=#menuid#
+		  	</isNotNull>
+		</dynamic>
+	</sql>
+	<sql id="sysUserMenuDOList.order">
+		<dynamic>
+			ORDER BY 
+			<isNotEmpty property="orderFields">
+				<iterate property="orderFields" conjunction="," open="" close="">
+					#orderFields[].fieldName# #orderFields[].order#
+		        </iterate>
+			</isNotEmpty>
+			<isEmpty property="orderFields">
+				gmt_create DESC
+			</isEmpty>
+		</dynamic>
+	</sql>
+	<select id="SysUserMenuDAO.getSysUserMenuDO" parameterClass="SysUserMenuQuery" resultMap="sysUserMenuDO">
+		<include refid="sysUserMenuDO.selector" />
+		WHERE id=#id#
+	</select>
+	<select id="SysUserMenuDAO.getSysUserMenuDOList" parameterClass="SysUserMenuQuery" resultMap="sysUserMenuDO">
+		<include refid="sysUserMenuDO.selector" />
+		WHERE 1=1
+		<include refid="sysUserMenuDOList.where" />
+		ORDER BY gmt_create DESC
+	</select>
+	<select id="SysUserMenuDAO.getSysUserMenuDOListWithPage" parameterClass="SysUserMenuQuery" resultMap="sysUserMenuDO">
+		<include refid="sysUserMenuDO.selector" />
+		WHERE 1=1
+		<include refid="sysUserMenuDOList.where" />
+	  	ORDER BY gmt_modified DESC,id DESC
+	  	LIMIT #startRow#,#pageSize#
+	</select>
+	<select id="SysUserMenuDAO.getSysUserMenuDOListCount" parameterClass="SysUserMenuQuery" resultClass="int">
+		SELECT count(*) FROM sys_user_menu
+		WHERE 1=1
+		<include refid="sysUserMenuDOList.where" />
+	</select>
+
+	<!-- Insert SQL -->
+	<insert id="SysUserMenuDAO.insertSysUserMenuDO" parameterClass="SysUserMenuDO">
+		INSERT INTO sys_user_menu(userid,menuid,gmt_create,gmt_modified)
+		VALUES(#userid#,#menuid#,now(),now())
+		<selectKey resultClass="long" type="post" keyProperty="id">
+           SELECT last_insert_id() AS id
+		</selectKey>
+	</insert>
+	
+	<!-- Update SQL -->
+	<update id="SysUserMenuDAO.updateSysUserMenuDO" parameterClass="SysUserMenuDO">
+		UPDATE sys_user_menu SET gmt_modified=now()
+		<isNotNull prepend="," property="userid">
+			userid = #userid#
+      	</isNotNull>
+		<isNotNull prepend="," property="menuid">
+			menuid = #menuid#
+      	</isNotNull>
+		WHERE id = #id#
+	</update>
+	<update id="SysUserMenuDAO.updateSysUserMenuDOList" parameterClass="SysUserMenuDO">
+		UPDATE sys_user_menu SET gmt_modified=now()
+		<isNotNull prepend="," property="userid">
+			userid = #userid#
+      	</isNotNull>
+		<isNotNull prepend="," property="menuid">
+			menuid = #menuid#
+      	</isNotNull>
+		<dynamic prepend=" WHERE ">
+			<isNotEmpty property="idList" prepend=" AND ">
+				id IN 
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<!-- Delete SQL -->
+	<delete id="SysUserMenuDAO.deleteSysUserMenuDO" parameterClass="long">
+		DELETE FROM sys_user_menu
+		WHERE id = #id#
+  	</delete>
+  	<delete id="SysUserMenuDAO.deleteSysUserMenuDOList" parameterClass="SysUserMenuQuery">
+		DELETE FROM sys_user_menu
+		<dynamic prepend=" WHERE ">
+			<isNotEmpty property="idList" prepend=" AND ">
+				id IN 
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+		</dynamic>
+  	</delete>
+</sqlMap>

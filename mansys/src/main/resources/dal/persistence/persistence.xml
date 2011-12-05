@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- DBDataSource -->
+	<bean id="testDB" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://10.232.38.32:3306/test?autoReconnect=true&amp;characterEncoding=GBK&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true"/>
+		<property name="username" value="tripagent"/>
+        <property name="password" value="tripagent"/>
+    </bean>
+	<!-- DBTransaction -->
+	<bean id="testTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="testDB" />
+	</bean>
+	<bean id="testTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="testTransactionManager" />
+	</bean>
+	<!-- DBSqlTemplate -->
+	<bean id="testSqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:dal/persistence/sqlmap-config.xml" />
+		<property name="dataSource" ref="testDB" />
+	</bean>
+	<bean id="testSqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="testSqlMap" />
+	</bean>
+    <bean id="baseDAO" class="com.yehongyu.mansys.dao.ibatis.BaseDAO">
+    	<property name="sqlMapClientTemplate" ref="testSqlMapClientTemplate" />
+    </bean>
+
+	
+</beans>
