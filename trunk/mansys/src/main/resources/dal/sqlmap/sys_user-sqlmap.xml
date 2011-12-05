@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SysUserDAO">
+	<!-- Alias Map Defined -->
+	<typeAlias alias="SysUserQuery" type="com.yehongyu.mansys.dao.query.SysUserQuery" />
+	<typeAlias alias="SysUserDO" type="com.yehongyu.mansys.dao.domain.SysUserDO" />
+	<resultMap id="sysUserDO" class="SysUserDO">
+		<result property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="issys" column="issys" />
+		<result property="status" column="status" />
+		<result property="memo" column="memo" />
+		<result property="gmtCreate" column="gmt_create" />
+		<result property="gmtModified" column="gmt_modified" />
+	</resultMap>
+		
+	<!-- Select SQL -->
+	<sql id="sysUserDO.selector">
+		SELECT id,username,password,name,issys,status,memo,gmt_create,gmt_modified		
+		FROM sys_user
+	</sql>
+	<sql id="sysUserDOList.where">
+		<dynamic>
+			<isNotEmpty property="idList" prepend=" AND ">
+				id in
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+			<isNotNull property="username" prepend=" AND ">
+				username=#username#
+		  	</isNotNull>
+			<isNotNull property="password" prepend=" AND ">
+				password=#password#
+		  	</isNotNull>
+			<isNotNull property="name" prepend=" AND ">
+				name=#name#
+		  	</isNotNull>
+			<isNotNull property="issys" prepend=" AND ">
+				issys=#issys#
+		  	</isNotNull>
+			<isNotNull property="status" prepend=" AND ">
+				status=#status#
+		  	</isNotNull>
+			<isNotNull property="memo" prepend=" AND ">
+				memo=#memo#
+		  	</isNotNull>
+		</dynamic>
+	</sql>
+	<sql id="sysUserDOList.order">
+		<dynamic>
+			ORDER BY 
+			<isNotEmpty property="orderFields">
+				<iterate property="orderFields" conjunction="," open="" close="">
+					#orderFields[].fieldName# #orderFields[].order#
+		        </iterate>
+			</isNotEmpty>
+			<isEmpty property="orderFields">
+				gmt_create DESC
+			</isEmpty>
+		</dynamic>
+	</sql>
+	<select id="SysUserDAO.getSysUserDO" parameterClass="SysUserQuery" resultMap="sysUserDO">
+		<include refid="sysUserDO.selector" />
+		WHERE id=#id#
+	</select>
+	<select id="SysUserDAO.getSysUserDOList" parameterClass="SysUserQuery" resultMap="sysUserDO">
+		<include refid="sysUserDO.selector" />
+		WHERE 1=1
+		<include refid="sysUserDOList.where" />
+		ORDER BY gmt_create DESC
+	</select>
+	<select id="SysUserDAO.getSysUserDOListWithPage" parameterClass="SysUserQuery" resultMap="sysUserDO">
+		<include refid="sysUserDO.selector" />
+		WHERE 1=1
+		<include refid="sysUserDOList.where" />
+	  	ORDER BY gmt_modified DESC,id DESC
+	  	LIMIT #startRow#,#pageSize#
+	</select>
+	<select id="SysUserDAO.getSysUserDOListCount" parameterClass="SysUserQuery" resultClass="int">
+		SELECT count(*) FROM sys_user
+		WHERE 1=1
+		<include refid="sysUserDOList.where" />
+	</select>
+
+	<!-- Insert SQL -->
+	<insert id="SysUserDAO.insertSysUserDO" parameterClass="SysUserDO">
+		INSERT INTO sys_user(username,password,name,issys,status,memo,gmt_create,gmt_modified)
+		VALUES(#username#,#password#,#name#,#issys#,#status#,#memo#,now(),now())
+		<selectKey resultClass="long" type="post" keyProperty="id">
+           SELECT last_insert_id() AS id
+		</selectKey>
+	</insert>
+	
+	<!-- Update SQL -->
+	<update id="SysUserDAO.updateSysUserDO" parameterClass="SysUserDO">
+		UPDATE sys_user SET gmt_modified=now()
+		<isNotNull prepend="," property="username">
+			username = #username#
+      	</isNotNull>
+		<isNotNull prepend="," property="password">
+			password = #password#
+      	</isNotNull>
+		<isNotNull prepend="," property="name">
+			name = #name#
+      	</isNotNull>
+		<isNotNull prepend="," property="issys">
+			issys = #issys#
+      	</isNotNull>
+		<isNotNull prepend="," property="status">
+			status = #status#
+      	</isNotNull>
+		<isNotNull prepend="," property="memo">
+			memo = #memo#
+      	</isNotNull>
+		WHERE id = #id#
+	</update>
+	<update id="SysUserDAO.updateSysUserDOList" parameterClass="SysUserDO">
+		UPDATE sys_user SET gmt_modified=now()
+		<isNotNull prepend="," property="username">
+			username = #username#
+      	</isNotNull>
+		<isNotNull prepend="," property="password">
+			password = #password#
+      	</isNotNull>
+		<isNotNull prepend="," property="name">
+			name = #name#
+      	</isNotNull>
+		<isNotNull prepend="," property="issys">
+			issys = #issys#
+      	</isNotNull>
+		<isNotNull prepend="," property="status">
+			status = #status#
+      	</isNotNull>
+		<isNotNull prepend="," property="memo">
+			memo = #memo#
+      	</isNotNull>
+		<dynamic prepend=" WHERE ">
+			<isNotEmpty property="idList" prepend=" AND ">
+				id IN 
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<!-- Delete SQL -->
+	<delete id="SysUserDAO.deleteSysUserDO" parameterClass="long">
+		DELETE FROM sys_user
+		WHERE id = #id#
+  	</delete>
+  	<delete id="SysUserDAO.deleteSysUserDOList" parameterClass="SysUserQuery">
+		DELETE FROM sys_user
+		<dynamic prepend=" WHERE ">
+			<isNotEmpty property="idList" prepend=" AND ">
+				id IN 
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+		</dynamic>
+  	</delete>
+</sqlMap>

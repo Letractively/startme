@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="SysMenuDAO">
+	<!-- Alias Map Defined -->
+	<typeAlias alias="SysMenuQuery" type="com.yehongyu.mansys.dao.query.SysMenuQuery" />
+	<typeAlias alias="SysMenuDO" type="com.yehongyu.mansys.dao.domain.SysMenuDO" />
+	<resultMap id="sysMenuDO" class="SysMenuDO">
+		<result property="id" column="id" />
+		<result property="menucode" column="menucode" />
+		<result property="menuname" column="menuname" />
+		<result property="menuurl" column="menuurl" />
+		<result property="menulevel" column="menulevel" />
+		<result property="isleaf" column="isleaf" />
+		<result property="parentscode" column="parentscode" />
+		<result property="rootcode" column="rootcode" />
+		<result property="displayorder" column="displayorder" />
+		<result property="status" column="status" />
+		<result property="issys" column="issys" />
+		<result property="gmtCreate" column="gmt_create" />
+		<result property="gmtModified" column="gmt_modified" />
+	</resultMap>
+		
+	<!-- Select SQL -->
+	<sql id="sysMenuDO.selector">
+		SELECT id,menucode,menuname,menuurl,menulevel,isleaf,parentscode,rootcode,displayorder,status,issys,gmt_create,gmt_modified		
+		FROM sys_menu
+	</sql>
+	<sql id="sysMenuDOList.where">
+		<dynamic>
+			<isNotEmpty property="idList" prepend=" AND ">
+				id in
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+			<isNotNull property="menucode" prepend=" AND ">
+				menucode=#menucode#
+		  	</isNotNull>
+			<isNotNull property="menuname" prepend=" AND ">
+				menuname=#menuname#
+		  	</isNotNull>
+			<isNotNull property="menuurl" prepend=" AND ">
+				menuurl=#menuurl#
+		  	</isNotNull>
+			<isNotNull property="menulevel" prepend=" AND ">
+				menulevel=#menulevel#
+		  	</isNotNull>
+			<isNotNull property="isleaf" prepend=" AND ">
+				isleaf=#isleaf#
+		  	</isNotNull>
+			<isNotNull property="parentscode" prepend=" AND ">
+				parentscode=#parentscode#
+		  	</isNotNull>
+			<isNotNull property="rootcode" prepend=" AND ">
+				rootcode=#rootcode#
+		  	</isNotNull>
+			<isNotNull property="displayorder" prepend=" AND ">
+				displayorder=#displayorder#
+		  	</isNotNull>
+			<isNotNull property="status" prepend=" AND ">
+				status=#status#
+		  	</isNotNull>
+			<isNotNull property="issys" prepend=" AND ">
+				issys=#issys#
+		  	</isNotNull>
+		</dynamic>
+	</sql>
+	<sql id="sysMenuDOList.order">
+		<dynamic>
+			ORDER BY 
+			<isNotEmpty property="orderFields">
+				<iterate property="orderFields" conjunction="," open="" close="">
+					#orderFields[].fieldName# #orderFields[].order#
+		        </iterate>
+			</isNotEmpty>
+			<isEmpty property="orderFields">
+				gmt_create DESC
+			</isEmpty>
+		</dynamic>
+	</sql>
+	<select id="SysMenuDAO.getSysMenuDO" parameterClass="SysMenuQuery" resultMap="sysMenuDO">
+		<include refid="sysMenuDO.selector" />
+		WHERE id=#id#
+	</select>
+	<select id="SysMenuDAO.getSysMenuDOList" parameterClass="SysMenuQuery" resultMap="sysMenuDO">
+		<include refid="sysMenuDO.selector" />
+		WHERE 1=1
+		<include refid="sysMenuDOList.where" />
+		ORDER BY gmt_create DESC
+	</select>
+	<select id="SysMenuDAO.getSysMenuDOListWithPage" parameterClass="SysMenuQuery" resultMap="sysMenuDO">
+		<include refid="sysMenuDO.selector" />
+		WHERE 1=1
+		<include refid="sysMenuDOList.where" />
+	  	ORDER BY gmt_modified DESC,id DESC
+	  	LIMIT #startRow#,#pageSize#
+	</select>
+	<select id="SysMenuDAO.getSysMenuDOListCount" parameterClass="SysMenuQuery" resultClass="int">
+		SELECT count(*) FROM sys_menu
+		WHERE 1=1
+		<include refid="sysMenuDOList.where" />
+	</select>
+
+	<!-- Insert SQL -->
+	<insert id="SysMenuDAO.insertSysMenuDO" parameterClass="SysMenuDO">
+		INSERT INTO sys_menu(menucode,menuname,menuurl,menulevel,isleaf,parentscode,rootcode,displayorder,status,issys,gmt_create,gmt_modified)
+		VALUES(#menucode#,#menuname#,#menuurl#,#menulevel#,#isleaf#,#parentscode#,#rootcode#,#displayorder#,#status#,#issys#,now(),now())
+		<selectKey resultClass="long" type="post" keyProperty="id">
+           SELECT last_insert_id() AS id
+		</selectKey>
+	</insert>
+	
+	<!-- Update SQL -->
+	<update id="SysMenuDAO.updateSysMenuDO" parameterClass="SysMenuDO">
+		UPDATE sys_menu SET gmt_modified=now()
+		<isNotNull prepend="," property="menucode">
+			menucode = #menucode#
+      	</isNotNull>
+		<isNotNull prepend="," property="menuname">
+			menuname = #menuname#
+      	</isNotNull>
+		<isNotNull prepend="," property="menuurl">
+			menuurl = #menuurl#
+      	</isNotNull>
+		<isNotNull prepend="," property="menulevel">
+			menulevel = #menulevel#
+      	</isNotNull>
+		<isNotNull prepend="," property="isleaf">
+			isleaf = #isleaf#
+      	</isNotNull>
+		<isNotNull prepend="," property="parentscode">
+			parentscode = #parentscode#
+      	</isNotNull>
+		<isNotNull prepend="," property="rootcode">
+			rootcode = #rootcode#
+      	</isNotNull>
+		<isNotNull prepend="," property="displayorder">
+			displayorder = #displayorder#
+      	</isNotNull>
+		<isNotNull prepend="," property="status">
+			status = #status#
+      	</isNotNull>
+		<isNotNull prepend="," property="issys">
+			issys = #issys#
+      	</isNotNull>
+		WHERE id = #id#
+	</update>
+	<update id="SysMenuDAO.updateSysMenuDOList" parameterClass="SysMenuDO">
+		UPDATE sys_menu SET gmt_modified=now()
+		<isNotNull prepend="," property="menucode">
+			menucode = #menucode#
+      	</isNotNull>
+		<isNotNull prepend="," property="menuname">
+			menuname = #menuname#
+      	</isNotNull>
+		<isNotNull prepend="," property="menuurl">
+			menuurl = #menuurl#
+      	</isNotNull>
+		<isNotNull prepend="," property="menulevel">
+			menulevel = #menulevel#
+      	</isNotNull>
+		<isNotNull prepend="," property="isleaf">
+			isleaf = #isleaf#
+      	</isNotNull>
+		<isNotNull prepend="," property="parentscode">
+			parentscode = #parentscode#
+      	</isNotNull>
+		<isNotNull prepend="," property="rootcode">
+			rootcode = #rootcode#
+      	</isNotNull>
+		<isNotNull prepend="," property="displayorder">
+			displayorder = #displayorder#
+      	</isNotNull>
+		<isNotNull prepend="," property="status">
+			status = #status#
+      	</isNotNull>
+		<isNotNull prepend="," property="issys">
+			issys = #issys#
+      	</isNotNull>
+		<dynamic prepend=" WHERE ">
+			<isNotEmpty property="idList" prepend=" AND ">
+				id IN 
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<!-- Delete SQL -->
+	<delete id="SysMenuDAO.deleteSysMenuDO" parameterClass="long">
+		DELETE FROM sys_menu
+		WHERE id = #id#
+  	</delete>
+  	<delete id="SysMenuDAO.deleteSysMenuDOList" parameterClass="SysMenuQuery">
+		DELETE FROM sys_menu
+		<dynamic prepend=" WHERE ">
+			<isNotEmpty property="idList" prepend=" AND ">
+				id IN 
+				<iterate property="idList" conjunction="," open="(" close=")">
+					#idList[]#
+		        </iterate>
+			</isNotEmpty>
+		</dynamic>
+  	</delete>
+</sqlMap>

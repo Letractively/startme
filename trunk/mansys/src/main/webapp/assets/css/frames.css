@@ -1,0 +1,46 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT-FAMILY: Verdana, Tahoma, Arial; BACKGROUND-COLOR: #ffffff;font color:#000
+}
+A:link {
+	COLOR: #ffcc99; TEXT-DECORATION: underline
+}
+A:hover {
+	BACKGROUND-COLOR: #f1f8f3; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #666
+}
+A:visited {
+	COLOR: #ead38e; TEXT-DECORATION: underline
+}
+H1 {
+	FONT-WEIGHT: normal; FONT-SIZE: 20px; COLOR: #016701
+}
+H2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 16px; COLOR: #016701; PADDING-TOP: 20px
+}
+P.note {
+	BORDER-RIGHT: #808080 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 10px; FONT-SIZE: 8pt; PADDING-BOTTOM: 10px; BORDER-LEFT: #ffffff 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #808080 1px solid; BACKGROUND-COLOR: #ffffd7
+}
+PRE {
+	MARGIN-LEFT: 20px
+}
+CODE {
+	COLOR: #006600; FONT-FAMILY: Courier, 'Courier New', sans-serif
+}
+SPAN.var {
+	COLOR: #000090
+}
+SPAN.file {
+	FONT-SIZE: 14px; FONT-FAMILY: Times New Roman, Verdana, Tahoma, Arial
+}
+SPAN.listh {
+	FONT-WEIGHT: 600; COLOR: #016701; FONT-FAMILY: Verdana, Tahoma, Arial
+}
+SPAN.emph {
+	FONT-WEIGHT: bold; FONT-STYLE: italic
+}
+/*表格样式*/
+.data1{font:12px;FONT-WEIGHT: bold;background:#F3F8FC;border-top:  1px solid #83A6C2;border-left:  1px solid #83A6C2;}
+.datacontent{font:12px;background:#F3F8FC;border-bottom:  1px solid #83A6C2;border-right:  1px solid #83A6C2;}
+.data{font:12px;FONT-WEIGHT: bold;background:#B0D9FA;border-bottom:  1px solid #83A6C2;border-right:  1px solid #83A6C2;}
