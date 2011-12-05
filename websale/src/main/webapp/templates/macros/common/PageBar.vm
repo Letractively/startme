@@ -1,0 +1,260 @@
+##
+## $Id$
+## Put your Application macros in this file.
+	
+##	PageBarI 翻页栏（必须放在当前Form表单里）
+##	$type 传入的翻页栏类型。
+##   
+#macro(PageBarI $type)
+		<input type="hidden" name="actionType" value="0">
+		<input type="hidden" name="page" value="$!pageBean.page">
+	    <!--显示 $!pageBean.getStartNo() - $!pageBean.getEndNo() 条-->
+	    每页
+	    #if($type==1)
+      	<input name="pageSize" type="radio" value="10" #if ($!pageBean.getPageSize()==10) checked #else checked #end onClick="chkSubmit(1);">10 
+		<input name="pageSize" type="radio" value="20" #if ($!pageBean.getPageSize()==20) checked #end onClick="chkSubmit(1);">20 
+		<input name="pageSize" type="radio" value="40" #if ($!pageBean.getPageSize()==40) checked #end onClick="chkSubmit(1);">40
+		#elseif($type==2)
+      	<input name="pageSize" type="radio" value="50" #if ($!pageBean.getPageSize()==50) checked #else checked #end onClick="chkSubmit(1);">50 
+		<input name="pageSize" type="radio" value="100" #if ($!pageBean.getPageSize()==100) checked #end onClick="chkSubmit(1);">100 
+		<input name="pageSize" type="radio" value="150" #if ($!pageBean.getPageSize()==150) checked #end onClick="chkSubmit(1);">150
+		#elseif($type==3)
+      	<input name="pageSize" type="radio" value="30" #if ($!pageBean.getPageSize()==30) checked #else checked #end onClick="chkSubmit(1);">30 
+		<input name="pageSize" type="radio" value="60" #if ($!pageBean.getPageSize()==60) checked #end onClick="chkSubmit(1);">60 
+		<input name="pageSize" type="radio" value="90" #if ($!pageBean.getPageSize()==90) checked #end onClick="chkSubmit(1);">90
+		#end
+		条
+	     共$!pageBean.count条
+	    #if($!pageBean.getPage()>1)
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(1);"><u>首页</u></span>
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(2);"><u>上一页</u></span>
+	    #else
+		<span >首页</span>
+		<span >上一页</span>
+		#end
+		#if ($!pageBean.getPage()<$!pageBean.getPages())
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(3);"><u>下一页</u></span>
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(4);"><u>末页</u></span>
+	    #else
+		<span >下一页</span>
+		<span >末页</span>
+		#end
+		第$!pageBean.page/$!pageBean.getPages()页
+		转到第
+	    <input type="text" name="gotoPage" size="3" maxlength="4" value="$!pageBean.page" onKeyDown="if(event.keyCode==13){document.all('btn__page_jump').click();}" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+	    页
+	    <input type="button" name="btn__page_jump" value="Go" onclick="JavaScript:chkSubmit(6);">
+	    <script language="javascript">
+		function chkSubmit (actionType){
+			var f = document.getElementsByName("actionType")[0].form;
+			if(f==null){
+				alert("查询表单不存在！");
+				return false;
+			}
+			var pageItem = f.actionType;
+			if (pageItem == null) {
+				alert("你的查询表单里没有一个hidden字段actionType");
+				return false;
+			}
+			var page = f.page;
+			if (page == null) {
+				alert("你的查询表单里没有一个hidden字段page");
+				return false;
+			}
+			pageItem.value = actionType;
+			if(pageItem.value==6){
+				if(document.getElementsByName("gotoPage")[0].value==""){
+					alert("跳转页数不能为空！");
+					document.getElementsByName("gotoPage")[0].focus();
+					return false;
+				}else if(document.getElementsByName("gotoPage")[0].value>$!pageBean.getPages()){
+					alert("跳转页数不能大于总页数！");
+					document.getElementsByName("gotoPage")[0].focus();
+					return false;
+				}else{
+					page.value = document.getElementsByName("gotoPage")[0].value;
+				}
+			}
+			f.submit();	
+		}
+		</script>
+#end
+
+##	PageBarII 翻页栏（可以放到网页任意位置）
+##	但必须：
+##	1、传入$formname指定Form名称。
+##	2、将以下三个隐藏字段复制到指定的Form表单里面。
+## 	<input type="hidden" name="actionType" value="0">
+## 	<input type="hidden" name="page" value="$!pageBean.page">
+## 	<input type="hidden" name="pageSize" value="$!pageBean.getPageSize()">
+##   
+#macro(PageBarII1 $formname)
+	#PageBarII($formname 1)
+#end
+#macro(PageBarII $formname $type)
+	<table width="100%">
+		<tr>
+			<td align="center">
+	    <!--显示 $!pageBean.getStartNo() - $!pageBean.getEndNo() 条-->
+	    每页
+	    #if($type==1)
+      	<input name="setPageSize" type="radio" value="10" #if ($!pageBean.getPageSize()==10) checked #else checked #end onClick="chkSubmit(1);">10 
+		<input name="setPageSize" type="radio" value="20" #if ($!pageBean.getPageSize()==20) checked #end onClick="chkSubmit(1);">20 
+		<input name="setPageSize" type="radio" value="40" #if ($!pageBean.getPageSize()==40) checked #end onClick="chkSubmit(1);">40
+		#elseif($type==2)
+      	<input name="setPageSize" type="radio" value="50" #if ($!pageBean.getPageSize()==50) checked #else checked #end onClick="chkSubmit(1);">50 
+		<input name="setPageSize" type="radio" value="100" #if ($!pageBean.getPageSize()==100) checked #end onClick="chkSubmit(1);">100 
+		<input name="setPageSize" type="radio" value="150" #if ($!pageBean.getPageSize()==150) checked #end onClick="chkSubmit(1);">150
+		#elseif($type==3)
+      	<input name="pageSize" type="radio" value="30" #if ($!pageBean.getPageSize()==30) checked #else checked #end onClick="chkSubmit(1);">30 
+		<input name="pageSize" type="radio" value="60" #if ($!pageBean.getPageSize()==60) checked #end onClick="chkSubmit(1);">60 
+		<input name="pageSize" type="radio" value="90" #if ($!pageBean.getPageSize()==90) checked #end onClick="chkSubmit(1);">90
+		#end
+		条
+	     共$!pageBean.count条
+	    #if($!pageBean.getPage()>1)
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(1);"><u>首页</u></span>
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(2);"><u>上一页</u></span>
+	    #else
+		<span >首页</span>
+		<span >上一页</span>
+		#end
+		#if ($!pageBean.getPage()<$!pageBean.getPages())
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(3);"><u>下一页</u></span>
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(4);"><u>末页</u></span>
+	    #else
+		<span >下一页</span>
+		<span >末页</span>
+		#end
+		第$!pageBean.page/$!pageBean.getPages()页
+		转到第
+	    <input type="text" name="gotoPage" size="3" maxlength="4" value="$!pageBean.page" onKeyDown="if(event.keyCode==13){document.all('btn__page_jump').click();}" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+	    页
+	    <input type="button" name="btn__page_jump" class="button3d" value="Go" onclick="JavaScript:chkSubmit(6);">
+			</td>
+		</tr>
+	</table>
+	    <script language="javascript">
+		function chkSubmit (actionType){
+			var f = document.forms("$!{formname}");
+			if(f==null){
+				alert("查询表单不存在！");
+				return false;
+			}
+			var pageS = f.pageSize;
+			if (pageS == null) {
+				alert("你的查询表单里没有一个hidden字段pageSize");
+				return false;
+			}
+			var ps = document.getElementsByName("setPageSize");
+			for(var i=0;i<ps.length;i++){
+				if(ps[i].checked) pageS.value = ps[i].value;
+			}
+			var pageItem = f.actionType;
+			if (pageItem == null) {
+				alert("你的查询表单里没有一个hidden字段actionType");
+				return false;
+			}
+			var page = f.page;
+			if (page == null) {
+				alert("你的查询表单里没有一个hidden字段page");
+				return false;
+			}
+			pageItem.value = actionType;
+			if(pageItem.value==6){
+				if(document.getElementsByName("gotoPage")[0].value==""){
+					alert("跳转页数不能为空！");
+					document.getElementsByName("gotoPage")[0].focus();
+					return false;
+				}else if(document.getElementsByName("gotoPage")[0].value>$!pageBean.getPages()){
+					alert("跳转页数不能大于总页数！");
+					document.getElementsByName("gotoPage")[0].focus();
+					return false;
+				}else{
+					page.value = document.getElementsByName("gotoPage")[0].value;
+				}
+			}
+			f.submit();	
+		}
+		</script>
+#end
+
+##	PageBarIII Web翻页栏（可以放到网页任意位置）
+##	但必须：
+##	1、传入$formname指定Form名称。
+##	2、将以下三个隐藏字段复制到指定的Form表单里面。
+## 	<input type="hidden" name="actionType" value="0">
+## 	<input type="hidden" name="page" value="$!pageBean.page">
+## 	<input type="hidden" name="pageSize" value="$!pageBean.getPageSize()">
+##   
+#macro(PageBarIII $formname)
+	<table width="100%">
+		<tr>
+			<td align="right">
+	    显示 $!pageBean.getStartNo() - $!pageBean.getEndNo() 条
+	    #if($!pageBean.getPage()>1)
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(1);"><u>最前一页</u></span>
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(2);"><u>前一页</u></span>
+	    #else
+		<span >最前一页</span>
+		<span >前一页</span>
+		#end
+		#if ($!pageBean.getPage()<$!pageBean.getPages())
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(3);"><u>后一页</u></span>
+	    <span style="cursor:hand;color:#039" onclick="JavaScript:chkSubmit(4);"><u>最后一页</u></span>
+	    #else
+		<span >后一页</span>
+		<span >最后一页</span>
+		#end
+		第$!pageBean.page/$!pageBean.getPages()页
+		转到第
+	    <input type="text" name="gotoPage" size="3" maxlength="4" value="$!pageBean.page" onKeyDown="if(event.keyCode==13){document.all('btn__page_jump').click();}" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+	    页
+	    <input type="button" name="btn__page_jump" class="button3d" value="Go" onclick="JavaScript:chkSubmit(6);">
+			</td>
+		</tr>
+	</table>
+	    <script language="javascript">
+		function chkSubmit (actionType){
+			var f = document.forms("$!{formname}");
+			if(f==null){
+				alert("查询表单不存在！");
+				return false;
+			}
+			var pageS = f.pageSize;
+			if (pageS == null) {
+				alert("你的查询表单里没有一个hidden字段pageSize");
+				return false;
+			}
+			var ps = document.getElementsByName("setPageSize");
+			for(var i=0;i<ps.length;i++){
+				if(ps[i].checked) pageS.value = ps[i].value;
+			}
+			var pageItem = f.actionType;
+			if (pageItem == null) {
+				alert("你的查询表单里没有一个hidden字段actionType");
+				return false;
+			}
+			var page = f.page;
+			if (page == null) {
+				alert("你的查询表单里没有一个hidden字段page");
+				return false;
+			}
+			pageItem.value = actionType;
+			if(pageItem.value==6){
+				if(document.getElementsByName("gotoPage")[0].value==""){
+					alert("跳转页数不能为空！");
+					document.getElementsByName("gotoPage")[0].focus();
+					return false;
+				}else if(document.getElementsByName("gotoPage")[0].value>$!pageBean.getPages()){
+					alert("跳转页数不能大于总页数！");
+					document.getElementsByName("gotoPage")[0].focus();
+					return false;
+				}else{
+					page.value = document.getElementsByName("gotoPage")[0].value;
+				}
+			}
+			f.submit();	
+		}
+		</script>
+#end

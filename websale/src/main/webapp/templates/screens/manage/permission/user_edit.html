@@ -1,0 +1,137 @@
+<script LANGUAGE="javascript">
+function checkMe(){
+	if(!check(fm)) return false;
+	if(!checkPermission()){
+		alert("必须选择一个角色！");
+		return false;
+	}
+	if(fm.password.value.trim()!=fm.password1.value.trim()){
+		alert("两次密码输入不一致！");
+		fm.password.focus();
+		return false;
+	}
+  	return true;
+}
+
+function checkPermission(){
+	var ptid = document.getElementsByName("partid");
+	if(ptid==null) return false;
+	var checkptid = false;
+	for(var i=0;i<ptid.length;i++){
+		if(ptid[i].checked==true){
+			checkptid = true;
+			break;
+		}
+	}
+	if(checkptid==false) return false;
+  	return true;
+}
+
+function checkAll(where,my){
+	var obj = document.getElementsByName(where);
+	for(var i=0;i<obj.length;i++){
+		obj[i].checked = my.checked;
+	}
+}
+</script>
+<form name="fm" method="post" action="$link.setAction('manage.permission.UserAction')" onSubmit="return checkMe();">
+	<input name="do" type="hidden" #if("$!user.userid"=="0")value="add" #else value="update" #end>
+	<input name="userid" type="hidden" value="$!user.userid">
+	<input name="admin" type="hidden" value="$!user.admin">
+	<p>
+	<div class="opttip" style="display:#if($optinfo) block #else none #end">
+		$!optinfo
+	</div>
+	<p>
+	<table class="edit">
+		<tr>
+			<td width="80">
+				<font color="red">* </font>用户名称：
+			</td>
+			<td>
+				<input name="username" type="text" verify="notnull" vname="用户名称" maxlength="20" value="$!user.username">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<font color="red">* </font>密&nbsp;&nbsp;&nbsp;&nbsp;码：
+			</td>
+			<td>
+				<input name="password" type="password" verify="notnull" vname="密码" maxlength="32" value="$!user.password">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<font color="red">* </font>确认密码：
+			</td>
+			<td>
+				<input name="password1" type="password" verify="notnull" vname="密码" maxlength="32" value="$!user.password">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<font color="red">* </font>姓&nbsp;&nbsp;&nbsp;&nbsp;名：
+			</td>
+			<td>
+				<input name="name" type="text" verify="notnull" vname="姓名" maxlength="20" value="$!user.name">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;所属部门：
+			</td>
+			<td>
+				<input name="depname" type="text" maxlength="20" value="$!user.depname">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;电&nbsp;&nbsp;&nbsp;&nbsp;话：
+			</td>
+			<td>
+				<input name="phone" type="text" verify="num" vname="电话" maxlength="50" value="$!user.phone">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;邮件地址：
+			</td>
+			<td>
+				<input name="email" type="text" verify="email" vname="邮件地址" maxlength="50" value="$!user.email">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;用户说明：
+			</td>
+			<td>
+				<textarea name="memo" cols="72" rows="5" maxlength="200">$!user.memo</textarea>
+			</td>	
+		</tr>
+		<tr>
+			<td>
+			<font color="red">* </font>选择角色:
+			</td>
+			<td>
+				<div class="groupdiv">
+				#if($user.part.size()>0)
+				<label for="checkptidall"><input id="checkptidall" type="checkbox" onClick="checkAll('partid',this);"><font color="red">全选</font></label><br>
+				#end
+				#foreach($part in $user.part)
+				<label for="ptid$!part.roleid"><input name="partid" type="checkbox" id="ptid$!part.roleid" value="$!part.roleid" #if($part.checked)checked#end>$!part.rolename</label>
+				<br>
+				#end
+				</div>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table class="editbar">
+		<tr>
+			<td align="center">
+				<input type="submit" value=" 确 定 "> 
+				<input type="button" value=" 返 回 " onclick="history.back();">
+			</td>
+		</tr>
+	</table>
+</form>

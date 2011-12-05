@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<!-- 公网环境(开始)
+  <Resource
+    name="yehyshop"
+    type="javax.sql.DataSource"
+    driverClassName="com.mysql.jdbc.Driver"
+    maxIdle="2"
+    maxWait="5000"
+    username="yehongyu"
+    password="eJ3zW8hU8m"
+    url="jdbc:mysql://localhost:3306/yehongyu?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+    maxActive="20"/> -->
+<!-- 公网环境(结束) -->
+<!-- 本地环境(开始)-->
+  <Resource
+    name="yehyshop"
+    type="javax.sql.DataSource"
+    driverClassName="com.mysql.jdbc.Driver"
+    maxIdle="2"
+    maxWait="5000"
+    username="yehy"
+    password="yehy"
+    url="jdbc:mysql://localhost:3306/mydb?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+    maxActive="20"/>
+<!-- 本地环境(结束) -->
+<!-- 客户环境(开始)
+  <Resource
+    name="yehyshop"
+    type="javax.sql.DataSource"
+    driverClassName="com.mysql.jdbc.Driver"
+    maxIdle="2"
+    maxWait="5000"
+    username="ttaq"
+    password="wusTTAQ888"
+    url="jdbc:mysql://159.226.63.26:3306/ttaq?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+    maxActive="20"/>-->
+<!-- 客户环境(结束) -->
+</Context>

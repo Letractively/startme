@@ -1,0 +1,136 @@
+<script language="javascript">
+//删除时校验是否有选中的记录
+function isChecked(){
+	var ids = document.getElementsByName('ids');
+	for(i=0;i<ids.length;i++){
+	  	if (ids[i].checked) return true;
+	}
+	alert('您没有选择要操作的记录！');
+	return false;
+}
+//删除记录
+function doDelete(){
+  	if(!isChecked())return;
+  	if(confirm('你确定要删除所选择的记录吗？')){
+  		fm.action = "$link.setActionEvent('manage.permission.PartAction','doDelete')";
+  		fm.submit();
+  	}
+}
+//可选中或取消选中本页要删除的记录
+function checkAll(checked){
+	var ids = document.getElementsByName('ids'); 
+	for(i=0;i<ids.length;i++){
+  		if(ids[i].checked!=checked)ids[i].click();
+	}
+}
+//删除某条记录
+function doDeleteOne(id){
+	var ids = document.getElementsByName('ids');
+	for(i=0;i<ids.length;i++){
+  		ids[i].checked = false;
+	}
+	if (confirm('你确定要删除这条记录吗？')) {
+		fm.action = "$link.setActionEvent('manage.permission.PartAction','doDelete')?ids="+id;
+		fm.submit();
+	}
+}
+function toggleQueryTable(){
+	var tab = document.getElementById('queryTable');
+	if(tab.style.display==""){
+		tab.style.display="none";
+		document.getElementById("toggleSpan").innerHTML = "显示查询项";
+	}else{
+		tab.style.display="";
+		document.getElementById("toggleSpan").innerHTML = "隐藏查询项";
+	}
+}
+</script>
+<form name="fm" method="post" action="$link.setPage('manage,permission,part_list.html')">
+<p>
+	<table class="querybar">
+		<tr>
+			<th align="left">
+				<input type="submit" value="查 询">
+				<a id="toggleSpan" hidefocus href="javascript:toggleQueryTable();">显示查询项</a>
+			</th>
+			<th align="right">
+				<input type="button" onClick="window.location='$link.setPage('manage,permission,part_edit.html')';" value="新增角色">
+			</th>
+		</tr>
+	</table>
+	<table class="query" id="queryTable" style="display:none;">
+		<tr>
+			<td>
+				角色名称：
+				<input name="ptname" value="$!param.ptname" type="text" maxlength="10">
+			</td>
+			<td>
+			</td>
+		</tr>
+	</table>
+	<table class="list" id="tabls" cellspacing="1" >
+		<tr>
+			<th width="2%">
+				选择
+			</th>
+			<th width="2%">
+				序号
+			</th>
+			<th width="30%">
+				角色名称
+			</th>
+			<th width="30%">
+				角色说明
+			</th>
+			<th width="15%">
+				操作项
+			</th>
+		</tr>
+		#set($count=0)
+		#foreach($part in $results)
+		#set($count=$count+1)
+		<tr>
+			<td align="center">
+				#if("$!part.type"!="1")
+				<input name="ids" type="checkbox" value="$!part.id">
+				#else
+				&nbsp;
+				#end
+			</td>
+			<td align="center">
+				$count
+			</td>
+			<td align="left">
+				$!part.rolename
+			</td>
+			<td align="center">
+				$!part.memo
+			</td>
+			<td align="center">
+				<input type="button" value="修 改" onClick="window.location='$link.setPage('manage,permission,part_edit.html')?roleid=$!part.id';">
+				#if("$!part.type"!="1")
+				<input type="button" value="删 除" onClick="javascript:doDeleteOne('$!part.id')">
+				#end
+			</td>
+		</tr>
+		#end
+	</table>
+	<table class="listbar">
+		<tr>
+			<td>
+				<label for="chkAll"><input type="checkbox" id="chkAll" onClick="checkAll(this.checked);">本页选择</label>
+				<input type="button" value="删 除" onClick="doDelete();">
+			</td>
+			<td align="right">
+			#PageBarI(1)
+			</td>
+		</tr>
+	</table>
+</form>
+<script>
+//新增修改删除操作成功后返回此页面的提示信息
+#if($optinfo)
+alert("$optinfo");
+fm.submit();
+#end
+</script>

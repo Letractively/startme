@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>
+后台管理中心—人员管理—转移账号(源账号：$sourceaccount)
+</title>
+<style>
+<!--
+	.button3d{
+		border:1px solid #302F2E;
+		background:url($content.getURI('images/common/btnbg.gif'));
+		padding-top:2px;
+		color:#FFFFFF;
+	}
+	.tb3d1 {
+		border:0px;
+		border-top: 2px solid #dfdfdf;
+		border-right: 2px solid #acacac;
+		border-bottom: 2px solid #acacac;
+		border-left: 2px solid #dfdfdf;
+		background: #c8c8c8;
+		padding: 2px;
+		width:100%;
+		cellpadding:3;
+		cellspacing:1; 
+	}
+	.input {
+ 		BORDER: 1px solid #8D8D8D;
+ 		BACKGROUND-COLOR: white;
+	}
+	table {
+		font-family: "宋体";
+		font-size: 12px;
+	}
+-->
+</style>
+<script>
+function transfer(){
+	var des = document.getElementsByName("destml");
+
+	var check = false;
+	for(var i=0;i<des.length;i++){
+		if(des[i].checked==true) check=true;
+	}
+	if(check==false){
+		alert("未选择目标账号！");
+		return false;
+	}
+	fm.action = "$link.setActionEvent('publicadmin.UserAction','doTransfer')";
+	fm.submit();
+}
+</script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="fm" method="post" action="$link.setPage('publicadmin,secure,user_trans.html')">
+<table width="100%" border="0" cellpadding="3" cellspacing="1">
+	<tr>
+		<td class="tb3d1" style="padding-left:7px">
+			目标账号：
+			<input type="text" name="destaccount" class="input" value="$destaccount">
+			<input type="hidden" name="sourceaccount" value="$sourceaccount">
+			<input type="submit" class="button3d" value="查 询">
+		</td>
+	</tr>
+</table>
+#if($error)
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+	<tr>
+		<td bgcolor="#e4e4e4" align="center">
+			$error
+		</td>
+	</tr>
+</table>
+#elseif($destmlogin)
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+	<tr>
+		<td bgcolor="#e4e4e4" align="center">
+			<label for="$destmlogin.username">
+			<input type="radio" value="$destmlogin.username" name="destml" id="$destmlogin.username">$destmlogin.username
+			</label>
+		</td>
+	</tr>
+</table>
+#else
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#e4e4e4">
+	#set($count=0)
+	<tr>
+	#foreach($ml in $dests)
+		<td width="33%">
+			<label for="$ml.username">
+			<input type="radio" value="$ml.username" name="destml" id="$ml.username">$ml.username
+			</label>
+		</td>
+	#set($count=$count+1)
+	#if($count%3==0)
+	</tr>
+	<tr>
+	#end
+	#end
+	</tr>
+</table>
+#end
+<table width="100%" border="0" cellpadding="3" cellspacing="1">
+	<tr>
+		<td align="center">
+			<input type="button" class="button3d" value="确定转移" onClick="transfer();">
+			<input type="button" class="button3d" value="取消" onClick="window.close()">
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>
+<script>
+#if($transerror)
+alert("$transerror");
+if("转移成功"=="$transerror"){
+	opener.form2.submit();
+	window.close();
+}
+#end
+</script>

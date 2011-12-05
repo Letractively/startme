@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title>左侧菜单栏</title>
+		<link rel="stylesheet" href="$content.getURI('style/left.css')" type="text/css">
+		<script type="text/javascript">
+		function toggle(boo){
+			if(document.getElementById(boo+"childs").style.display==''){
+				document.getElementById(boo+"childs").style.display='none';
+			}else {
+				document.getElementById(boo+"childs").style.display='';
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<table width="100%" border="0" cellspacing="0" cellpadding="3" style="border-bottom:1px solid #aaaaaa;">
+		<tr><td align="center" nowrap><b>网上商城管理中心</b></td></tr></table>
+		#foreach ($item in $menu)
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+			#if($item.subMenu.size()!=0)
+			<tr onMouseover="window.status='$item.id'" onclick="javascript:toggle('$item.id')">
+				<td class="first" nowrap>
+					<font color="black">&gt;&gt;&nbsp;$item.text</font>
+				</td>
+			</tr>
+			<tr id="${item.id}childs" style="display:none;">
+				<td colspan="2">
+					#foreach ($subItem in $item.subMenu)
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab2">
+							#if($subItem.subMenu.size()!=0)
+							<tr onMouseover="window.status='$subItem.id';" onclick="javascript:toggle('$subItem.id')">
+								<td class="second" nowrap>
+									<font color="black">&gt;&gt;&nbsp;$subItem.text</font>
+								</td>
+							</tr>
+							<tr id="${subItem.id}childs" style="display:none;">
+								<td>
+									#foreach ($subItem3 in $subItem.subMenu)
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab2">
+									<tr onMouseover="window.status='$subItem3.id'">
+										<td class="third" nowrap>
+											&nbsp;&nbsp;&nbsp;<a href="$link.setPage(${subItem3.url})" target="mainFrame">$subItem3.text</a>
+										</td>
+									</tr>
+									</table>
+									#end
+								</td>
+							</tr>
+							#else
+							<tr onMouseover="window.status='$subItem.id'">
+								<td class="second" nowrap>
+									&nbsp;&nbsp;&nbsp;<a href="$link.setPage(${subItem.url})" target="mainFrame">$subItem.text</a>
+								</td>
+							</tr>
+							#end
+						</table>
+					#end
+				</td>
+			</tr>
+			#else
+			<tr onMouseover="window.status='$item.id'">
+				<td class="first" nowrap>
+					&nbsp;&nbsp;&nbsp;<a href="$link.setPage(${item.url})" target="mainFrame">$item.text</a>
+				</td>
+			</tr>
+			#end
+		</table>
+		#end
+	</body>
+</html>

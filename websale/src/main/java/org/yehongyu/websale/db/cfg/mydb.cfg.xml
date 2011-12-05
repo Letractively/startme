@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <!-- SessionFactory 配置 -->
+  <session-factory>
+    <!--
+    <property name="hibernate.connection.url">
+      jdbc:oracle:thin:@localhost:1521:ORCL
+    </property>
+    <property name="hibernate.connection.driver_class">
+      oracle.jdbc.driver.OracleDriver
+    </property>
+    <property name="hibernate.connection.username">
+      yehy
+    </property>
+    <property name="hibernate.connection.password">
+      yehy
+    </property>
+      
+  	<property name="hibernate.connection.url">
+      jdbc:mysql://124.42.120.40/yehongyu
+    </property>
+    <property name="hibernate.connection.driver_class">
+      com.mysql.jdbc.Driver
+    </property>
+    <property name="hibernate.connection.username">
+      yehongyu
+    </property>
+    <property name="hibernate.connection.password">
+      eJ3zW8hU8m
+    </property> 
+--> 
+ 	<!-- 布署使用配置 -->
+ 	<property name="connection.datasource">java:comp/env/yehyshop</property>
+ 	<!-- 布署使用配置 -->
+   	
+    <!--dialect ，每个数据库都有其对应的Dialet以匹配其平台特性 -->
+    <property name="dialect">
+    org.hibernate.dialect.MySQL5Dialect 
+<!--    org.hibernate.dialect.Oracle9Dialect-->
+    </property>
+    <!-- 是否将运行期生成的SQL输出到日志以供调试 -->
+    <property name="hibernate.show_sql">
+     false
+    </property>
+    <property name="hibernate.format_sql">
+     false
+    </property>
+    <!-- 是否使用数据库外连接 -->
+    <property name="hibernate.use_outer_join">
+      True
+    </property>
+    <!-- 事务管理类型，这里我们使用JDBC Transaction -->
+    <property name="hibernate.transaction.factory_class">
+      org.hibernate.transaction.JDBCTransactionFactory
+    </property>
+    <!--映射文件配置，注意配置文件名必须包含其相对于根的全路径 -->
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SUser.hbm.xml"/>
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SRole.hbm.xml"/>
+<!--    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SysMenu.hbm.xml"/>-->
+<!--    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SysUser.hbm.xml"/>-->
+<!--    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SysUserMenu.hbm.xml"/>-->
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SUserRole.hbm.xml"/>
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SModule.hbm.xml"/>
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SRoleModule.hbm.xml"/>
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/SModuleAction.hbm.xml"/>
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/BCategory.hbm.xml"/>
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/BProduct.hbm.xml"/>
+    <mapping resource="org/yehongyu/websale/db/po/mydb/mapping/AContent.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

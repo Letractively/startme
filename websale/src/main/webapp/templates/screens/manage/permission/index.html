@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<title>电子商务_后台管理中心</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta http-equiv="keywords" content="网上商城,网上书店,管理系统">
+		<meta http-equiv="description" content="网上书店管理系统">
+		<meta http-equiv="Pragma" content="no-cache" content="">
+		<meta http-equiv="Cache-Control" content="no-cache" content="">
+		<meta http-equiv="Expires" content="0" content="">
+		<link href="$content.getURI('images/favicon.ico')" rel="shortcut icon">
+		<script>
+		window.defaultStatus="欢迎登录后台管理中心！";
+		#if($optinfo)
+		window.location="$link.setPage('manage,permission,index.html')";
+		#end
+		function dealResize(){
+			if(document.body.scrollWidth<800){
+				top.resizeTo(800,600);
+			}
+		}
+		</script>
+	</head>
+	<frameset rows="81,*" cols="*" frameborder="no" border="0" framespacing="0" onresize="setTimeout('dealResize()',100);" onload="dealResize();">
+		<frame src="$link.setPage('manage,permission,index_top.html')" scrolling="no" noresize="noresize" name="topFrame" id="topFrame" title="顶部信息栏"/>
+		<frameset cols="200,20,*" frameborder="no" border="0" framespacing="0" id="BBS_Main">
+			<frame src="$link.setPage('manage,permission,index_left.html')" scrolling="auto" noresize="noresize" name="leftFrame" id="leftFrame" title="左边菜单栏" />
+			<frame src="$link.setPage('manage,permission,index_bar.html')" scrolling="no" noresize="noresize" name="barFrame" id="barFrame" title="切换栏" />
+			<frame src="$link.setPage('manage,permission,index_center.html')" name="mainFrame" id="mainFrame" title="主要工作区" />
+		</frameset>
+	</frameset>
+	<noframes>
+		<body>
+			<p>
+				This page uses frames,你的浏览器不支持frame,请使用ie5.5以上浏览器.
+			</p>
+		</body>
+	</noframes>
+</html>

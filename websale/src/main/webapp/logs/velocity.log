@@ -1,0 +1,48 @@
+2008-07-26 17:06:54,781 [main] INFO  velocity - ************************************************************** 
+2008-07-26 17:06:54,781 [main] INFO  velocity - Starting Jakarta Velocity v1.4
+2008-07-26 17:06:54,781 [main] INFO  velocity - RuntimeInstance initializing.
+2008-07-26 17:06:54,781 [main] INFO  velocity - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2008-07-26 17:06:54,781 [main] INFO  velocity - Trying to use logger class org.apache.velocity.runtime.log.SimpleLog4JLogSystem
+2008-07-26 17:06:54,781 [main] INFO  velocity - Using logger class org.apache.velocity.runtime.log.SimpleLog4JLogSystem
+2008-07-26 17:06:54,796 [main] INFO  velocity - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2008-07-26 17:06:54,796 [main] INFO  velocity - Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2008-07-26 17:06:54,796 [main] INFO  velocity - FileResourceLoader : initialization starting.
+2008-07-26 17:06:54,796 [main] INFO  velocity - FileResourceLoader : adding path 'D:\yehy\workspace\websale\web\templates'
+2008-07-26 17:06:54,796 [main] INFO  velocity - FileResourceLoader : initialization complete.
+2008-07-26 17:06:54,796 [main] INFO  velocity - Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2008-07-26 17:06:54,796 [main] INFO  velocity - ClasspathResourceLoader : initialization starting.
+2008-07-26 17:06:54,796 [main] INFO  velocity - ClasspathResourceLoader : initialization complete.
+2008-07-26 17:06:54,796 [main] INFO  velocity - ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2008-07-26 17:06:54,796 [main] INFO  velocity - Default ResourceManager initialization complete.
+2008-07-26 17:06:54,796 [main] INFO  velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2008-07-26 17:06:54,796 [main] INFO  velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2008-07-26 17:06:54,812 [main] INFO  velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2008-07-26 17:06:54,812 [main] INFO  velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2008-07-26 17:06:54,812 [main] INFO  velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2008-07-26 17:06:54,968 [main] INFO  velocity - Created: 20 parsers.
+2008-07-26 17:06:54,968 [main] INFO  velocity - Velocimacro : initialization starting.
+2008-07-26 17:06:54,968 [main] INFO  velocity - Velocimacro : adding VMs from VM library template : macros/websale.vm
+2008-07-26 17:06:55,000 [main] INFO  velocity - Velocimacro : added new VM : #SearchForm( ) : source = macros/websale.vm
+2008-07-26 17:06:55,015 [main] INFO  velocity - Velocimacro : added new VM : #CatList( ) : source = macros/websale.vm
+2008-07-26 17:06:55,015 [main] INFO  velocity - ResourceManager : found macros/websale.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2008-07-26 17:06:55,015 [main] INFO  velocity - Velocimacro :  VM library template macro registration complete.
+2008-07-26 17:06:55,015 [main] INFO  velocity - Velocimacro : adding VMs from VM library template : macros/common/PageBar.vm
+2008-07-26 17:06:55,031 [main] INFO  velocity - Velocimacro : added new VM : #PageBarI( type ) : source = macros/common/PageBar.vm
+2008-07-26 17:06:55,031 [main] INFO  velocity - Velocimacro : added new VM : #PageBarII1( formname ) : source = macros/common/PageBar.vm
+2008-07-26 17:06:55,046 [main] INFO  velocity - Velocimacro : added new VM : #PageBarII( formname type ) : source = macros/common/PageBar.vm
+2008-07-26 17:06:55,046 [main] INFO  velocity - Velocimacro : added new VM : #PageBarIII( formname ) : source = macros/common/PageBar.vm
+2008-07-26 17:06:55,046 [main] ERROR velocity - VM #PageBarII: error : too few arguments to macro. Wanted 2 got 0
+2008-07-26 17:06:55,046 [main] INFO  velocity - ResourceManager : found macros/common/PageBar.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2008-07-26 17:06:55,046 [main] INFO  velocity - Velocimacro :  VM library template macro registration complete.
+2008-07-26 17:06:55,046 [main] INFO  velocity - Velocimacro : adding VMs from VM library template : macros/TurbineMacros.vm
+2008-07-26 17:06:55,062 [main] INFO  velocity - Velocimacro : added new VM : #TurbineHtmlHead( ) : source = macros/TurbineMacros.vm
+2008-07-26 17:06:55,062 [main] INFO  velocity - Velocimacro : added new VM : #TurbineHtmlBodyAttributes( ) : source = macros/TurbineMacros.vm
+2008-07-26 17:06:55,062 [main] INFO  velocity - ResourceManager : found macros/TurbineMacros.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2008-07-26 17:06:55,062 [main] INFO  velocity - Velocimacro :  VM library template macro registration complete.
+2008-07-26 17:06:55,062 [main] INFO  velocity - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2008-07-26 17:06:55,062 [main] INFO  velocity - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2008-07-26 17:06:55,062 [main] INFO  velocity - Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+2008-07-26 17:06:55,078 [main] INFO  velocity - Velocimacro : messages on  : VM system will output logging messages
+2008-07-26 17:06:55,078 [main] INFO  velocity - Velocimacro : autoload on  : VM system will automatically reload global library macros
+2008-07-26 17:06:55,078 [main] INFO  velocity - Velocimacro : initialization complete.
+2008-07-26 17:06:55,078 [main] INFO  velocity - Velocity successfully started.

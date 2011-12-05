@@ -1,0 +1,135 @@
+<script LANGUAGE="javascript">
+function checkMe(){
+	if(!check(fm)) return false;
+  	return true;
+}
+</script>
+<form name="fm" method="post" action="$link.setAction('manage.product.ProductAction')" enctype="multipart/form-data">
+	<p>
+	<div class="opttip" style="display:#if($optinfo) block #else none #end">
+		操作失败：$!optinfo
+	</div>
+	<p>
+	<table class="edit">
+		<tr>
+			<td width="80">
+				<font color="red">* </font>书籍名称：
+			</td>
+			<td>
+				<input name="bookname" type="text" verify="notnull" vname="书籍名称" maxlength="20" value="$!item.bookname">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;作&nbsp;&nbsp;&nbsp;&nbsp;者：
+			</td>
+			<td>
+				<input name="bookwriter" type="text" maxlength="20" value="$!item.bookwriter">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;出 版 社：
+			</td>
+			<td>
+				<input name="bookpublish" type="text" maxlength="20" value="$!item.bookpublish">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;出版日期：
+			</td>
+			<td>
+				<input type="text" readonly maxlength="10" size="10" name="bookpubdate" value="$!date.getDateString($!item.bookpubdate)">
+				<img id="imgbookpubdate"
+					onmouseup="DatePicker('imgbookpubdate',null,'bookpubdate',null,null)"
+					src="$content.getAbsoluteURI('images/calendar/calendar.gif')"
+					align="middle" style="cursor:hand;" title="显示日历" alt="calendar">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;价&nbsp;&nbsp;&nbsp;&nbsp;格：
+			</td>
+			<td>
+				<input name="price" type="text" verify="double" vname="价格"  maxlength="20" value="$!item.price">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;库存数量：
+			</td>
+			<td>
+				<input name="num" type="text" verify="num" vname="库存数量" maxlength="10" value="$!item.num">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<font color="red">* </font>所属分类：
+			</td>
+			<td>
+				<select name="catid" verify="notnull" vname="分类">
+					<option value="">请选择分类</option>
+					#foreach($cat in $catlist)
+					<option value="$!cat.id" #if("$!cat.id"=="$!item.catid")selected#end>$!cat.catname</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;产品属性：
+			</td>
+			<td>
+				<label for="idispopulate"><input name="ispopulate" id="idispopulate" type="checkbox" value="1" #if("$!item.ispopulate"=="1")checked#end>是否畅销书</label>
+				<label for="idiscommend"><input name="iscommend" id="idiscommend" type="checkbox" value="1" #if("$!item.iscommend"=="1")checked#end>是否推荐</label>
+			</td>	
+		</tr>
+		<tr>
+			<td>
+			&nbsp;&nbsp;图片上传：
+			</td>
+			<td>
+				<a href="$!item.picname" target="_blank"><img id="pic" src="$!item.picname" width="90" height="120" onerror="javascript:this.src='$content.getURI('images/main/wutu.jpg')';"></a><br>
+				<input type="file" name="picname" onchange="document.getElementById('pic').setAttribute('src',this.value);">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;&nbsp;产品介绍：
+			</td>
+			<td>
+				<script type="text/javascript">
+				/*var oFCKeditor = new FCKeditor("introduce") ;
+				oFCKeditor.BasePath	= "$content.getURI('/fckeditor/')" ;
+				oFCKeditor.Height	= 200 ;
+				oFCKeditor.ToolbarSet = "MyEditor";
+				oFCKeditor.Value	= '$!item.introduce';
+				oFCKeditor.Create() ;
+				*/
+				</script>
+				<textarea rows="5" cols="80" name="introduce" maxlength="2000">$!item.introduce</textarea>
+			</td>	
+		</tr>
+		<tr style="display:'none';">
+			<td>
+			&nbsp;&nbsp;隐藏字段：
+			</td>
+			<td>
+			<input name="do" type="text" readonly #if("$!item.id"=="0")value="add" #else value="edit" #end>
+			<input name="id" type="text" readonly value="$!item.id">
+			<input name="state" type="text" readonly value="$!item.state">
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table class="editbar">
+		<tr>
+			<td align="center">
+				<input type="button" value=" 保 存 " onclick="if(checkMe()){ document.getElementsByName('state')[0].value='2';this.form.submit();}"> 
+				<input type="submit" value=" 发 布 " onclick="if(checkMe()) document.getElementsByName('state')[0].value='1'; else return false;"> 
+				<input type="button" value=" 返 回 " onclick="history.back();">
+			</td>
+		</tr>
+	</table>
+</form>

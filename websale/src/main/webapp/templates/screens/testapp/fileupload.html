@@ -1,0 +1,10 @@
+<form method="post" action="$link.setAction('testapp.Upload')" enctype="multipart/form-data">
+<input type="file" name="filepath">
+<input type="submit" value="确定">
+#if($imgpath)
+上传成功！
+<a href="$content.getURI($source)"><img src="$imgpath"/></a>
+#else
+上传失败！
+#end
+</form>

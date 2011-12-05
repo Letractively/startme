@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        b2b hibernate hbm.xml 
+        
+-->
+    <class name="org.yehongyu.websale.db.po.mydb.SModule" table="S_MODULE" >
+	<!--PK-->
+        <id name="id" column="MODULEID" type="string" >
+            <generator class="assigned"/>
+        </id>
+
+        <property name="modulename" type="string">
+             <column name="MODULENAME" />
+        </property>
+        <property name="upmodule" type="string">
+             <column name="UPMODULE" />
+        </property>
+        <property name="url" type="string">
+             <column name="URL" />
+        </property>
+        <property name="sortnum" type="long">
+             <column name="SORTNUM" />
+        </property>
+        <set name="actions" table="S_MODULE_ACTION" order-by="sortnum">
+    		<key column="moduleid"/>
+    		<one-to-many class="org.yehongyu.websale.db.po.mydb.SModuleAction"/>
+		</set>
+    </class>
+</hibernate-mapping>

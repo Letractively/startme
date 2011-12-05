@@ -1,0 +1,121 @@
+<html>
+##TurbineHtmlHead()
+<title>安全图书商城</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="keywords" content="网上商城,网上书店,管理系统，网上书城，安全书籍">
+<meta http-equiv="description" content="网上书店管理系统,网上卖书">
+<meta http-equiv="Pragma" content="no-cache" content="">
+<meta http-equiv="Cache-Control" content="no-cache" content="">
+<meta http-equiv="Expires" content="0" content="">
+<link href="$content.getURI('images/shop/fav.ico')" rel="shortcut icon">
+<link href="$content.getURI('style/shop.css')" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="$content.getURI('js/commonVerify.js')"></script>
+<script type="text/javascript" src="$content.getURI('js/loadScript.js')"></script>
+<script type="text/javascript" src="$content.getURI('js/calendar.js')"></script>
+<body #TurbineHtmlBodyAttributes()>
+<div style="text-align:center;">
+<table style="width:800px;border:#000 1px solid;" align="center" cellpadding=0 cellspacing=0
+	background="$content.getURI('images/shop/top.gif')">
+	<tr>
+		<td><img src="$content.getURI('images/shop/logo.jpg')" height="95" style="cursor:hand;" onClick="window.location='$link.setPage('shop,start.html')';"></td>
+		<td align="right">
+			<table height="20" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="66" height="23" align="center">
+						<a href="#" style="font-size: 12px; color: #ffffff;"
+							onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.yehongyu.org/');">设为首页</a>
+					</td>
+					<td width="5" align="center">
+						<img src="$content.getURI('images/shop/split.gif')" width="1"
+							height="12">
+					</td>
+					<td width="66" height="23" align="center">
+						<a href="#" style="font-size: 12px; color: #ffffff;"
+							onClick="window.external.addFavorite('http://www.yehongyu.org/','网上书店')">加入收藏</a>
+					</td>
+					<td width="5" align="center">
+						<img src="$content.getURI('images/shop/split.gif')" width="1"
+							height="12">
+					</td>
+					<td width="66" align="center">
+						<a href="$link.setPage('shop,shopflow.html')"
+							style="font-size: 12px; color: #ffffff;">购物流程</a>
+					</td>
+					<td width="5" align="center">
+						<img src="$content.getURI('images/shop/split.gif')" width="1"
+							height="12">
+					</td>
+					<td width="66" align="center">
+						<a href="$link.setPage('shop,help.html')" style="font-size: 12px; color: #ffffff;">帮助中心</a>
+					</td>
+					<td width="5" align="center">
+						<img src="$content.getURI('images/shop/split.gif')" width="1"
+							height="12">
+					</td>
+					<td width="66" align="center">
+						<a href="$link.setPage('shop,link.html')"
+							style="font-size: 12px; color: #ffffff;">联系我们</a>
+					</td>
+<!--					<td width="5" align="center">-->
+<!--						<img src="$content.getURI('images/shop/split.gif')" width="1"-->
+<!--							height="12">-->
+<!--					</td>-->
+<!--					<td width="30" align="right">-->
+<!--						<img src="$content.getURI('images/shop/cart.gif')" width="17"-->
+<!--							height="17">-->
+<!--					</td>-->
+<!--					<td width="80" align="center">-->
+<!--						<a style="font-size: 12px; color: #ffffff;" href="cart.php">我的购物车</a>-->
+<!--					</td>-->
+					<td width="60" align="center">
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<div style="width:800px;height:30px;border:gray 0px solid;">
+	<marquee direction=left behavior=slide  SCROLLAMOUNT=30 SCROLLDELAY=50 style="padding:10px;padding-left:0px;" >
+		<b>欢迎光临“天天安全”图书商城！</b>
+	</marquee>
+</div>
+</div>
+$screen_placeholder
+<hr style="color:#e6e6e6;height:1px;width:80%;">
+<div style="text-align:center;padding:10px;">
+	<a href="$link.setPage('shop,link.html')" class="btmenu" target="_self">关于我们</a>&nbsp;&nbsp;
+	<a href="$link.setPage('shop,shopflow.html')" class="btmenu" target="_self">购物流程</a>&nbsp;&nbsp;
+	<a href="$link.setPage('shop,help.html')" class="btmenu" target="_self">常见问题</a>&nbsp;&nbsp;
+	<a href="$link.setPage('shop,help.html')" class="btmenu" target="_self">帮助中心</a>&nbsp;&nbsp;
+	<a href="$link.setPage('shop,link.html')" class="btmenu" target="_self">联系方式</a>&nbsp;&nbsp;
+<!--	<a href="page/link/index.php" class="btmenu" target="_self">友情链接</a>&nbsp;&nbsp;-->
+<!--	<a href="form/offer/" class="btmenu" target="_self">缺货登记</a>-->
+	<P>
+	<font color="#333333">网上书店管理系统<BR>Copyright &copy; 2006-2008&nbsp;</font>
+	<a href="javascript:manage();">管理入口</a>
+	</P>
+</div>
+<div id="buydiv" style="background:#efefef;visibility:hidden;width:500px;height:400px;position:absolute;left:200px;top:200px;">
+hehe
+<input type="button" value="关闭" onClick="document.getElementById('buydiv').style.visibility='hidden';"/>
+</div>
+<script>
+function manage(){
+	window.open("$link.setPage('manage,permission,login.html')");
+}
+function openDetail(bookid){
+	window.open("$link.setPage('shop,detail.html')?id="+bookid);
+}
+function buythis(bookid){
+	//var buydiv = document.getElementById("buydiv");
+	//buydiv.style.visibility = "visible";
+	alert("请查看联系方式购买！");
+	window.location="$link.setPage('shop,link.html')";
+}
+</script>
+<script>
+//document.write(document.referrer);
+</script>
+</body>
+</html>

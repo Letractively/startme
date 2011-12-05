@@ -1,0 +1,184 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type=text/css>
+td{font-size:12;font-family:arial;text-align:center}
+td.dt{font-size:11;font-family:arial;text-align:center}
+a{color:blue}
+a:hover{color:red}
+a.bt{color:#888888}
+</style>
+<Script Language="JavaScript">
+  function resizeCalendar() {
+    var cf = parent.document.getElementById("CalFrame");
+    cf.width=187;
+    cf.height=197;
+  }
+</Script>
+</head>
+<body topmargin=0 leftmargin=0 bottommargin=0 rightmargin=0 bgcolor=red onload="resizeCalendar();">
+<table id=tbl0 bgcolor=#336699 border=0 cellpadding=1 cellspacing=0><tr><td>
+<table width=100% border=0 cellpadding=2 cellspacing=1 bgcolor=white>
+<tr bgcolor=gray>
+<td width=16 id=prev><a href=javascript:changeCalendar(-1);><img src="../images/calendar/prev.gif" border=0 width="16" height="16"></a></td>
+<td width=99% style=font-size:11;color:white>
+  <select id="SelYear" onChange="JavaScript:changeYearMonth();">
+    <option value="2005">2005年</option>
+  </select>
+  <select name="SelMonth" onChange="JavaScript:changeYearMonth();">
+    <option value="1">01月</option>
+  </select>
+</td>
+<td width=16 id=next><a href=javascript:changeCalendar(1);><img src="../images/calendar/next.gif" border=0 width="16" height="16"></a></td>
+</tr>
+</table>
+<table width=185 border=0 bgcolor=white cellpadding=0 cellspacing=2>
+<tr height=18><td width=18><font color=red>日</font></td><td width=18>一</td><td width=18>二</td><td width=18>三</td><td width=18>四</td><td width=18>五</td><td width=18><font color=green>六</font></td></tr>
+<tr height=1><td colspan=7 bgcolor=gray></td></tr>
+<script language="javascript">
+<!--//
+var str = "";
+for(var i = 0; i < 6; i++) {
+  str += "<tr height=18>";
+  for (var j = 0; j < 7; j++) {
+    str += "<td id=d"+(i*7+j)+" class=dt></td>";
+  }
+  str += "</tr>";
+}
+document.write(str);
+//-->
+</script>
+<tr height=1><td colspan=7 bgcolor=gray></td></tr>
+<tr height=18>
+  <td colspan=7 align="cneter">
+    <a href="JavaScript:clearInput();">清空</a>
+    &nbsp;&nbsp;
+    <a href="javascript:parent.hideCalendar();">关闭</a>
+  </td></tr>
+</table>
+</td></tr></table>
+</body>
+</html>
+
+<Script Language="JavaScript">
+function initCalendar(objImg, objTxt, initYear, initMonth) {
+  objText = objTxt;
+  var initDay;
+  var strDate = objTxt.value;
+  if (strDate != "") {
+    initYear = strDate.substring(0, 4);
+    initMonth = strDate.substring(5, 7);
+    initDay = strDate.substring(8, 10);
+  } else {
+    if (initYear == null || initMonth == null) {
+      var now = new Date();
+      initYear = now.getFullYear();
+      initMonth = now.getMonth() * 1 + 1;
+      initDay = now.getDate();
+    } else {
+      initDay = 1;
+    }
+  }
+  var objDate = new Date(initYear * 1, initMonth * 1 - 1, 1);
+  drawCalendar(objDate.getFullYear(), objDate.getMonth(), initDay);
+}
+
+function drawCalendar(year, month, day) {
+  curDay = day;
+  for (var i = 0; i < 42; i++) {
+    var d = document.getElementById("d" + i);
+    d.bgColor="#FFFFFF";
+    d.innerHTML="";
+  }
+  drawYear(year);
+  drawMonth(month);
+  var startId = new Date(year, month, 1).getDay();
+  var endId = getDaysOfMonth(year, month);
+  for (var i = 1; i <= endId; i++) {
+    var d = document.getElementById("d" + (startId * 1 + i * 1 - 1));
+    if (i == day) {
+      d.bgColor="#EEEEEE";
+      d.innerHTML="<a href=javascript:setDate(" + i + ");><font color=red>" + i + "</font></a>";
+    } else {
+      d.innerHTML="<a href=javascript:setDate(" + i + ");>" + i + "</a>";
+    }    
+  }
+}
+
+function changeCalendar(idx) {
+  year = document.getElementById("selYear").value * 1;
+  month = document.getElementById("selMonth").value * 1;
+  if (idx == -1 && month == 1) {
+    year -= 1;
+    month = 12;
+  } else if (idx == 1 && month == 12) {
+    year += 1;
+    month = 1;
+  } else {
+    month += idx;
+  }
+  totalDays = getDaysOfMonth(year, month - 1);
+  if (curDay * 1 > totalDays) curDay = totalDays;
+  drawCalendar(year, month - 1, curDay);
+}
+
+function changeYearMonth() {
+  year = document.getElementById("selYear").value * 1;
+  month = document.getElementById("selMonth").value * 1;
+  totalDays = getDaysOfMonth(year, month - 1);
+  if (curDay * 1 > totalDays) curDay = totalDays;
+  drawCalendar(year, month - 1, curDay);
+}
+
+function getDaysOfMonth(year, month) {
+  days = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+  if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) days[1] = 29;
+  return days[month];
+}
+
+
+function drawYear(year) {
+  var obj = document.getElementById("SelYear");
+  var idx = obj.length;
+  for(var i = 0; i < idx; i++) {
+    obj.options[0] = null;
+  }
+  for(var i = year * 1 - 5; i <= year * 1 + 5; i++) {
+    obj.options[obj.length] = new Option(i + "年", i);
+  }
+  obj.selectedIndex = 5;
+}
+
+function drawMonth(month) {
+  var obj = document.getElementById("SelMonth");
+  var idx = obj.length;
+  for(var i = 0; i < idx; i++) {
+    obj.options[0] = null;
+  }
+  for(var i = 1; i <= 12; i++) {
+    var str = "0" + i;
+    str = str.substring(str.length - 2);
+    obj.options[obj.length] = new Option(str + "月", i);
+  }
+  obj.selectedIndex = month;
+}
+
+function clearInput() {
+  objText.value = "";
+  parent.hideCalendar();
+}
+
+function setDate(idx) {
+  year = document.getElementById("selYear").value;
+  year = (year.length < 2) ? "0" + year : year;
+  month = document.getElementById("selMonth").value;
+  month = (month.length < 2) ? "0" + month : month;
+  day = ((idx + "").length < 2) ? "0" + idx : idx;
+  objText.value = year + "-" + month + "-" + day;
+  parent.hideCalendar();
+}
+
+var curDay = null;
+var objText = null;
+var alreadyLoad = true;
+</Script>

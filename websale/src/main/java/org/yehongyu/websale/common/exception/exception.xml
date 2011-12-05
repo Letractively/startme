@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Exception>
+	<!--通用异常相关的内容定义-->
+	<ModeName desc="public">
+		<!-- common exception-->
+		<ExceptionItem code="mmt_pu_co_00001" PageMessage="系统产生了一个空指针异常" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		<ExceptionItem code="mmt_pu_co_00002" PageMessage="无法找到需要类文件" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		<ExceptionItem code="mmt_pu_co_00003" PageMessage="由系统截获的异常" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		<ExceptionItem code="mmt_pu_co_00004" PageMessage="SSO系统异常" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		
+		<!-- db exception -->
+		<ExceptionItem code="mmt_pu_db_00001" PageMessage="数据库连接失败" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		<ExceptionItem code="mmt_pu_db_00002" PageMessage="数据库执行操作失败" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		
+		<!-- db exception -->
+		<ExceptionItem code="mmt_pu_io_00001" PageMessage="系统产生了一个IO异常" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		<ExceptionItem code="mmt_pu_io_00002" PageMessage="连接超时" DebugMessage="" IsTopage="" TopageURL=""></ExceptionItem>
+		
+	</ModeName>
+
+</Exception>
+
+
+

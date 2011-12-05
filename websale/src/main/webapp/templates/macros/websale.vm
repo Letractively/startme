@@ -1,0 +1,56 @@
+##
+## $Id$
+## Put your Application macros in this file.
+	
+##	SearchForm 搜索栏
+##   
+#macro(SearchForm)
+<form name="searchform" action="$link.setPage('shop,search.html')" method="post" style="border:#000 0px solid;text-align:center;padding:10px;margin-bottom:0px;width:100%;">
+	<img src="$content.getURI('images/shop/searchdot.gif')"/>
+	书籍搜索
+	<select name="searchtype">
+		<option value="1" #if("$!searchtype"=="1") selected #end>
+			书名
+		</option>
+		<option value="2" #if("$!searchtype"=="2") selected #end>
+			作者
+		</option>
+	</select>
+	<input type="text" name="keyword" #if($keyword) value="$!keyword" #else value="请输入关键词" #end size="40" onFocus="this.value=''" style="height:24px;"><input type="submit" value="搜索" onClick="if(key.value=='请输入关键词'){key.value=''}">
+	##<a href="supersearch.php"><font color="#006699">高级搜索</font>
+	##</a><font color="#FF7400"> 热门关键词</font>
+	##<a href=goodssearch.php?key=%E8%B4%BE%E5%B9%B3%E5%87%B9>贾平凹</a>
+	##<a href=goodssearch.php?key=%E7%90%86%E8%B4%A2>理财</a>
+	##<a href=goodssearch.php?key=%E8%82%A1%E5%B8%82>股市</a>
+	##<a href=goodssearch.php?key=%E6%88%BF%E4%BA%A7>房产</a>
+	<input type="hidden" name="actionType" value="0">
+	#if("$!pageBean.page"=="")
+	<input type="hidden" name="page" value="1">
+	#else
+ 	<input type="hidden" name="page" value="$!pageBean.page">
+ 	#end
+ 	#if("$!pageBean.pageSize"=="")
+	<input type="hidden" name="pageSize" value="10">
+	#else
+	<input type="hidden" name="pageSize" value="$!pageBean.getPageSize()">
+	#end
+ 	
+</form>
+#end
+
+##	CatList 图书分类栏
+##   
+#macro(CatList)
+<div>
+	<div><img src="$content.getURI('images/shop/tsfl.gif')" width="210"></div>
+	<div>
+		<ul style="margin-left:30px;">
+		#foreach($cat in $catlist)
+		<li style="margin-bottom: 5px;border:#000 0px solid;text-align:left;">
+			<a href="$link.setPage('shop,list.html')?catid=$!cat.id" target="_self">$!cat.catname</a>
+		</li>
+		#end
+		</ul>
+	</div>
+</div>
+#end

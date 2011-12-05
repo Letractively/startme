@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        b2b hibernate hbm.xml 
+        
+-->
+    <class name="org.yehongyu.websale.db.po.mydb.SModuleAction" table="S_MODULE_ACTION" >
+	<!--PK-->
+        <id name="id" column="ACTIONID" type="string" >
+            <generator class="assigned"/>
+        </id>
+
+        <property name="actionname" type="string">
+             <column name="ACTIONNAME" />
+        </property>
+        <property name="actionshortid" type="long">
+             <column name="ACTIONSHORTID" />
+        </property>
+        <property name="sortnum" type="long">
+             <column name="SORTNUM" />
+        </property>
+        <property name="moduleid" type="string">
+             <column name="MODULEID" />
+        </property>
+    </class>
+</hibernate-mapping>
