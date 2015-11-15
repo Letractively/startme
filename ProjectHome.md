@@ -1,0 +1,1 @@
+For fast create a web site with common function.like as log,auth.
